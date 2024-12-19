@@ -15,7 +15,7 @@ struct EventHome: View {
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var dealModel: DealModel
     
-    @State private var selection = Set<Event.ID>()
+    @State private var selection: Event.ID? = nil
     
     var filteredEvents: [Event] {
         eventModel.events
@@ -131,20 +131,11 @@ struct EventHome: View {
                 }
             }
             
-            .contextMenu(forSelectionType: Event.ID.self) { events in
-            } primaryAction: { events in
-//                isPresentedEventDetailsView.toggle()
-//                openWindow(id: "details")
-                if events.isEmpty {
-                    Button("EMPTY") {}
-                    
-                } else if events.count == 1 {
-                    openWindow(value: events.first)
-                    
-                } else {
-                    Text("BAD")
-                }
+            .contextMenu(forSelectionType: Event.ID.self) { event in
+            } primaryAction: { event in
+                openWindow(value: event)
             }
+            
 //            .sheet(isPresented: $isPresentedEventDetailsView) {
 //                NavigationStack {
 //                    EventDetail(id: 24)

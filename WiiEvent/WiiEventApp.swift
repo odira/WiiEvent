@@ -20,7 +20,6 @@ struct WiiEventApp: App {
     @StateObject var filters = Filters()
     
     
-    // MARK: - Body
     var body: some Scene {
         
         WindowGroup {
@@ -40,19 +39,11 @@ struct WiiEventApp: App {
                 await eventModel.fetch()
                 await dealModel.fetch()
             }
-        } // WindowGroup
+        }
         
-    //        #if os(macOS)
-    //        Window("Event Details", id: "details") {
-    //            EventDetail(id: globalVars.eventID)
-    //                .environmentObject(eventModel)
-    //        }
-    //        .windowResizability(.contentMinSize)
-    //        #endif
-        
-        WindowGroup("Event Details", for: Swift.Optional<Swift.Int>.self) { $event in
-            EventDetail(id: event!!)
-                .environmentObject(eventModel)
+        WindowGroup("Event Details", for: Event.self) { event in //Swift.Optional<Swift.Int>.self) { $event in
+//            EventDetail(id: event.id!)
+//                .environmentObject(eventModel)
         }
         
     } // body

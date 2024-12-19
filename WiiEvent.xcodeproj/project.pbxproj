@@ -362,6 +362,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D10B63822D141AE700950934 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		D10EEF302C3D7BD600E200F3 /* Subgroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,7 +740,7 @@
 		D1D890542CD2C80A0052710D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D1DFA10C2D0ED9C7004E2E96 /* Event */,
+				D10B63822D141AE700950934 /* Event */,
 				D1D890552CD2C83D0052710D /* EventHome.swift */,
 			);
 			path = Views;
@@ -755,13 +762,6 @@
 				D1DF9F5F2D070C19004E2E96 /* Deal.swift */,
 			);
 			path = Deal;
-			sourceTree = "<group>";
-		};
-		D1DFA10C2D0ED9C7004E2E96 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Event;
 			sourceTree = "<group>";
 		};
 		D1DFA1122D0EDA47004E2E96 /* WiiEventIOS */ = {

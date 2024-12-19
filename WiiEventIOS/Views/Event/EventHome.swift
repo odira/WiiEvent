@@ -2,7 +2,6 @@ import SwiftUI
 
 struct EventHome: View {
     @EnvironmentObject var eventModel: EventModel
-    @EnvironmentObject var globalVars: GlobalVars
     
     @State private var searchableText = ""
     @State private var showSearchSheet = false
