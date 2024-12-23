@@ -41,9 +41,11 @@ struct WiiEventApp: App {
             }
         }
         
-        WindowGroup("Event Details", for: Event.self) { event in //Swift.Optional<Swift.Int>.self) { $event in
-//            EventDetail(id: event.id!)
-//                .environmentObject(eventModel)
+//        WindowGroup("Event Details", for: Event.ID.self) { event in //Swift.Optional<Swift.Int>.self) { $event in
+//        WindowGroup("Event Details", for: Swift.Optional<Swift.Int>.self) { $event in
+        WindowGroup("Event Details", for: Swift.Optional<Swift.Int>) { $event in
+            EventDetail(id: event!.id)
+                .environmentObject(eventModel)
         }
         
     } // body
