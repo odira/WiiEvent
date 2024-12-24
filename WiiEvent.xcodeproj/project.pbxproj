@@ -421,14 +421,14 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		D17EEF6B2C90BD2C00E6E51B /* History */ = {
+		D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */ = {
 			isa = PBXGroup;
 			children = (
 				D17EEF6C2C9205D500E6E51B /* HistoryAddSheet.swift */,
 				D115824F2C8A286D00E96DB1 /* HistoryEditSheet.swift */,
 				D1DC71C82C445CE300D5725E /* HistoryDetailVIew.swift */,
 			);
-			path = History;
+			path = HistoryHelper;
 			sourceTree = "<group>";
 		};
 		D19132632D0A09AF00AFCCAD /* Extensions */ = {
@@ -807,7 +807,7 @@
 				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
 				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
 				D1A7306F2B383B49003A3A49 /* EventDetail.swift */,
-				D17EEF6B2C90BD2C00E6E51B /* History */,
+				D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */,
 			);
 			path = Event;
 			sourceTree = "<group>";
