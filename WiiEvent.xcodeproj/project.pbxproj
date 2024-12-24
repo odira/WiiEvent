@@ -379,16 +379,6 @@
 			path = Subgroup;
 			sourceTree = "<group>";
 		};
-		D11CAA632CA5E30300403E82 /* ViewsForForm */ = {
-			isa = PBXGroup;
-			children = (
-				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
-				D10215E32CF90C140075631B /* DescriptionView.swift */,
-				D11CAA642CA5E32700403E82 /* PriceView.swift */,
-			);
-			path = ViewsForForm;
-			sourceTree = "<group>";
-		};
 		D1387D602AFFB31600570446 = {
 			isa = PBXGroup;
 			children = (
@@ -812,9 +802,11 @@
 		D1E9B36C2B4C5F6F0073768D /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				D11CAA642CA5E32700403E82 /* PriceView.swift */,
+				D10215E32CF90C140075631B /* DescriptionView.swift */,
+				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
 				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
 				D1A7306F2B383B49003A3A49 /* EventDetail.swift */,
-				D11CAA632CA5E30300403E82 /* ViewsForForm */,
 				D17EEF6B2C90BD2C00E6E51B /* History */,
 			);
 			path = Event;
