@@ -922,7 +922,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					D1387D682AFFB31600570446 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -1320,6 +1320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"WiiEventMac/Preview Content\"";
 				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1355,6 +1356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"WiiEventMac/Preview Content\"";
 				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_HARDENED_RUNTIME = YES;

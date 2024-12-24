@@ -14,9 +14,7 @@ struct WiiEventApp: App {
     @StateObject var eventModel = EventModel()
     @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
-    
     @StateObject var filters = Filters()
-    
     
     var body: some Scene {
         
