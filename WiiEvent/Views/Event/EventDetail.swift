@@ -2,6 +2,7 @@ import SwiftUI
 
 struct EventDetail: View {
     @Environment(\.dismiss) private var dismiss
+    
     @EnvironmentObject var eventModel: EventModel
     
     @State private var isPresentedJustificationSheet: Bool = false
@@ -13,7 +14,7 @@ struct EventDetail: View {
         eventModel.findEventById(id: id)!
     }
     
-    var id: Int = 100
+    var id: Int = 3
 
     
     // MARK: - body
@@ -24,7 +25,11 @@ struct EventDetail: View {
             VStack {
                 Form {
                     VStack {
-                        CircleImage(image: event.image)
+                        HStack(alignment: .center) {
+                            Spacer()
+                            CircleImage(image: event.image)
+                            Spacer()
+                        }
                         
                         Text(event.event)
                             .bold()
@@ -152,7 +157,7 @@ struct EventDetail: View {
         }
         #endif
         
-        #if os(iOS)
+//        #if os(iOS)
         // MENU
         .confirmationDialog("Menu", isPresented: $isPresentedMenu, titleVisibility: .hidden) {
 //        .sheet(isPresented: $isPresentedMenu) {
@@ -170,7 +175,7 @@ struct EventDetail: View {
             .frame(width: .infinity)
             .buttonStyle(.borderedProminent)
         }
-        #endif
+//        #endif
         
     } // body
     

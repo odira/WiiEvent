@@ -73,7 +73,7 @@ struct EventHome: View {
                 // price
                 TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
                     Group {
-                        Text("\(event.price ?? 0.0)") +
+                        Text((event.price ?? 0.0), format: .number) +
                         Text(" ")                     +
                         Text("₽").fontWeight(.heavy)
                     }.frame(maxWidth: .infinity, alignment: .trailing)

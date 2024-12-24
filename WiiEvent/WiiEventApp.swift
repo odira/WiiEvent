@@ -11,13 +11,9 @@ import SwiftUI
 @main
 struct WiiEventApp: App {
 
-    // MARK: - Models initialization
-    
     @StateObject var eventModel = EventModel()
     @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
-    
-    // MARK: - Filters initialization
     
     @StateObject var filters = Filters()
     
@@ -52,7 +48,7 @@ struct WiiEventApp: App {
     } // body
     
     
-    // MARK: - Additional Views
+    // Additional Views
     
     var splashView: some View {
         VStack {

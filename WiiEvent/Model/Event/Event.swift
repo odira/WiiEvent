@@ -2,9 +2,8 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
+
 public struct Event: Hashable, Codable, Identifiable {
-    
-    // MARK: - Main parameters
     
     public var id: Int                    //  0
     public var event: String              //  1
@@ -42,7 +41,7 @@ public struct Event: Hashable, Codable, Identifiable {
     public var subgroupId: Int?           // 33
 //    public var dealIDarr: [Int]?          // 35
     
-    // MARK: - Composed parameters
+    // Composed parameters
     
     public enum Category: String, CaseIterable, Codable {
         case completed = "Completed"
@@ -169,14 +168,15 @@ public struct Event: Hashable, Codable, Identifiable {
     }
 }
 
-// MARK: - Event example 
+
+// MARK: - Event example
 
 #if DEBUG
 public extension Event {
     
     static let example = samples[0]
     static let samples: [Event] = [
-        Event(id: 348,                                //  0
+        Event(id: 3,                                //  0
               event: "Sample event",                  //  1
               city: "Воронеж",                        //  2
               unit: "РегЦ",                           //  3
