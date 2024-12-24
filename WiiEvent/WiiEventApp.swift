@@ -12,11 +12,13 @@ import SwiftUI
 struct WiiEventApp: App {
 
     // MARK: - Models initialization
+    
     @StateObject var eventModel = EventModel()
     @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
     
     // MARK: - Filters initialization
+    
     @StateObject var filters = Filters()
     
     
@@ -27,7 +29,6 @@ struct WiiEventApp: App {
                 if eventModel.isFetching {
                     splashView
                 } else {
-                    
                     ContentView()
                         .environmentObject(eventModel)
                         .environmentObject(historyModel)
@@ -41,17 +42,18 @@ struct WiiEventApp: App {
             }
         }
         
-//        WindowGroup("Event Details", for: Event.ID.self) { event in //Swift.Optional<Swift.Int>.self) { $event in
-//        WindowGroup("Event Details", for: Swift.Optional<Swift.Int>.self) { $event in
-        WindowGroup("Event Details", for: Swift.Optional<Swift.Int>) { $event in
-            EventDetail(id: event!.id)
-                .environmentObject(eventModel)
+        WindowGroup(for: Event.ID.self) { $eventID in
+            if let eventID {
+                EventDetail(id: eventID)
+                    .environmentObject(eventModel)
+            }
         }
         
     } // body
     
     
     // MARK: - Additional Views
+    
     var splashView: some View {
         VStack {
             Image(systemName: "memorychip")

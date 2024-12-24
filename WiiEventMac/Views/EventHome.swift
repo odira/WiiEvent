@@ -132,26 +132,12 @@ struct EventHome: View {
                 }
             }
             
-            .contextMenu(forSelectionType: Event.ID.self) { events in
-            } primaryAction: { events in
-                if events.count == 1 {
-                    openWindow(value: events.first)
+            .contextMenu(forSelectionType: Event.ID.self) { eventIDs in
+            } primaryAction: { eventIDs in
+                for id in eventIDs {
+                    openWindow(value: id)
                 }
             }
-            
-//            .sheet(isPresented: $isPresentedEventDetailsView) {
-//                NavigationStack {
-//                    EventDetail(id: 24)
-//                }
-//            }
-            
-//            .inspector(isPresented: $isPresentedEventDetailsView) {
-//                EventDetail(id: 24)
-//            }
-            
-//            .onAppear {
-//                selection = filteredEvents.first?.id
-//            }
             
             // Table
             

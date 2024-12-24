@@ -20,8 +20,8 @@ struct EventDetail: View {
     
     var body: some View {
         NavigationStack {
+            
             VStack {
-                
                 Form {
                     VStack {
                         CircleImage(image: event.image)
@@ -52,7 +52,7 @@ struct EventDetail: View {
                                     .presentationDragIndicator(.visible)
                             }
                         }
-                                                
+                        
                         HStack {
                             if event.isCompleted {
                                 CompletedButton(isCompleted: .constant(true))
@@ -65,7 +65,7 @@ struct EventDetail: View {
                     .listRowBackground(Color.clear)
                     
                     Section("Реквизиты договора/контракта") {
-//                        LabeledContent("Номер", value: event.contract ?? "не заключен")
+                        //                        LabeledContent("Номер", value: event.contract ?? "не заключен")
                         LabeledContent("Дата заключения", value: "N/A")
                         LabeledContent("Дата окончания", value: event.endDate ?? "")
                     }
@@ -97,26 +97,27 @@ struct EventDetail: View {
                         LabeledContent("Контрагент", value: event.contragent ?? "")
                         LabeledContent("Субподрядчик", value: event.subcontractor ?? "")
                     }
-                }
-            }
+                } // Form
+                .formStyle(.grouped)
+                
+            } // VStack
             .font(.callout)
             
             .toolbar {
-//                ToolbarItemGroup(placement: .bottomBar) {
                 ToolbarItemGroup {
-                        Button  {
-                            isPresentedMenu.toggle()
-                        } label: {
-                            HStack {
-                                Image(systemName: "list.bullet.circle")
-                                Text("Menu")
-                            }
+                    Button  {
+                        isPresentedMenu.toggle()
+                    } label: {
+                        HStack {
+                            Image(systemName: "list.bullet.circle")
+                            Text("Menu")
                         }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.regular)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.regular)
                 }
             } // .toolbar
-
+            
         } // NavigationStack
         
         
@@ -151,6 +152,7 @@ struct EventDetail: View {
         }
         #endif
         
+        #if os(iOS)
         // MENU
         .confirmationDialog("Menu", isPresented: $isPresentedMenu, titleVisibility: .hidden) {
 //        .sheet(isPresented: $isPresentedMenu) {
@@ -168,6 +170,7 @@ struct EventDetail: View {
             .frame(width: .infinity)
             .buttonStyle(.borderedProminent)
         }
+        #endif
         
     } // body
     
