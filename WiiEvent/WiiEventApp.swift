@@ -37,8 +37,8 @@ struct WiiEventApp: App {
         }
         
         WindowGroup(for: Event.ID.self) { $eventID in
-            if let eventID {
-                EventDetail(id: eventID)
+            if eventID != nil {
+                EventDetail(id: eventID!)
                     .environmentObject(eventModel)
             }
         }

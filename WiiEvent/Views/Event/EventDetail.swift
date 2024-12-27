@@ -10,118 +10,121 @@ struct EventDetail: View {
     @State private var isPresentedHistorySheet: Bool = false
     @State private var isPresentedMenu: Bool = false
 
-    private var event: Event {
-        eventModel.findEventById(id: id)!
+    private var event: Event? {
+        eventModel.findEventById(id: id)
     }
     
-    var id: Int = 3
+    var id: Int = 12
 
     
     // MARK: - body
     
     var body: some View {
         NavigationStack {
-            
-            VStack {
-                Form {
-                    VStack {
-                        HStack(alignment: .center) {
-                            Spacer()
-                            CircleImage(image: event.image)
-                            Spacer()
-                        }
-                        
-                        Text(event.event)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                            .padding()
-                        
-                        HStack {
-                            Button("Обоснование") {
-                                isPresentedJustificationSheet.toggle()
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .sheet(isPresented: $isPresentedJustificationSheet) {
-                                JustificationView(for: event.justification)
-                                    .presentationDetents([.large])
-                                    .presentationDragIndicator(.visible)
+            if let event {
+                
+                VStack {
+                    Form {
+                        VStack {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                CircleImage(image: event.image)
+                                Spacer()
                             }
                             
-                            Button("Описание") {
-                                isPresentedDescriptionSheet.toggle()
+                            Text(event.event)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                                .padding()
+                            
+                            HStack {
+                                Button("Обоснование") {
+                                    isPresentedJustificationSheet.toggle()
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .sheet(isPresented: $isPresentedJustificationSheet) {
+                                    JustificationView(for: event.justification)
+                                        .presentationDetents([.large])
+                                        .presentationDragIndicator(.visible)
+                                }
+                                
+                                Button("Описание") {
+                                    isPresentedDescriptionSheet.toggle()
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .sheet(isPresented: $isPresentedDescriptionSheet) {
+                                    DescriptionView(for: event.description)
+                                        .presentationDetents([.large])
+                                        .presentationDragIndicator(.visible)
+                                }
                             }
-                            .buttonStyle(.borderedProminent)
-                            .sheet(isPresented: $isPresentedDescriptionSheet) {
-                                DescriptionView(for: event.description)
-                                    .presentationDetents([.large])
-                                    .presentationDragIndicator(.visible)
+                            
+                            HStack {
+                                if event.isCompleted {
+                                    CompletedButton(isCompleted: .constant(true))
+                                }
+                                if event.isOptional {
+                                    OptionalButton(isOptional: .constant(true))
+                                }
+                            }
+                        }
+                        .listRowBackground(Color.clear)
+                        
+                        Section("Реквизиты договора/контракта") {
+                            //                        LabeledContent("Номер", value: event.contract ?? "не заключен")
+                            LabeledContent("Дата заключения", value: "N/A")
+                            LabeledContent("Дата окончания", value: event.endDate ?? "")
+                        }
+                        
+                        Section("Исполнение договора") {
+                            LabeledContent("Год реализации", value: event.years ?? "")
+                            LabeledContent("Ответственный исполнитель", value: event.senior ?? "")
+                            LabeledContent("Номер позиции в Плане закупок", value: event.numberPZ ?? 0, format: .number)
+                        }
+                        
+                        Section("Стоимость мероприятия") {
+                            LabeledContent("Общая стоимость (руб.)", value: event.price ?? 0, format: .number)
+                            NavigationLink(destination: PriceView(event: event)) {
+                                Text("Стоимость по годам")
                             }
                         }
                         
-                        HStack {
-                            if event.isCompleted {
-                                CompletedButton(isCompleted: .constant(true))
-                            }
-                            if event.isOptional {
-                                OptionalButton(isOptional: .constant(true))
-                            }
+                        Section("Орган ОВД") {
+                            LabeledContent("Орган ОВД", value: event.unit ?? "")
+                            LabeledContent("Город", value: event.city ?? "")
                         }
-                    }
-                    .listRowBackground(Color.clear)
-                    
-                    Section("Реквизиты договора/контракта") {
-                        //                        LabeledContent("Номер", value: event.contract ?? "не заключен")
-                        LabeledContent("Дата заключения", value: "N/A")
-                        LabeledContent("Дата окончания", value: event.endDate ?? "")
-                    }
-                    
-                    Section("Исполнение договора") {
-                        LabeledContent("Год реализации", value: event.years ?? "")
-                        LabeledContent("Ответственный исполнитель", value: event.senior ?? "")
-                        LabeledContent("Номер позиции в Плане закупок", value: event.numberPZ ?? 0, format: .number)
-                    }
-                    
-                    Section("Стоимость мероприятия") {
-                        LabeledContent("Общая стоимость (руб.)", value: event.price ?? 0, format: .number)
-                        NavigationLink(destination: PriceView(event: event)) {
-                            Text("Стоимость по годам")
+                        
+                        Section("Оборудование") {
+                            LabeledContent("Оборудование", value: event.equipment ?? "")
+                            LabeledContent("Вид работ (наименование этапа)", value: event.phase ?? "")
                         }
-                    }
+                        
+                        Section("Подрядчик") {
+                            LabeledContent("Контрагент", value: event.contragent ?? "")
+                            LabeledContent("Субподрядчик", value: event.subcontractor ?? "")
+                        }
+                    } // Form
+                    .formStyle(.grouped)
                     
-                    Section("Орган ОВД") {
-                        LabeledContent("Орган ОВД", value: event.unit ?? "")
-                        LabeledContent("Город", value: event.city ?? "")
-                    }
-                    
-                    Section("Оборудование") {
-                        LabeledContent("Оборудование", value: event.equipment ?? "")
-                        LabeledContent("Вид работ (наименование этапа)", value: event.phase ?? "")
-                    }
-                    
-                    Section("Подрядчик") {
-                        LabeledContent("Контрагент", value: event.contragent ?? "")
-                        LabeledContent("Субподрядчик", value: event.subcontractor ?? "")
-                    }
-                } // Form
-                .formStyle(.grouped)
+                } // VStack
+                .font(.callout)
                 
-            } // VStack
-            .font(.callout)
-            
-            .toolbar {
-                ToolbarItemGroup {
-                    Button  {
-                        isPresentedMenu.toggle()
-                    } label: {
-                        HStack {
-                            Image(systemName: "list.bullet.circle")
-                            Text("Menu")
+                .toolbar {
+                    ToolbarItemGroup {
+                        Button  {
+                            isPresentedMenu.toggle()
+                        } label: {
+                            HStack {
+                                Image(systemName: "list.bullet.circle")
+                                Text("Menu")
+                            }
                         }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.regular)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.regular)
-                }
-            } // .toolbar
+                } // .toolbar
+                
+            }
             
         } // NavigationStack
         

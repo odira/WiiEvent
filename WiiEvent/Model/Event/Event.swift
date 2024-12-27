@@ -176,7 +176,7 @@ public extension Event {
     
     static let example = samples[0]
     static let samples: [Event] = [
-        Event(id: 3,                                //  0
+        Event(id: 12,                                //  0
               event: "Sample event",                  //  1
               city: "Воронеж",                        //  2
               unit: "РегЦ",                           //  3

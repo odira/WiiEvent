@@ -134,7 +134,7 @@ struct EventHome: View {
             
             .contextMenu(forSelectionType: Event.ID.self) { eventIDs in
             } primaryAction: { eventIDs in
-                for id in eventIDs {
+                if let id = eventIDs.first {
                     openWindow(value: id)
                 }
             }
