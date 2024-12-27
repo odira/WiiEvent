@@ -14,9 +14,9 @@ struct EventHome: View {
     
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var dealModel: DealModel
-    
-//    @State private var selection: Event.ID? = nil
+
     @State private var selection = Set<Event.ID>()
+    
     
     var filteredEvents: [Event] {
         eventModel.events
@@ -124,11 +124,11 @@ struct EventHome: View {
             } rows: {
                 ForEach(filteredEvents) { event in
                     TableRow(event)
-                        .contextMenu {
-                            Button("Edit") {
-                                // put here some code
-                            }
-                        }
+//                        .contextMenu {
+//                            Button("Edit") {
+//                                // put here some code
+//                            }
+//                        }
                 }
             }
             
