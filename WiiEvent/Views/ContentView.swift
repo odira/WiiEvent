@@ -12,11 +12,13 @@ struct ContentView: View {
     @State private var tabArray = ["Список", "Категории", "Группы"]
     @State private var selectedTab: TabValue = .list
     
+    
     var body: some View {
+        
         TabView(selection: $selectedTab) {
             
             Tab(tabArray[0], systemImage: "list.bullet", value: .list) {
-                EventHome()
+                EventMainView()
             }
             Tab(tabArray[1], systemImage: "star", value: .category) {
                 #if os(iOS)
@@ -35,8 +37,8 @@ struct ContentView: View {
                 #endif  
             }
             
-        }
-    }
+        } // TabView
+    } // body
 }
 
 #Preview {

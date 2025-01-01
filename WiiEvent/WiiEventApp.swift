@@ -1,7 +1,4 @@
 //
-//  WiiPlanDataApp.swift
-//  WiiPlanData
-//
 //  Created by Vladimir Ilin on 11.11.2023.
 //
 
@@ -47,6 +44,8 @@ struct WiiEventApp: App {
     
     
     // Additional Views
+    //
+    // SPLASH View
     
     var splashView: some View {
         VStack {

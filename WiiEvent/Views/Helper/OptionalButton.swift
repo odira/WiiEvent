@@ -1,31 +1,30 @@
 import SwiftUI
 
 struct OptionalButton: View {
-    
     @Binding var isOptional: Bool
     
+    var color: Color = .purple
+    
     var body: some View {
-
-        Text("ОПЦИОН".lowercased().capitalized)
+//        Text("ОПЦИОН".lowercased().capitalized)
+        Text("ОПЦИОН")
             .font(.system(.caption, design: .monospaced))
-            .foregroundStyle(.green)
+            .foregroundStyle(color)
             .bold()
             .padding(3)
             .overlay {
                 RoundedRectangle(cornerRadius: 3)
-                    .stroke(.green, lineWidth: 1)
+                    .stroke(color, lineWidth: 1)
             }
-
-    } // body
+    }
 }
 
 struct CompletedButton: View {
-    
     @Binding var isCompleted: Bool
     
     var body: some View {
-
-        Text("ВЫПОЛНЕН".lowercased().capitalized)
+//        Text("ВЫПОЛНЕН".lowercased().capitalized)
+        Text("ВЫПОЛНЕН")
             .font(.system(.caption, design: .monospaced))
             .foregroundStyle(.red)
             .bold()
@@ -34,11 +33,26 @@ struct CompletedButton: View {
                 RoundedRectangle(cornerRadius: 3)
                     .stroke(.red, lineWidth: 1)
             }
+    }
+}
 
-    } // body
+struct PlanningButton: View {
+    @Binding var isPlanning: Bool
+    var body: some View {
+        Text("ПЛАНИРУЕТСЯ")
+            .font(.system(.caption, design: .monospaced))
+            .foregroundStyle(.green)
+            .bold()
+            .padding(3)
+            .overlay {
+                RoundedRectangle(cornerRadius: 3)
+                    .stroke(.green, lineWidth: 1)
+            }
+    }
 }
 
 #Preview {
     OptionalButton(isOptional: .constant(true))
     CompletedButton(isCompleted: .constant(true))
+    PlanningButton(isPlanning: .constant(true))
 }

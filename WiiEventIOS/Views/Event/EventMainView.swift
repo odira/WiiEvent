@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct EventHome: View {
+struct EventMainView: View {
     @EnvironmentObject var eventModel: EventModel
     
     @State private var searchableText = ""
@@ -90,6 +90,6 @@ struct EventHome: View {
 }
 
 #Preview {
-    EventHome()
+    EventMainView()
         .environmentObject(EventModel.example)
 }

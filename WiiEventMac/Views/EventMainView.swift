@@ -7,9 +7,10 @@
 
 
 import SwiftUI
+import WiiKit
 
 
-struct EventHome: View {
+struct EventMainView: View {
     @Environment(\.openWindow) private var openWindow
     
     @EnvironmentObject var eventModel: EventModel
@@ -25,56 +26,69 @@ struct EventHome: View {
     @State private var isPresentedEventDetailsView: Bool = false
     
     
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ru")
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        return formatter
-    }()
-    
-    
     // MARK: - Body view
     
     var body: some View {
         VStack {
             Table(of: Event.self, selection: $selection) {
                 
-                // event
-                TableColumn(eventHeader().bold().foregroundStyle(.blue)) { event in
-                    eventColumn(for: event)
+                // Мероприятие
+                TableColumn(eventColumnHeader()) { event in
+                    eventColumnContext(for: event)
                         .lineLimit(5)
                 }
-                // contract
-                TableColumn(Text("Номер договора/контракта/доп.соглашения\nдата заключения").bold().foregroundStyle(.blue)) { event in
+                
+                // Номер договора
+                TableColumn(contractColumnHeader()) { event in
                     if let deals = dealModel.findDeals(byEventID: event.id) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            ForEach(deals) { deal in
+                        if let deal = deals.first {
+                            VStack(alignment: .leading, spacing: 5) {
                                 HStack {
                                     Text(deal.typeAbbr)
                                     Text("№ ")
                                     Text(deal.deal ?? "")
                                         .fontWeight(.bold)
                                         .foregroundStyle(.primary)
-                                    Text(" от ")
-                                    Text(dateFormatter.string(from: deal.startDate))
+                                    
+                                    if deals.count > 1 {
+                                        Image(systemName: "list.bullet.circle")
+                                            .foregroundColor(.orange)
+                                    }
                                 }
-                                .padding(5)
-                                .border(Color.primary, width: 1)
                             }
                         }
                     }
                 }
-                .width(ideal: 50)
-                // end_date
-                TableColumn(Text("Дата окончания\nмероприятия").bold().foregroundStyle(.blue)) { event in
-                    Text("\(event.endDate ?? "")")
+                
+                // Дата заключения
+                TableColumn(Text("Дата заключения договора").bold().foregroundStyle(.blue)) { event in
+                    if let deals = dealModel.findDeals(byEventID: event.id) {
+                        if let deal = deals.first {
+                            VStack(alignment: .leading, spacing: 5) {
+                                if deal.isPlanning {
+                                    PlanningButton(isPlanning: .constant(true))
+                                    Text(DateFormatter.planningMonth.string(from: deal.startDate))
+                                } else {
+                                    Text(DateFormatter.longDateFormatter.string(from: deal.startDate))
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // Дата закрытия договора
+                TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in
+                    if let endDate = event.endDate {
+                        Text(/*DateFormatter.longDateFormatter.string(from: endDate)*/ endDate)
+                    } else {
+                        Text("")
+                    }
                 }
                 // price
                 TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
                     Group {
                         Text((event.price ?? 0.0), format: .number) +
-                        Text(" ")                     +
+                        Text(" ")                                   +
                         Text("₽").fontWeight(.heavy)
                     }.frame(maxWidth: .infinity, alignment: .trailing)
                 }
@@ -154,14 +168,20 @@ struct EventHome: View {
     }
     
     //event
-    func eventHeader() -> Text {
-        Text("Наименование мероприятия")
+    func eventColumnHeader() -> Text {
+        Text("Мероприятие")
             .bold()
-            .foregroundStyle(.primary)
+            .foregroundStyle(.blue)
+    }
+    func eventColumnContext(for event: Event) -> Text {
+        Text("\(event.event)")
     }
     
-    func eventColumn(for event: Event) -> Text {
-        Text("\(event.event)")
+    // contract
+    func contractColumnHeader() -> Text {
+        Text("Номер договора")
+            .bold()
+            .foregroundStyle(.blue)
     }
 }
 
@@ -169,7 +189,11 @@ struct EventHome: View {
 // MARK: - Preview
 
 #Preview {
-    EventHome()
+    EventMainView()
         .environmentObject(EventModel.example)
         .environmentObject(DealModel.example)
 }
+
+
+// MARK: - Additional Views
+
