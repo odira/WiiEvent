@@ -56,7 +56,6 @@ struct EventMainView: View {
                         }
                     }
                 }
-                
                 // Дата заключения
                 TableColumn(Text("Дата заключения договора").bold().foregroundStyle(.blue)) { event in
                     if let deals = dealModel.findDeals(byEventID: event.id) {
@@ -81,6 +80,7 @@ struct EventMainView: View {
                         Text("")
                     }
                 }
+                
                 // price
                 TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
                     Group {

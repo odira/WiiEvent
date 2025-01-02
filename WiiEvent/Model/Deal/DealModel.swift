@@ -54,25 +54,27 @@ public class DealModel: ObservableObject {
             
             let cursor = try statement.execute()
             defer { cursor.close() }
+        
             
             for row in cursor {
                 let columns = try row.get().columns
                 
-                let id = try columns[0].int()                   //  0
-                let typeID = try columns[1].int()               //  1
-                let typeAbbr = try columns[2].string()          //  2
-                let type = try columns[3].string()              //  3
-                let isPlanning = try columns[4].bool()          //  4
-                let isCompleted = try columns[5].bool()         //  5
-                let deal = try? columns[5].string()             //  6
-                let startingDatePg = try columns[6].date()      //  7
-                let endingDatePg = try? columns[7].date()       //  8
-                let note = try? columns[8].string()             //  9
-                let parentID = try? columns[9].int()            // 10
-                let eventID = try columns[10].int()             // 11
-                let justification = try? columns[11].string()   // 12
-                let description = try? columns[12].string()     // 13
+                let id = try columns[0].int()                   ///    0
+                let typeID = try columns[1].int()               ///    1
+                let typeAbbr = try columns[2].string()          ///    2
+                let type = try columns[3].string()              ///    3
+                let isPlanning = try columns[4].bool()          ///    4
+                let isCompleted = try columns[5].bool()         ///    5
+                let deal = try? columns[6].string()             ///    6
+                let startingDatePg = try columns[7].date()      ///    7
+                let endingDatePg = try? columns[8].date()       ///    8
+                let note = try? columns[9].string()             ///    9
+                let parentID = try? columns[10].int()           ///   10
+                let eventID = try columns[11].int()             ///   11
+                let justification = try? columns[12].string()   ///   12
+                let description = try? columns[13].string()     ///   13
                 
+
                 var startingDate: Date {
                     let utcTimeZone = TimeZone(secondsFromGMT: 0)!  ///  UTC/GMT time zone
                     return startingDatePg.date(in: utcTimeZone)
@@ -87,7 +89,6 @@ public class DealModel: ObservableObject {
                     }
                 }
                 
-                print(deal ?? "OK")
                 deals.append(
                     Deal(
                         id: id,                        //   0
@@ -162,6 +163,7 @@ public extension DealModel {
         if result.isEmpty {
             return nil
         }
+        print(result)
         return result
     }
     
