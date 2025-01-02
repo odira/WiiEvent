@@ -41,7 +41,14 @@ public class DealModel: ObservableObject {
             let connection = try PostgresClientKit.Connection(configuration: configuration)
             defer { connection.close() }
             
-            let sqlText = "SELECT * FROM deal.vw_deal ORDER BY start ASC"
+            let sqlText = """
+                SELECT
+                    * 
+                FROM 
+                    deal.vw_deal
+                ORDER BY 
+                    starting_date ASC
+            """
             let statement = try connection.prepareStatement(text: sqlText)
             defer { statement.close() }
             
@@ -51,47 +58,52 @@ public class DealModel: ObservableObject {
             for row in cursor {
                 let columns = try row.get().columns
                 
-                let id = try columns[0].int()                //  0
-                let typeID = try columns[1].int()            //  1 
-                let typeAbbr = try columns[2].string()       //  2
-                let type = try columns[3].string()           //  3
-                let isPlanning = try columns[4].bool()       //  4
-                let deal = try? columns[5].string()          //  5
-                let startDatePg = try columns[6].date()      //  6
-                let stopDatePg = try? columns[7].date()      //  7
-                let note = try? columns[8].string()          //  8
-                let dealID = try? columns[9].int()           //  9
-                let eventID = try columns[10].int()          // 10
+                let id = try columns[0].int()                   //  0
+                let typeID = try columns[1].int()               //  1
+                let typeAbbr = try columns[2].string()          //  2
+                let type = try columns[3].string()              //  3
+                let isPlanning = try columns[4].bool()          //  4
+                let isCompleted = try columns[5].bool()         //  5
+                let deal = try? columns[5].string()             //  6
+                let startingDatePg = try columns[6].date()      //  7
+                let endingDatePg = try? columns[7].date()       //  8
+                let note = try? columns[8].string()             //  9
+                let parentID = try? columns[9].int()            // 10
+                let eventID = try columns[10].int()             // 11
+                let justification = try? columns[11].string()   // 12
+                let description = try? columns[12].string()     // 13
                 
-                var startDate: Date {
-                    /// The UTC/GMT time zone.
-                    let utcTimeZone = TimeZone(secondsFromGMT: 0)!
-                    return startDatePg.date(in: utcTimeZone)
+                var startingDate: Date {
+                    let utcTimeZone = TimeZone(secondsFromGMT: 0)!  ///  UTC/GMT time zone
+                    return startingDatePg.date(in: utcTimeZone)
                 }
                 
-                var stopDate: Date? {
-                    if let stopDatePg {
-                        /// The UTC/GMT time zone.
-                        let utcTimeZone = TimeZone(secondsFromGMT: 0)!
-                        return stopDatePg.date(in: utcTimeZone)
+                var endingDate: Date? {
+                    if let endingDatePg {
+                        let utcTimeZone = TimeZone(secondsFromGMT: 0)!  ///  UTC/GMT time zone
+                        return endingDatePg.date(in: utcTimeZone)
                     } else {
                         return nil
                     }
                 }
                 
+                print(deal ?? "OK")
                 deals.append(
                     Deal(
-                        id: id,                      //  0
-                        typeID: typeID,              //  1
-                        typeAbbr: typeAbbr,          //  2
-                        type: type,                  //  3
-                        isPlanning: isPlanning,      //  4
-                        deal: deal,                  //  5
-                        startDate: startDate,        //  6
-                        stopDate: stopDate,          //  7
-                        note: note,                  //  8
-                        dealID: dealID,              //  9
-                        eventID: eventID             // 10
+                        id: id,                        //   0
+                        typeID: typeID,                //   1
+                        typeAbbr: typeAbbr,            //   2
+                        type: type,                    //   3
+                        isPlanning: isPlanning,        //   4
+                        isCompleted: isCompleted,      //   5
+                        deal: deal,                    //   6
+                        startingDate: startingDate,    //   7
+                        endingDate: endingDate,        //   8
+                        note: note,                    //   9
+                        parentID: parentID,            //  10
+                        eventID: eventID,              //  11
+                        justification: justification,  //  12
+                        description: description       //  13
                     )
                 )
             }

@@ -72,7 +72,7 @@ public class EventModel: Identifiable, ObservableObject {
                     subcontractor,         --  9
                     senior,                -- 10
                     end_morder,            -- 11
-                    event_description,     -- 12
+                    description,           -- 12
                     is_completed,          -- 13
                     is_optional,           -- 14
                     justification,         -- 15

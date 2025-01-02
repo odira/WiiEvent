@@ -6,45 +6,54 @@ public struct Deal: Hashable, Codable, Identifiable {
     
     // MARK: - Main parameters
     
-    public var id: Int                //  0
-    public var typeID: Int            //  1
-    public var typeAbbr: String       //  2
-    public var type: String           //  3
-    public var isPlanning: Bool       //  4
-    public var deal: String?          //  5
-    public var startDate: Date        //  6
-    public var stopDate: Date?        //  7
-    public var note: String?          //  8
-    public var dealID: Int?           //  9
-    public var eventID: Int           // 10
+    public var id: Int                      //  0
+    public var typeID: Int                  //  1
+    public var typeAbbr: String             //  2
+    public var type: String                 //  3
+    public var isPlanning: Bool             //  4
+    public var isCompleted: Bool            //  5
+    public var deal: String?                //  6
+    public var startingDate: Date           //  7
+    public var endingDate: Date?            //  8
+    public var note: String?                //  9
+    public var parentID: Int?               // 10
+    public var eventID: Int                 // 11
+    public var justificatoin: String?       // 12
+    public var description: String?         // 13
 
     
     // MARK: - Initializations
     
     public init(
-        id: Int,                      //  0
-        typeID: Int,                  //  1
-        typeAbbr: String,             //  2
-        type: String,                 //  3
-        isPlanning: Bool,             //  4
-        deal: String? = nil,          //  5
-        startDate: Date,              //  6
-        stopDate: Date? = nil,        //  7
-        note: String? = nil,          //  8
-        dealID: Int? = nil,           //  9
-        eventID: Int                  // 10
+        id: Int,                            //  0
+        typeID: Int,                        //  1
+        typeAbbr: String,                   //  2
+        type: String,                       //  3
+        isPlanning: Bool,                   //  4
+        isCompleted: Bool,                  //  5
+        deal: String? = nil,                //  6
+        startingDate: Date,                 //  7
+        endingDate: Date? = nil,            //  8
+        note: String? = nil,                //  9
+        parentID: Int? = nil,               // 10
+        eventID: Int,                       // 11
+        justification: String? = nil,       // 12
+        description: String? = nil          // 13
     ) {
-        self.id = id                  //  0
-        self.typeID = typeID          //  1
-        self.typeAbbr = typeAbbr      //  2
-        self.type = type              //  3
-        self.isPlanning = isPlanning  //  4
-        self.deal = deal              //  5
-        self.startDate = startDate    //  6
-        self.stopDate = stopDate      //  7
-        self.note = note              //  8
-        self.dealID = dealID          //  9
-        self.eventID = eventID        // 10
+        self.id = id                        //  0
+        self.typeID = typeID                //  1
+        self.typeAbbr = typeAbbr            //  2
+        self.type = type                    //  3
+        self.isPlanning = isPlanning        //  4
+        self.isCompleted = isCompleted      //  5
+        self.deal = deal                    //  6
+        self.startingDate = startingDate    //  7
+        self.endingDate = endingDate        //  8
+        self.note = note                    //  9
+        self.parentID = parentID            // 10
+        self.eventID = eventID              // 11
+        self.justificatoin = justification  // 12
+        self.description = description      // 13
     }
 }
 
@@ -57,17 +66,20 @@ public extension Deal {
     
     static let samples: [Deal] = [
         Deal(
-            id: 10,                                              //  0
-            typeID: 1,                                           //  1
-            typeAbbr: "ДС",                                      //  2
-            type: "Договор",                                     //  3
-            isPlanning: false,                                   //  4
-            deal: "ABC-1201",                                    //  5
-            startDate: Date(timeIntervalSince1970: 1_000_000.0), //  6
-            stopDate: Date(timeIntervalSinceNow: 0),             //  7
-            note: "TEST",                                        //  8
-            dealID: 11,                                          //  9
-            eventID: 158                                         // 10
+            id: 10,                                                  //  0
+            typeID: 1,                                               //  1
+            typeAbbr: "ДС",                                          //  2
+            type: "Договор",                                         //  3
+            isPlanning: false,                                       //  4
+            isCompleted: true,                                       //  5
+            deal: "ABC-1201",                                        //  6
+            startingDate: Date(timeIntervalSince1970: 1_000_000.0),  //  7
+            endingDate: Date(timeIntervalSinceNow: 0),               //  8
+            note: "TEST",                                            //  9
+            parentID: 11,                                            // 10
+            eventID: 158,                                            // 11
+            justification: "TEST",                                   // 12
+            description: "TEST"                                      // 13
         )
     ]
     

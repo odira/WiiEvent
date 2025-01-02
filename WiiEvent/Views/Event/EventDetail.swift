@@ -109,20 +109,20 @@ struct EventDetail: View {
                 } // VStack
                 .font(.callout)
                 
-                .toolbar {
-                    ToolbarItemGroup {
-                        Button  {
-                            isPresentedMenu.toggle()
-                        } label: {
-                            HStack {
-                                Image(systemName: "list.bullet.circle")
-                                Text("Menu")
-                            }
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.regular)
-                    }
-                } // .toolbar
+//                .toolbar {
+//                    ToolbarItemGroup {
+//                        Button  {
+//                            isPresentedMenu.toggle()
+//                        } label: {
+//                            HStack {
+//                                Image(systemName: "list.bullet.circle")
+//                                Text("Menu")
+//                            }
+//                        }
+//                        .buttonStyle(.borderedProminent)
+//                        .controlSize(.regular)
+//                    }
+//                } // .toolbar
                 
             }
             

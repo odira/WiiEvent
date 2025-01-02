@@ -64,9 +64,9 @@ struct EventMainView: View {
                             VStack(alignment: .leading, spacing: 5) {
                                 if deal.isPlanning {
                                     PlanningButton(isPlanning: .constant(true))
-                                    Text(DateFormatter.planningMonth.string(from: deal.startDate))
+                                    Text(DateFormatter.planningMonth.string(from: deal.startingDate))
                                 } else {
-                                    Text(DateFormatter.longDateFormatter.string(from: deal.startDate))
+                                    Text(DateFormatter.longDateFormatter.string(from: deal.startingDate))
                                 }
                             }
                         }
