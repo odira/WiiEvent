@@ -1,7 +1,4 @@
 //
-//  EventTableView.swift
-//  WiiEventMac
-//
 //  Created by Wiipuri Developer on 30.10.2024.
 //
 
