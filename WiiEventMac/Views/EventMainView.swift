@@ -74,11 +74,20 @@ struct EventMainView: View {
                 
                 // Дата закрытия договора
                 TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in
-                    if let endDate = event.endDate {
-                        Text(/*DateFormatter.longDateFormatter.string(from: endDate)*/ endDate)
-                    } else {
-                        Text("")
+                    if let deals = dealModel.findDeals(byEventID: event.id) {
+                        if let deal = deals.first {
+                            if let endingDate = deal.endingDate {
+                                Text(DateFormatter.longDateFormatter.string(from: endingDate))
+                            } else {
+                                Text("")
+                            }
+                        }
                     }
+//                    if let endDate = event.endDate {
+//                        Text(/*DateFormatter.longDateFormatter.string(from: endDate)*/ endDate)
+//                    } else {
+//                        Text("")
+//                    }
                 }
                 
                 // price
