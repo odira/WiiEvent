@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreLocation
 
+
 public struct Deal: Hashable, Codable, Identifiable {
     
     // MARK: - Main parameters
@@ -16,10 +17,7 @@ public struct Deal: Hashable, Codable, Identifiable {
     public var note: String?          //  8
     public var dealID: Int?           //  9
     public var eventID: Int           // 10
-    
-//    public var shortName: String {
-//        "OK"
-//    }
+
     
     // MARK: - Initializations
     
