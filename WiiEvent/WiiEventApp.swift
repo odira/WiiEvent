@@ -20,7 +20,7 @@ struct WiiEventApp: App {
                 if eventModel.isFetching {
                     splashView
                 } else {
-                    ContentView()
+                     ContentView()
                         .environmentObject(eventModel)
                         .environmentObject(historyModel)
                         .environmentObject(dealModel)
