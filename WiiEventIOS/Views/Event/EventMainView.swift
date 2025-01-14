@@ -2,6 +2,7 @@ import SwiftUI
 
 struct EventMainView: View {
     @EnvironmentObject var eventModel: EventModel
+//    @EnvironmentObject var filteredEvents: FilteredEvents
     
     @State private var searchableText = ""
     @State private var showSearchSheet = false

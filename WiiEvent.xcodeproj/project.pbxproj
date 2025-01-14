@@ -18,7 +18,7 @@
 		D1387D6D2AFFB31600570446 /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
 		D1387D6F2AFFB31600570446 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
 		D1387D712AFFB31800570446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
-		D15D814E2B6970F8005E6D2B /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* FiltersView.swift */; };
+		D15D814E2B6970F8005E6D2B /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* Filters.swift */; };
 		D15D81522B69826A005E6D2B /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D81512B69826A005E6D2B /* Extentions.swift */; };
 		D16B20B92B50621E00B96160 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16B20B82B50621E00B96160 /* CategoryItem.swift */; };
 		D17EEF6D2C9205E100E6E51B /* HistoryAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17EEF6C2C9205D500E6E51B /* HistoryAddSheet.swift */; };
@@ -50,7 +50,7 @@
 		D1D8905B2CD2CB520052710D /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA27E2B1CF43B00E2DB42 /* ModelData.swift */; };
 		D1D8905C2CD2CB520052710D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D81512B69826A005E6D2B /* Extentions.swift */; };
 		D1D8905D2CD2CB720052710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
-		D1D8905E2CD2CBA40052710D /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* FiltersView.swift */; };
+		D1D8905E2CD2CBA40052710D /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* Filters.swift */; };
 		D1DC71C42C443B3200D5725E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C32C443B3200D5725E /* History.swift */; };
 		D1DC71C92C445CE300D5725E /* HistoryDetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryDetailVIew.swift */; };
 		D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
@@ -74,7 +74,7 @@
 		D1DFA1342D0EDD17004E2E96 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575AD2B55A89C0035478E /* Profile.swift */; };
 		D1DFA1352D0EDD1C004E2E96 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D81512B69826A005E6D2B /* Extentions.swift */; };
 		D1DFA1362D0EDD3C004E2E96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
-		D1DFA13B2D0EE027004E2E96 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* FiltersView.swift */; };
+		D1DFA13B2D0EE027004E2E96 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* Filters.swift */; };
 		D1DFA13C2D0EE038004E2E96 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetail.swift */; };
 		D1DFA13D2D0EE038004E2E96 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2832B1CF62900E2DB42 /* EventRow.swift */; };
 		D1DFA13E2D0EE055004E2E96 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
@@ -176,7 +176,7 @@
 		D1387D6C2AFFB31600570446 /* WiiEventApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiiEventApp.swift; sourceTree = "<group>"; };
 		D1387D6E2AFFB31600570446 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D1387D702AFFB31800570446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D15D814D2B6970F8005E6D2B /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		D15D814D2B6970F8005E6D2B /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		D15D81512B69826A005E6D2B /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		D16B20B82B50621E00B96160 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		D17EEF6C2C9205D500E6E51B /* HistoryAddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAddSheet.swift; sourceTree = "<group>"; };
@@ -794,7 +794,7 @@
 				D1C55A2D2C7E301A00AB75EC /* MapView.swift */,
 				D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */,
 				D1E9B3692B4C5AB40073768D /* OptionalButton.swift */,
-				D15D814D2B6970F8005E6D2B /* FiltersView.swift */,
+				D15D814D2B6970F8005E6D2B /* Filters.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1032,7 +1032,7 @@
 				D1DF9F632D0739B8004E2E96 /* DealModel.swift in Sources */,
 				D10215E42CF90C140075631B /* DescriptionView.swift in Sources */,
 				D1DC71C92C445CE300D5725E /* HistoryDetailVIew.swift in Sources */,
-				D15D814E2B6970F8005E6D2B /* FiltersView.swift in Sources */,
+				D15D814E2B6970F8005E6D2B /* Filters.swift in Sources */,
 				D1387D6D2AFFB31600570446 /* WiiEventApp.swift in Sources */,
 				D1D575B12B55B18D0035478E /* ProfileHost.swift in Sources */,
 				D1D575B32B55B2080035478E /* ProfileSummary.swift in Sources */,
@@ -1058,7 +1058,7 @@
 				D1DFA14C2D0EE327004E2E96 /* HistoryDetailVIew.swift in Sources */,
 				D1D8905B2CD2CB520052710D /* ModelData.swift in Sources */,
 				D1DFA14B2D0EE31E004E2E96 /* PriceView.swift in Sources */,
-				D1D8905E2CD2CBA40052710D /* FiltersView.swift in Sources */,
+				D1D8905E2CD2CBA40052710D /* Filters.swift in Sources */,
 				D1DFA14A2D0EE2F8004E2E96 /* DescriptionView.swift in Sources */,
 				D1D8905C2CD2CB520052710D /* Extentions.swift in Sources */,
 				D1DF9F642D0739B8004E2E96 /* DealModel.swift in Sources */,
@@ -1104,7 +1104,7 @@
 				D1DFA13F2D0EE055004E2E96 /* MapView.swift in Sources */,
 				D1DFA1402D0EE055004E2E96 /* OptionalButton.swift in Sources */,
 				D1DFA13D2D0EE038004E2E96 /* EventRow.swift in Sources */,
-				D1DFA13B2D0EE027004E2E96 /* FiltersView.swift in Sources */,
+				D1DFA13B2D0EE027004E2E96 /* Filters.swift in Sources */,
 				D1DFA1292D0EDCD5004E2E96 /* DealModel.swift in Sources */,
 				D1DFA1352D0EDD1C004E2E96 /* Extentions.swift in Sources */,
 				D1DFA1332D0EDD12004E2E96 /* ModelData.swift in Sources */,

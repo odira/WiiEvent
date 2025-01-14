@@ -11,7 +11,8 @@ struct WiiEventApp: App {
     @StateObject var eventModel = EventModel()
     @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
-    @StateObject var filters = Filters()
+//    @StateObject var filters = Filters()
+    @StateObject var filteredEvents = FilteredEvents()
     
     var body: some Scene {
         
@@ -24,7 +25,8 @@ struct WiiEventApp: App {
                         .environmentObject(eventModel)
                         .environmentObject(historyModel)
                         .environmentObject(dealModel)
-                        .environmentObject(filters)
+//                        .environmentObject(filters)
+                        .environmentObject(filteredEvents)
                 }
             }
             .task {
