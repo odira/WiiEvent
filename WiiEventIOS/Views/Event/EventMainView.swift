@@ -67,7 +67,7 @@ struct EventMainView: View {
             .listRowSpacing(0)
             .animation(.default, value: filteredEvents)
             .searchable(
-                text: $searchableText,
+                text: $searchableText,  
                 placement: .navigationBarDrawer,
                 prompt: "Поиск по городу..."
             )
@@ -93,4 +93,5 @@ struct EventMainView: View {
 #Preview {
     EventMainView()
         .environmentObject(EventModel.example)
+//        .environmentObject(FilteredEvents())
 }

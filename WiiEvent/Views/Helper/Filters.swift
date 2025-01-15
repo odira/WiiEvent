@@ -27,37 +27,43 @@ public class Filters: ObservableObject {
 }
 
 
-public class FilteredEvents: ObservableObject {
+public class Events: ObservableObject {
     @EnvironmentObject var eventModel: EventModel
     
-    public var filteredEvents: [Event] {
-        eventModel.events
-        
-//            .filter { event in
-//                (!showValidOnly || !event.isCompleted)
-//            }
-//
-//            .filter { event in
-//                if !searchableText.isEmpty {
-//                    return event.city!.contains( searchableText )
-//                } else {
-//                    return true
-//                }
-//            }
-//
-//            .filter { event in
-//                if optionalStatus == OptionalStatus.option {
-//                    return event.isOptional == true
-//                } else if optionalStatus == OptionalStatus.main {
-//                    return event.isOptional == false
-//                } else {
-//                    return true
-//                }
-//            }
-//
-//            .filter { event in
-//                (!showValidOnly || event.valid)
-//            }
+//    @Published public var filteredEvents: [Event] {
+//        eventModel.events
+//        
+////            .filter { event in
+////                (!showValidOnly || !event.isCompleted)
+////            }
+////
+////            .filter { event in
+////                if !searchableText.isEmpty {
+////                    return event.city!.contains( searchableText )
+////                } else {
+////                    return true
+////                }
+////            }
+////
+////            .filter { event in
+////                if optionalStatus == OptionalStatus.option {
+////                    return event.isOptional == true
+////                } else if optionalStatus == OptionalStatus.main {
+////                    return event.isOptional == false
+////                } else {
+////                    return true
+////                }
+////            }
+////
+////            .filter { event in
+////                (!showValidOnly || event.valid)
+////            }
+//    }
+    
+    @Published public var events: [Event] = [Event]()
+    
+    public init() {
+        events = eventModel.events
     }
 }
 
