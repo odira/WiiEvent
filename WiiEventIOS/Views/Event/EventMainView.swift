@@ -1,8 +1,9 @@
 import SwiftUI
 
+
 struct EventMainView: View {
     @EnvironmentObject var eventModel: EventModel
-//    @EnvironmentObject var filteredEvents: FilteredEvents
+//    @EnvironmentObject var filters: Filters
     
     @State private var searchableText = ""
     @State private var showSearchSheet = false
@@ -44,9 +45,9 @@ struct EventMainView: View {
             .filter { event in
                 (!showValidOnly || event.valid)
             }
-        
     }
     
+//    var filteredEvents = FilteredEvents.shared.filteredEvents
     
     // MARK: - BODY
     
@@ -85,13 +86,14 @@ struct EventMainView: View {
                     FiltersView()
                 }
             }
-        } // .toolbar
+        } // toolbar
             
     } // body
 }
 
+
 #Preview {
     EventMainView()
         .environmentObject(EventModel.example)
-//        .environmentObject(FilteredEvents())
+//        .environmentObject(Filters())
 }

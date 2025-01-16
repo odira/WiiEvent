@@ -21,51 +21,71 @@ public enum OptionalStatus: String, CaseIterable, Identifiable {
 // MARK: -- Filters Class
 
 public class Filters: ObservableObject {
-    @Published public var optionalStatus: OptionalStatus = .all
-    @Published public var showCompletedOnly: Bool = false
-    @Published public var showPlan: String = ""
-}
-
-
-public class Events: ObservableObject {
-    @EnvironmentObject var eventModel: EventModel
+    @Published public var optionalStatus: OptionalStatus
+    @Published public var showCompletedOnly: Bool
+    @Published public var showPlan: String
     
-//    @Published public var filteredEvents: [Event] {
-//        eventModel.events
-//        
-////            .filter { event in
-////                (!showValidOnly || !event.isCompleted)
-////            }
-////
-////            .filter { event in
-////                if !searchableText.isEmpty {
-////                    return event.city!.contains( searchableText )
-////                } else {
-////                    return true
-////                }
-////            }
-////
-////            .filter { event in
-////                if optionalStatus == OptionalStatus.option {
-////                    return event.isOptional == true
-////                } else if optionalStatus == OptionalStatus.main {
-////                    return event.isOptional == false
-////                } else {
-////                    return true
-////                }
-////            }
-////
-////            .filter { event in
-////                (!showValidOnly || event.valid)
-////            }
-//    }
+    static let shared = Filters()
     
-    @Published public var events: [Event] = [Event]()
-    
-    public init() {
-        events = eventModel.events
+    init(
+        optionalStatus: OptionalStatus = .all,
+        showCompletedOnly: Bool = false,
+        showPlan: String = ""
+    ) {
+        self.optionalStatus = optionalStatus
+        self.showCompletedOnly = showCompletedOnly
+        self.showPlan = showPlan
     }
 }
+
+
+class FilteredEvents: ObservableObject {
+    @Published var filteredEvents: [Event] = [Event]()
+    
+    let model = EventModel.shared
+    let filters = Filters.shared
+    
+    static let shared = FilteredEvents()
+    
+//    public var filteredEvents: [Event] {
+//        model.events
+//    }
+    
+    init() {
+        filteredEvents = model.events
+    }
+}
+
+//public     var filteredEvents: [Event] {
+//    eventModel.events
+//    
+//        .filter { event in
+//            (!showValidOnly || !event.isCompleted)
+//        }
+//    
+//        .filter { event in
+//            if !searchableText.isEmpty {
+//                return event.city!.contains( searchableText )
+//            } else {
+//                return true
+//            }
+//        }
+//    
+//        .filter { event in
+//            if optionalStatus == OptionalStatus.option {
+//                return event.isOptional == true
+//            } else if optionalStatus == OptionalStatus.main {
+//                return event.isOptional == false
+//            } else {
+//                return true
+//            }
+//        }
+//        
+//        .filter { event in
+//            (!showValidOnly || event.valid)
+//        }
+//    
+//}
 
 
 // MARK: -- Filters View
@@ -117,5 +137,6 @@ struct FiltersView: View {
 
 #Preview {
     FiltersView()
+        .environmentObject(EventModel.example)
         .environmentObject(Filters())
 }

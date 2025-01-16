@@ -9,6 +9,8 @@ public class EventModel: Identifiable, ObservableObject {
     @Published public var events = [Event]()
     @Published public var isFetching: Bool = true
     
+    static let shared = EventModel()
+    
     var optionalOnes: [Event] {
         events.filter { $0.isOptional }
     }

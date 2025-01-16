@@ -13,6 +13,7 @@ struct WiiEventApp: App {
     @StateObject var dealModel = DealModel()
     @StateObject var filters = Filters()
     
+    
     var body: some Scene {
         
         WindowGroup {
