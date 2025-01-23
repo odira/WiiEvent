@@ -19,10 +19,13 @@ struct EventRow: View {
             .frame(maxWidth: .infinity)
             
             HStack(alignment: .center) {
-                Text(event.city ?? "")
-                    .lineLimit(1)
-                    .foregroundStyle(.secondary)
-                    .font(.footnote)
+                VStack {
+//                    Text(event.)
+                    Text(event.city ?? "")
+                        .lineLimit(1)
+                        .foregroundStyle(.secondary)
+                        .font(.footnote)
+                }
             }
             .frame(maxWidth: .infinity)
             
@@ -51,20 +54,20 @@ struct EventRow: View {
 }
 
 
-#Preview("Light Theme") {
-    EventRow(event: Event.example)
-        .preferredColorScheme(.light)
-        .previewLayout(.sizeThatFits)
-}
+// MARK: - Preview Section
 
-#Preview("Dark Theme") {
-    EventRow(event: Event.example)
-        .preferredColorScheme(.dark)
-}
-
-#Preview("Group") {
+#Preview("Light Theme", traits: .sizeThatFitsLayout) {
     Group {
         EventRow(event: Event.example)
         EventRow(event: Event.example)
     }
+    .preferredColorScheme(.light)
+}
+
+#Preview("Dark Theme", traits: .sizeThatFitsLayout) {
+    Group {
+        EventRow(event: Event.example)
+        EventRow(event: Event.example)
+    }
+    .preferredColorScheme(.dark)
 }
