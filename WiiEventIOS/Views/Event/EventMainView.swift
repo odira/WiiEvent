@@ -10,41 +10,42 @@ struct EventMainView: View {
 
     // Filtered events
     @State private var showCompletedOnly = false
-    @State private var optionalStatus = OptionalStatus.all
+//    @State private var optionalStatus = OptionalStatus.all
     @State private var showPlan = ""
+    
     @State private var showValidOnly = true
+    @State private var showOptionalOnly = false
     
     
     // MARK: - FILTERING
     
     var filteredEvents: [Event] {
-        eventModel.events
+        var result = eventModel.events
         
-            .filter { event in
-                (!showValidOnly || !event.isCompleted)
-            }
+        result = result.filter { event in
+            (!showValidOnly || !event.isCompleted && !event.isOptional)
+        }
         
-            .filter { event in
-                if !searchableText.isEmpty {
-                    return event.city!.contains( searchableText )
-                } else {
-                    return true
-                }
-            }
+        result = result.filter { event in
+            //                if optionalStatus == OptionalStatus.option {
+            //                    return event.isOptional == true
+            //                } else if optionalStatus == OptionalStatus.main {
+            //                    return event.isOptional == false
+            //                } else {
+            //                    return true
+            //                }
+            (!showOptionalOnly || event.isOptional && !showValidOnly)
+        }
         
-            .filter { event in
-                if optionalStatus == OptionalStatus.option {
-                    return event.isOptional == true
-                } else if optionalStatus == OptionalStatus.main {
-                    return event.isOptional == false
-                } else {
-                    return true
-                }
+        result = result.filter { event in
+            if !searchableText.isEmpty {
+                return event.city!.contains( searchableText )
+            } else {
+                return true
             }
-            
-            .filter { event in
-                (!showValidOnly || event.valid)
-            }
+        }
+        
+        return result
     }
     
 //    var filteredEvents = FilteredEvents.shared.filteredEvents
@@ -54,8 +55,15 @@ struct EventMainView: View {
     var body: some View {
         NavigationStack {
             List {
-                Toggle(isOn: $showValidOnly) {
-                    Text("Только действительные")
+                if !showOptionalOnly {
+                    Toggle(isOn: $showValidOnly) {
+                        Text("Только действительные")
+                    }
+                }
+                if !showValidOnly {
+                    Toggle(isOn: $showOptionalOnly) {
+                        Text("Только ОПЦИОН")
+                    }
                 }
                 
                 ForEach(filteredEvents) { event in
