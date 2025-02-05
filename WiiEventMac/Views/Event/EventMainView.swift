@@ -29,6 +29,11 @@ struct EventMainView: View {
         VStack {
             Table(of: Event.self, selection: $selection) {
                 
+                // city
+                TableColumn(Text("Город").bold().foregroundStyle(.blue)) { event in
+                    Text("\(event.city ?? "")")
+                }
+                
                 // Deal name
                 TableColumn(eventColumnHeader()) { event in
                     eventColumnContext(for: event)
@@ -111,11 +116,6 @@ struct EventMainView: View {
                         EmptyView()
                     }
                     .padding(15)
-                }
-                
-                // city
-                TableColumn(Text("Город").bold().foregroundStyle(.blue)) { event in
-                    Text("\(event.city ?? "")")
                 }
                 
                 // equipment
