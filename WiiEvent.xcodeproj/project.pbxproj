@@ -362,13 +362,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D10B63822D141AE700950934 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Event;
-			sourceTree = "<group>";
-		};
 		D10EEF302C3D7BD600E200F3 /* Subgroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +370,14 @@
 				D10EEF4D2C3F21F700E200F3 /* SubgroupEventListView.swift */,
 			);
 			path = Subgroup;
+			sourceTree = "<group>";
+		};
+		D1238C6C2D53EB7A00419D72 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D1D890552CD2C83D0052710D /* EventMainView.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		D1387D602AFFB31600570446 = {
@@ -730,8 +731,7 @@
 		D1D890542CD2C80A0052710D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D10B63822D141AE700950934 /* Event */,
-				D1D890552CD2C83D0052710D /* EventMainView.swift */,
+				D1238C6C2D53EB7A00419D72 /* Event */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1389,6 +1389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "WiiEventIOS/Preview\\ Content WiiEvent/Resources/Assets.xcassets";
@@ -1408,6 +1409,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wiipuri.WiiEventIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1424,6 +1426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "WiiEventIOS/Preview\\ Content WiiEvent/Resources/Assets.xcassets";
@@ -1443,6 +1446,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wiipuri.WiiEventIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

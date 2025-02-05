@@ -29,48 +29,43 @@ struct EventMainView: View {
         VStack {
             Table(of: Event.self, selection: $selection) {
                 
-                // Мероприятие
+                // Deal name
                 TableColumn(eventColumnHeader()) { event in
                     eventColumnContext(for: event)
                         .lineLimit(5)
+                        .padding(10)
                 }
                 
-                // Номер договора
+                // Number of contract conclusion & date of conclusion (planning date of conclusion)
                 TableColumn(contractColumnHeader()) { event in
                     if let deals = dealModel.findDeals(byEventID: event.id) {
                         if let deal = deals.first {
                             VStack(alignment: .leading, spacing: 5) {
-                                HStack {
-                                    Text(deal.typeAbbr)
-                                    Text("№ ")
-                                    Text(deal.deal ?? "")
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.primary)
-                                    
-                                    if deals.count > 1 {
-                                        Image(systemName: "list.bullet.circle")
-                                            .foregroundColor(.orange)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                // Дата заключения
-                TableColumn(Text("Дата заключения договора").bold().foregroundStyle(.blue)) { event in
-                    if let deals = dealModel.findDeals(byEventID: event.id) {
-                        if let deal = deals.first {
-                            VStack(alignment: .leading, spacing: 5) {
+                                /// Deal is planning & not concluded
                                 if deal.isPlanning {
                                     PlanningButton(isPlanning: .constant(true))
                                     Text(DateFormatter.planningMonth.string(from: deal.startingDate))
+                                /// Deal is concluded
                                 } else {
+                                    HStack {
+                                        Text(deal.typeAbbr)
+                                        Text("№ ")
+                                        Text(deal.deal ?? "")
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(.primary)
+                                        
+                                        if deals.count > 1 {
+                                            Image(systemName: "list.bullet.circle")
+                                                .foregroundColor(.orange)
+                                        }
+                                    }
                                     Text(DateFormatter.longDateFormatter.string(from: deal.startingDate))
                                 }
                             }
                         }
                     }
                 }
+                
                 // Дата закрытия договора
                 TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in
                     if let deals = dealModel.findDeals(byEventID: event.id) {
@@ -93,6 +88,7 @@ struct EventMainView: View {
                     }.frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .width(ideal: 50)
+                
                 // contragent - subcontractor
                 TableColumn(Text("Подрядчик\nСубподрядчик").bold().foregroundStyle(.blue)) { event in
                     VStack(alignment: .leading) {
@@ -101,9 +97,10 @@ struct EventMainView: View {
                             Text("\(event.subcontractor ?? "")")
                         }
                         .padding(5)
-                        .border(Color.primary, width: 1)
+//                        .border(Color.primary, width: 1)
                     }
                 }
+                
                 // city
                 TableColumn(Text("Город").bold().foregroundStyle(.blue)) { event in
                     Text("\(event.city ?? "")")
@@ -179,7 +176,7 @@ struct EventMainView: View {
     
     // contract
     func contractColumnHeader() -> Text {
-        Text("Номер договора")
+        Text("Номер договора/контракта\nДата заключения")
             .bold()
             .foregroundStyle(.blue)
     }
