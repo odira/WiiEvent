@@ -33,7 +33,7 @@ struct EventMainView: View {
                 TableColumn(eventColumnHeader()) { event in
                     eventColumnContext(for: event)
                         .lineLimit(5)
-                        .padding(10)
+                        .padding(15)
                 }
                 
                 // Number of contract conclusion & date of conclusion (planning date of conclusion)
@@ -41,12 +41,16 @@ struct EventMainView: View {
                     if let deals = dealModel.findDeals(byEventID: event.id) {
                         if let deal = deals.first {
                             VStack(alignment: .leading, spacing: 5) {
+                                
                                 /// Deal is planning & not concluded
                                 if deal.isPlanning {
+                                    
                                     PlanningButton(isPlanning: .constant(true))
                                     Text(DateFormatter.planningMonth.string(from: deal.startingDate))
-                                /// Deal is concluded
+                                    
+                                    /// Deal is concluded
                                 } else {
+                                    
                                     HStack {
                                         Text(deal.typeAbbr)
                                         Text("№ ")
@@ -59,9 +63,11 @@ struct EventMainView: View {
                                                 .foregroundColor(.orange)
                                         }
                                     }
+                                    
                                     Text(DateFormatter.longDateFormatter.string(from: deal.startingDate))
+                                    
                                 }
-                            }
+                            }.padding(15)
                         }
                     }
                 }
@@ -71,9 +77,13 @@ struct EventMainView: View {
                     if let deals = dealModel.findDeals(byEventID: event.id) {
                         if let deal = deals.first {
                             if let endingDate = deal.endingDate {
-                                Text(DateFormatter.longDateFormatter.string(from: endingDate))
+                                VStack(alignment: .leading) {
+                                    CompletedButton(isCompleted: .constant(true))
+                                    Text(DateFormatter.longDateFormatter.string(from: endingDate))
+                                }
                             } else {
-                                Text("")
+                                EmptyView()
+                                
                             }
                         }
                     }
@@ -91,14 +101,16 @@ struct EventMainView: View {
                 
                 // contragent - subcontractor
                 TableColumn(Text("Подрядчик\nСубподрядчик").bold().foregroundStyle(.blue)) { event in
-                    VStack(alignment: .leading) {
-                        Group {
-                            Text("\(event.contragent ?? "")")
-                            Text("\(event.subcontractor ?? "")")
+                    VStack(alignment: .leading, spacing: 7) {
+                        if let contragent = event.contragent {
+                            Text("\(contragent)")
                         }
-                        .padding(5)
-//                        .border(Color.primary, width: 1)
+                        if let subcontractor = event.subcontractor {
+                            Text("\(subcontractor)")
+                        }
+                        EmptyView()
                     }
+                    .padding(15)
                 }
                 
                 // city
