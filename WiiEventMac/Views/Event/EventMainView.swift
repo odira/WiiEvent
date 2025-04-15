@@ -29,12 +29,13 @@ struct EventMainView: View {
         VStack {
             Table(of: Event.self, selection: $selection) {
                 
-                // city
-                TableColumn(Text("Город").bold().foregroundStyle(.blue)) { event in
-                    Text("\(event.city ?? "")")
+                // City
+                TableColumn(cityColumnHeader()) { event in
+                    cityColumnContext(for: event)
+                        .padding(15)
                 }
                 
-                // Deal name
+                // Event
                 TableColumn(eventColumnHeader()) { event in
                     eventColumnContext(for: event)
                         .lineLimit(5)
@@ -78,7 +79,7 @@ struct EventMainView: View {
                 }
                 
                 // Дата закрытия договора
-                TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in
+                TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in  
                     if let deals = dealModel.findDeals(byEventID: event.id) {
                         if let deal = deals.first {
                             if let endingDate = deal.endingDate {
@@ -174,6 +175,19 @@ struct EventMainView: View {
             }
             .padding()
         }
+    }
+    
+    
+// ----------------------------------------------------------------------------------------------------
+    
+    // city
+    func cityColumnHeader() -> Text {
+        Text("Город")
+            .bold()
+            .foregroundStyle(.blue)
+    }
+    func cityColumnContext(for event: Event) -> Text {
+        Text("\(event.city ?? "")")
     }
     
     //event
