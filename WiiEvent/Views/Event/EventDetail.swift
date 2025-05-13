@@ -59,14 +59,14 @@ struct EventDetail: View {
                                 }
                             }
                             
-                            HStack {
-                                if event.isCompleted {
-                                    CompletedButton(isCompleted: .constant(true))
-                                }
-                                if event.isOptional {
-                                    OptionalButton(isOptional: .constant(true))
-                                }
-                            }
+//                            HStack {
+//                                if event.isCompleted {
+//                                    CompletedButton(isCompleted: .constant(true))
+//                                }
+//                                if event.isOptional {
+//                                    OptionalButton(isOptional: .constant(true))
+//                                }
+//                            }
                         }
                         .listRowBackground(Color.clear)
                         

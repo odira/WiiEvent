@@ -1,24 +1,21 @@
 import SwiftUI
 
 
-struct EventMainView: View {
+struct EventListView: View {
     @EnvironmentObject var eventModel: EventModel
 //    @EnvironmentObject var filters: Filters
     
     @State private var searchableText = ""
     @State private var showSearchSheet = false
-
     // Filtered events
     @State private var showCompletedOnly = false
 //    @State private var optionalStatus = OptionalStatus.all
     @State private var showPlan = ""
-    
     @State private var showValidOnly = true
     @State private var showOptionalOnly = false
     
     
     // MARK: - FILTERING
-    
     var filteredEvents: [Event] {
         var result = eventModel.events
         
@@ -101,7 +98,7 @@ struct EventMainView: View {
 
 
 #Preview {
-    EventMainView()
+    EventListView()
         .environmentObject(EventModel.example)
 //        .environmentObject(Filters())
 }

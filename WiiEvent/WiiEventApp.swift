@@ -7,15 +7,15 @@ import SwiftUI
 
 @main
 struct WiiEventApp: App {
-
     @StateObject var eventModel = EventModel()
-    @StateObject var historyModel = HistoryModel()
+//    @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
-    @StateObject var filters = Filters()
+//    @StateObject var filters = Filters()
     
     
     var body: some Scene {
         
+        // Window 1
         WindowGroup {
             ZStack {
                 if eventModel.isFetching {
@@ -23,9 +23,9 @@ struct WiiEventApp: App {
                 } else {
                      ContentView()
                         .environmentObject(eventModel)
-                        .environmentObject(historyModel)
+//                        .environmentObject(historyModel)
                         .environmentObject(dealModel)
-                        .environmentObject(filters)
+//                        .environmentObject(filters)
                 }
             }
             .task {
@@ -34,20 +34,18 @@ struct WiiEventApp: App {
             }
         }
         
+        // Window 2
         WindowGroup(for: Event.ID.self) { $eventID in
             if eventID != nil {
                 EventDetail(id: eventID!)
                     .environmentObject(eventModel)
             }
         }
-        
-    } // body
+    }
     
     
-    // Additional Views
-    //
-    // SPLASH View
-    
+    /// SPLASH View -
+    /// show splash view at startup of the App
     var splashView: some View {
         VStack {
             Image(systemName: "memorychip")

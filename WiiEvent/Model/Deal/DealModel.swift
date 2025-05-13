@@ -140,7 +140,6 @@ public extension DealModel {
 
 // MARK: - Additional Functions
 
-
 public extension DealModel {
     
     func findDealByID(id: Int) -> Deal? {

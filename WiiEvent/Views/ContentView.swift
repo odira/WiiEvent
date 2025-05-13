@@ -2,7 +2,9 @@ import SwiftUI
 
 
 struct ContentView: View {
-
+    @EnvironmentObject var eventModel: EventModel
+    @EnvironmentObject var dealModel: DealModel
+    
     enum TabValue {
         case list
         case category
@@ -18,7 +20,7 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             
             Tab(tabArray[0], systemImage: "list.bullet", value: .list) {
-                EventMainView()
+                EventListView()
             }
             Tab(tabArray[1], systemImage: "star", value: .category) {
                 #if os(iOS)
@@ -44,4 +46,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(EventModel.example)
+        .environmentObject(DealModel.example)
 }

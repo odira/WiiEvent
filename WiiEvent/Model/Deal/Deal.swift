@@ -20,6 +20,23 @@ public struct Deal: Hashable, Codable, Identifiable {
     public var eventID: Int                 // 11
     public var justificatoin: String?       // 12
     public var description: String?         // 13
+    
+    public var isTerminated: Bool           // 14
+    
+    public var status: DealStatus {
+        if isTerminated {
+            return .terminated
+        } else {
+            switch (isPlanning, isCompleted) {
+                case (true, false):
+                    return .planning
+                case (false, true):
+                    return .completed
+                default:
+                    return .pending
+            }
+        }
+    }
 
     
     // MARK: - Initializations
@@ -38,7 +55,9 @@ public struct Deal: Hashable, Codable, Identifiable {
         parentID: Int? = nil,               // 10
         eventID: Int,                       // 11
         justification: String? = nil,       // 12
-        description: String? = nil          // 13
+        description: String? = nil,         // 13
+        
+        isTerminated: Bool = false          // 14
     ) {
         self.id = id                        //  0
         self.typeID = typeID                //  1
@@ -54,10 +73,66 @@ public struct Deal: Hashable, Codable, Identifiable {
         self.eventID = eventID              // 11
         self.justificatoin = justification  // 12
         self.description = description      // 13
+        
+        self.isTerminated = isTerminated    // 14
     }
 }
 
-// MARK: - Event example
+public extension Deal {
+    
+    // Status
+    
+    enum DealStatus {
+        case  completed  // выполнен
+        case    pending  // выполняется
+        case   planning  // планируется
+        case terminated  // расторгнут
+    }
+    
+    var statusText: String {
+        switch status {
+            case .completed:  return "Выполнен"
+            case .pending:    return "Выполняется"
+            case .planning:   return "Планируется"
+            case .terminated: return "Расторгнут"
+        }
+    }
+    
+    var statusColor: Color {
+        switch status {
+            case .completed:  return .orange
+            case .pending:    return .green
+            case .planning:   return .blue
+            case .terminated: return .red
+        }
+    }
+    
+    func statusTransparant(for deal: Deal) -> some View {
+        Text(deal.statusText)
+                .font(.system(.caption, design: .monospaced))
+                .foregroundStyle(deal.statusColor)
+                .bold()
+                .padding(3)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 3)
+                        .stroke(deal.statusColor, lineWidth: 1)
+                }
+        }
+    
+//    var body: some View {
+//            Text(statusText)
+//                .font(.system(.caption, design: .monospaced))
+//                .foregroundStyle(.green)
+//                .bold()
+//                .padding(3)
+//                .overlay {
+//                    RoundedRectangle(cornerRadius: 3)
+//                        .stroke(.green, lineWidth: 1)
+//                }
+//        }
+}
+
+// MARK: - Deal example
 
 #if DEBUG
 public extension Deal {
@@ -79,7 +154,9 @@ public extension Deal {
             parentID: 11,                                            // 10
             eventID: 158,                                            // 11
             justification: "TEST",                                   // 12
-            description: "TEST"                                      // 13
+            description: "TEST",                                     // 13
+            
+            isTerminated: false                                      // 14
         )
     ]
     

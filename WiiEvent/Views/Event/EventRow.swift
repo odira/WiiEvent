@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct EventRow: View {
+//    @EnvironmentObject var Deal
     
     var event: Event
     
@@ -9,12 +10,16 @@ struct EventRow: View {
         
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .center) {
-                if event.isOptional == true {
-                    OptionalButton(isOptional: .constant(true))
-                }
-                if event.isCompleted == true {
-                    CompletedButton(isCompleted: .constant(true))
-                }
+//                if event.isOptional == true {
+//                    OptionalButton(isOptional: .constant(true))
+//                }
+//                if event.isCompleted == true {
+////                    CompletedButton(isCompleted: .constant(true))
+//                    DealStatusTransparant(for: )
+//                }
+//                if let deal = findFirstDeal(byEventId: event.id) {
+//                    
+//                }
             }
             .frame(maxWidth: .infinity)
             

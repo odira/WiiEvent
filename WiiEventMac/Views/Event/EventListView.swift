@@ -7,24 +7,21 @@ import SwiftUI
 import WiiKit
 
 
-struct EventMainView: View {
+struct EventListView: View {
     @Environment(\.openWindow) private var openWindow
     
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var dealModel: DealModel
 
     @State private var selection = Set<Event.ID>()
-    
+    @State private var isPresentedEventDetailsView: Bool = false
     
     var filteredEvents: [Event] {
         eventModel.events
     }
     
-    @State private var isPresentedEventDetailsView: Bool = false
-    
     
     // MARK: - Body view
-    
     var body: some View {
         VStack {
             Table(of: Event.self, selection: $selection) {
@@ -42,19 +39,22 @@ struct EventMainView: View {
                         .padding(15)
                 }
                 
-                // Number of contract conclusion & date of conclusion (planning date of conclusion)
+                // _contract number_ & _date of conclusion_
                 TableColumn(contractColumnHeader()) { event in
                     if let deals = dealModel.findDeals(byEventID: event.id) {
+                        
                         if let deal = deals.first {
                             VStack(alignment: .leading, spacing: 5) {
                                 
-                                /// Deal is planning & not concluded
+                                DealStatusTransparant(for: deal)
+                                
+                                // Deal is planning & not concluded
                                 if deal.isPlanning {
                                     
-                                    PlanningButton(isPlanning: .constant(true))
+//                                    PlanningButton(isPlanning: .constant(true))
                                     Text(DateFormatter.planningMonth.string(from: deal.startingDate))
                                     
-                                    /// Deal is concluded
+                                // Deal is concluded
                                 } else {
                                     
                                     HStack {
@@ -69,31 +69,39 @@ struct EventMainView: View {
                                                 .foregroundColor(.orange)
                                         }
                                     }
-                                    
                                     Text(DateFormatter.longDateFormatter.string(from: deal.startingDate))
+                                    
+                                    // Deal is completed
+                                    if let endingDate = deal.endingDate {
+                                        VStack(alignment: .leading) {
+//                                            CompletedButton(isCompleted: .constant(true))
+                                            Text(DateFormatter.longDateFormatter.string(from: endingDate))
+                                        }
+                                    }
                                     
                                 }
                             }.padding(15)
                         }
+                        
                     }
                 }
                 
                 // Дата закрытия договора
-                TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in  
-                    if let deals = dealModel.findDeals(byEventID: event.id) {
-                        if let deal = deals.first {
-                            if let endingDate = deal.endingDate {
-                                VStack(alignment: .leading) {
-                                    CompletedButton(isCompleted: .constant(true))
-                                    Text(DateFormatter.longDateFormatter.string(from: endingDate))
-                                }
-                            } else {
-                                EmptyView()
-                                
-                            }
-                        }
-                    }
-                }
+//                TableColumn(Text("Дата закрытия договора").bold().foregroundStyle(.blue)) { event in  
+//                    if let deals = dealModel.findDeals(byEventID: event.id) {
+//                        if let deal = deals.first {
+//                            if let endingDate = deal.endingDate {
+//                                VStack(alignment: .leading) {
+//                                    CompletedButton(isCompleted: .constant(true))
+//                                    Text(DateFormatter.longDateFormatter.string(from: endingDate))
+//                                }
+//                            } else {
+//                                EmptyView()
+//                                
+//                            }
+//                        }
+//                    }
+//                }
                 
                 // price
                 TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
@@ -202,7 +210,7 @@ struct EventMainView: View {
     
     // contract
     func contractColumnHeader() -> Text {
-        Text("Номер договора/контракта\nДата заключения")
+        Text("Договор/контракт")
             .bold()
             .foregroundStyle(.blue)
     }
@@ -212,7 +220,7 @@ struct EventMainView: View {
 // MARK: - Preview
 
 #Preview {
-    EventMainView()
+    EventListView()
         .environmentObject(EventModel.example)
         .environmentObject(DealModel.example)
 }
