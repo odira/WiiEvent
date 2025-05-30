@@ -8,7 +8,7 @@ import SwiftUI
 @main
 struct WiiEventApp: App {
     @StateObject var eventModel = EventModel()
-//    @StateObject var historyModel = HistoryModel()
+    @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
 //    @StateObject var filters = Filters()
     
@@ -23,7 +23,7 @@ struct WiiEventApp: App {
                 } else {
                      ContentView()
                         .environmentObject(eventModel)
-//                        .environmentObject(historyModel)
+                        .environmentObject(historyModel)
                         .environmentObject(dealModel)
 //                        .environmentObject(filters)
                 }
