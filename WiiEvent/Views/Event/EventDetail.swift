@@ -126,8 +126,7 @@ struct EventDetail: View {
                 } // .toolbar
                 #endif
                 
-            }
-            
+            } // if let event
         } // NavigationStack
         
         

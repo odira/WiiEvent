@@ -794,7 +794,6 @@
 				D1C55A2D2C7E301A00AB75EC /* MapView.swift */,
 				D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */,
 				D1E9B3692B4C5AB40073768D /* DealTransparant.swift */,
-				D15D814D2B6970F8005E6D2B /* Filters.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -829,6 +828,7 @@
 		D1FCA2812B1CF5A200E2DB42 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D15D814D2B6970F8005E6D2B /* Filters.swift */,
 				D1DF9F5E2D070BFC004E2E96 /* Deal */,
 				D1DC71C22C443B1300D5725E /* History */,
 				D10EEF242C3A19A400E200F3 /* Subgroup */,

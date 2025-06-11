@@ -4,6 +4,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var dealModel: DealModel
+    @EnvironmentObject var historyModel: HistoryModel
     
     enum TabValue {
         case list
@@ -47,4 +48,5 @@ struct ContentView: View {
     ContentView()
         .environmentObject(EventModel.example)
         .environmentObject(DealModel.example)
+        .environmentObject(HistoryModel.example)
 }
