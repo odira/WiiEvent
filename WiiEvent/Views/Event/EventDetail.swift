@@ -13,17 +13,13 @@ struct EventDetail: View {
     @State private var isPresentedMenu: Bool = false
     
     let id: Int
-    
-    var event: Event {
-        eventModel.findEventById(id)!
-    }
 
     // MARK: - body
     
     var body: some View {
         NavigationStack {
-//            if let event = eventModel.findEventById(id) {
-                
+            
+            if let event = eventModel.findEventById(id) {
                 VStack {
                     Form {
                         VStack(alignment: .center) {
@@ -61,7 +57,7 @@ struct EventDetail: View {
                                     isPresentedHistorySheet.toggle()
                                     
                                     #if os(macOS)
-                                    openWindow(id: "history-detail", value: id)
+                                    openWindow(id: "event-history", value: id)
                                     #endif
                                 }
                                 #if os(iOS)
@@ -73,15 +69,6 @@ struct EventDetail: View {
                                 #endif
                             }
                             .buttonStyle(.borderedProminent)
-                            
-                            //                            HStack {
-                            //                                if event.isCompleted {
-                            //                                    CompletedButton(isCompleted: .constant(true))
-                            //                                }
-                            //                                if event.isOptional {
-                            //                                    OptionalButton(isOptional: .constant(true))
-                            //                                }
-                            //                            }
                         }
                         .listRowBackground(Color.clear)
                         
@@ -142,7 +129,7 @@ struct EventDetail: View {
 //                } // .toolbar
 //                #endif
                 
-//            }
+            }
         } // NavigationStack
         
 //        // ОБОСНОВАНИЕ

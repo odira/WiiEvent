@@ -4,6 +4,7 @@ import SwiftUI
 struct HistoryDetailView: View {
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var historyModel: HistoryModel
     
     @Namespace private var namespace
@@ -100,6 +101,7 @@ struct HistoryDetailView: View {
 
 #Preview {
     HistoryDetailView(eventId: Event.example.id)
+        .environmentObject(EventModel.example)
         .environmentObject(HistoryModel.example)
 }
 

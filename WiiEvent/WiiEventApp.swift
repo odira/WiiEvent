@@ -19,7 +19,7 @@ struct WiiEventApp: App {
         WindowGroup {
             ZStack {
                 if eventModel.isFetching {
-                    splashView
+                    SplashView()
                 } else {
                      ContentView()
                         .environmentObject(eventModel)
@@ -40,32 +40,31 @@ struct WiiEventApp: App {
         WindowGroup(id: "event-detail", for: Event.ID.self) { $eventID in
             if let eventID {
                 EventDetail(id: eventID)
-//                    .frame(minWidth: 500, idealWidth: 1200, minHeight: 500, idealHeight: 1200)
                     .environmentObject(eventModel)
                     .environmentObject(historyModel)
             }
         }
         .defaultSize(CGSize(width: 800, height: 1200))
-//        .windowResizability(.contentMinSize)
         .defaultPosition(.center)
         
         // HistoryDetail view (for macOS)
-        WindowGroup(id: "history-detail", for: Event.ID.self) { $eventID in
+        WindowGroup(id: "event-history", for: Event.ID.self) { $eventID in
             if let eventID {
                 HistoryDetailView(eventId: eventID)
+                    .environmentObject(eventModel)
                     .environmentObject(historyModel)
             }
         }
         .defaultSize(CGSize(width: 800, height: 1200))
-//        .windowResizability(.contentMinSize)
         .defaultPosition(.center)
         #endif
     }
-    
-    // MARK: - Splash View
-    
-    // SPLASH View - show splash view at startup of the App
-    var splashView: some View {
+}
+
+// MARK: - Splash View
+
+struct SplashView: View {
+    var body: some View {
         VStack {
             Image(systemName: "memorychip")
                 .resizable()
