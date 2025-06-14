@@ -125,22 +125,22 @@ struct EventDetail: View {
                 .font(.callout)
                 
                 // Toolbar
-                #if os(iOS)
-                .toolbar {
-                    ToolbarItemGroup {
-                        Button  {
-                            isPresentedMenu.toggle()
-                        } label: {
-                            HStack {
-                                Image(systemName: "list.bullet.circle")
-                                Text("Menu")
-                            }
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.regular)
-                    }
-                } // .toolbar
-                #endif
+//                #if os(iOS)
+//                .toolbar {
+//                    ToolbarItemGroup {
+//                        Button  {
+//                            isPresentedMenu.toggle()
+//                        } label: {
+//                            HStack {
+//                                Image(systemName: "list.bullet.circle")
+//                                Text("Menu")
+//                            }
+//                        }
+//                        .buttonStyle(.borderedProminent)
+//                        .controlSize(.regular)
+//                    }
+//                } // .toolbar
+//                #endif
                 
 //            }
         } // NavigationStack
@@ -171,7 +171,7 @@ struct EventDetail: View {
         #if os(iOS)
         // ИСПОЛНЕНИЕ
         .fullScreenCover(isPresented: $isPresentedHistorySheet) {
-            HistoryDetailView(eventId: event!.id)
+            HistoryDetailView(eventId: event.id)
                 .presentationSizing(.page)
         }
         #endif

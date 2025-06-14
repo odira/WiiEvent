@@ -22,14 +22,14 @@
 		D15D81522B69826A005E6D2B /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D81512B69826A005E6D2B /* Extentions.swift */; };
 		D16B20B92B50621E00B96160 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16B20B82B50621E00B96160 /* CategoryItem.swift */; };
 		D17EEF6D2C9205E100E6E51B /* HistoryAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17EEF6C2C9205D500E6E51B /* HistoryAddSheet.swift */; };
-		D19132B62D0A09B700AFCCAD /* WiiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; };
-		D19132B72D0A09B700AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D19132B62D0A09B700AFCCAD /* WiiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; platformFilter = ios; };
+		D19132B72D0A09B700AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D19132B82D0A09C800AFCCAD /* WiiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; };
 		D19132B92D0A09C800AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1A730702B383B49003A3A49 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetail.swift */; };
 		D1C55A2B2C7E2F0800AB75EC /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = D1C55A2A2C7E2F0800AB75EC /* PostgresClientKit */; };
 		D1C55A2E2C7E301A00AB75EC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C55A2D2C7E301A00AB75EC /* MapView.swift */; };
-		D1C8B3C72D0F606500DCC1B9 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */; };
+		D1CA167E2DFE1C730016C99B /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */; };
 		D1D575AE2B55A89C0035478E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575AD2B55A89C0035478E /* Profile.swift */; };
 		D1D575B12B55B18D0035478E /* ProfileHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B02B55B18D0035478E /* ProfileHost.swift */; };
 		D1D575B32B55B2080035478E /* ProfileSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B22B55B2080035478E /* ProfileSummary.swift */; };
@@ -749,8 +749,8 @@
 		D1DFA1122D0EDA47004E2E96 /* WiiEventIOS */ = {
 			isa = PBXGroup;
 			children = (
-				D1DFA1202D0EDADD004E2E96 /* Views */,
 				D1DFA1172D0EDA48004E2E96 /* Assets.xcassets */,
+				D1DFA1202D0EDADD004E2E96 /* Views */,
 				D1DFA1192D0EDA48004E2E96 /* Preview Content */,
 			);
 			path = WiiEventIOS;
@@ -764,18 +764,9 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		D1DFA11F2D0EDACF004E2E96 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */,
-			);
-			path = Event;
-			sourceTree = "<group>";
-		};
 		D1DFA1202D0EDADD004E2E96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D1DFA11F2D0EDACF004E2E96 /* Event */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -793,6 +784,7 @@
 		D1E9B36C2B4C5F6F0073768D /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */,
 				D11CAA642CA5E32700403E82 /* PriceView.swift */,
 				D10215E32CF90C140075631B /* DescriptionView.swift */,
 				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
@@ -1010,7 +1002,6 @@
 				D17EEF6D2C9205E100E6E51B /* HistoryAddSheet.swift in Sources */,
 				D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */,
 				D1D575B72B56FEFE0035478E /* ProfileEditor.swift in Sources */,
-				D1C8B3C72D0F606500DCC1B9 /* EventListView.swift in Sources */,
 				D1DF9F602D070C1C004E2E96 /* Deal.swift in Sources */,
 				D10274882B4F0BD500DEBBAB /* CategoryRow.swift in Sources */,
 				D1D575B52B55B7B90035478E /* EventBadge.swift in Sources */,
@@ -1033,6 +1024,7 @@
 				D1C55A2E2C7E301A00AB75EC /* MapView.swift in Sources */,
 				D1A730702B383B49003A3A49 /* EventDetail.swift in Sources */,
 				D1D6F1692B59A8C9007758E1 /* PageView.swift in Sources */,
+				D1CA167E2DFE1C730016C99B /* EventListView.swift in Sources */,
 				D16B20B92B50621E00B96160 /* CategoryItem.swift in Sources */,
 				D15D81522B69826A005E6D2B /* Extentions.swift in Sources */,
 				D10EEF4E2C3F21F700E200F3 /* SubgroupEventListView.swift in Sources */,
@@ -1264,7 +1256,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1299,7 +1291,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -35,6 +35,7 @@ struct WiiEventApp: App {
             }
         }
         
+        #if os(macOS)
         // EventDetail view (for macOS)
         WindowGroup(id: "event-detail", for: Event.ID.self) { $eventID in
             if let eventID {
@@ -58,6 +59,7 @@ struct WiiEventApp: App {
         .defaultSize(CGSize(width: 800, height: 1200))
 //        .windowResizability(.contentMinSize)
         .defaultPosition(.center)
+        #endif
     }
     
     // MARK: - Splash View
