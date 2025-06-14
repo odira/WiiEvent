@@ -270,7 +270,7 @@ public extension EventModel {
 
 public extension EventModel {
     
-    func findEventById(id: Int) -> Event? {
+    func findEventById(_ id: Int) -> Event? {
         let result = events.filter { $0.id == id }
         if result.isEmpty {
             return nil

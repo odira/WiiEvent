@@ -3,6 +3,7 @@ import SwiftUI
 
 struct HistoryDetailView: View {
     @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var historyModel: HistoryModel
     
     @Namespace private var namespace
@@ -21,9 +22,9 @@ struct HistoryDetailView: View {
     @State var selectedHistory: History? = nil
     
     let eventId: Int
+    
+    // MARK: - body
 
-    
-    
     var body: some View {
         NavigationStack {
             
@@ -97,12 +98,10 @@ struct HistoryDetailView: View {
     } // body
 }
 
-
 #Preview {
     HistoryDetailView(eventId: Event.example.id)
         .environmentObject(HistoryModel.example)
 }
-
 
 struct HistoryRow: View {
     

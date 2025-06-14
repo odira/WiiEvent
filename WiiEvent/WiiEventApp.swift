@@ -11,9 +11,11 @@ struct WiiEventApp: App {
     @StateObject var dealModel = DealModel()
     @StateObject var filters = Filters()
     
+    // MARK: - body
+    
     var body: some Scene {
         
-        // Splash & ContentView
+        // SplashView & ContentView
         WindowGroup {
             ZStack {
                 if eventModel.isFetching {
@@ -33,16 +35,21 @@ struct WiiEventApp: App {
             }
         }
         
-        // modal EventDetailView (for macOS)
-        #if os(macOS)
-        WindowGroup(for: Event.ID.self) { $eventID in
-            if eventID != nil {
-                EventDetail(id: eventID!)
+        // EventDetail view (for macOS)
+        WindowGroup(id: "event-detail", for: Event.ID.self) { $eventID in
+            if let eventID {
+                EventDetail(id: eventID)
+//                    .frame(minWidth: 500, idealWidth: 1200, minHeight: 500, idealHeight: 1200)
                     .environmentObject(eventModel)
+                    .environmentObject(historyModel)
             }
         }
-        #endif
+        .defaultSize(CGSize(width: 800, height: 1200))
+//        .windowResizability(.contentMinSize)
+        .defaultPosition(.center)
     }
+    
+    // MARK: - Splash View
     
     // SPLASH View - show splash view at startup of the App
     var splashView: some View {

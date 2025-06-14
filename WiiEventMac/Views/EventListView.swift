@@ -12,6 +12,7 @@ struct EventListView: View {
     
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var dealModel: DealModel
+    @EnvironmentObject var historyModel: HistoryModel
 
     @State private var selection = Set<Event.ID>()
     @State private var isPresentedEventDetailsView: Bool = false
@@ -167,7 +168,7 @@ struct EventListView: View {
             .contextMenu(forSelectionType: Event.ID.self) { eventIDs in
             } primaryAction: { eventIDs in
                 if let id = eventIDs.first {
-                    openWindow(value: id)
+                    openWindow(id: "event-detail", value: id)
                 }
             }
             
@@ -223,6 +224,7 @@ struct EventListView: View {
     EventListView()
         .environmentObject(EventModel.example)
         .environmentObject(DealModel.example)
+        .environmentObject(HistoryModel.example)
 }
 
 

@@ -4,28 +4,28 @@ struct EventDetail: View {
     @Environment(\.dismiss) private var dismiss
     
     @EnvironmentObject var eventModel: EventModel
+    @EnvironmentObject var historyModel: HistoryModel
     
     @State private var isPresentedJustificationSheet: Bool = false
     @State private var isPresentedDescriptionSheet: Bool = false
     @State private var isPresentedHistorySheet: Bool = false
     @State private var isPresentedMenu: Bool = false
-
-    private var event: Event? {
-        eventModel.findEventById(id: id)
+    
+    let id: Int
+    
+    var event: Event {
+        eventModel.findEventById(id)!
     }
-    
-    var id: Int = 12
 
-    
     // MARK: - body
     
     var body: some View {
         NavigationStack {
-            if let event {
+//            if let event = eventModel.findEventById(id) {
                 
                 VStack {
                     Form {
-                        VStack {
+                        VStack(alignment: .center) {
                             HStack(alignment: .center) {
                                 Spacer()
                                 CircleImage(image: event.image)
@@ -41,7 +41,6 @@ struct EventDetail: View {
                                 Button("Обоснование") {
                                     isPresentedJustificationSheet.toggle()
                                 }
-                                .buttonStyle(.borderedProminent)
                                 .sheet(isPresented: $isPresentedJustificationSheet) {
                                     JustificationView(for: event.justification)
                                         .presentationDetents([.large])
@@ -51,22 +50,31 @@ struct EventDetail: View {
                                 Button("Описание") {
                                     isPresentedDescriptionSheet.toggle()
                                 }
-                                .buttonStyle(.borderedProminent)
                                 .sheet(isPresented: $isPresentedDescriptionSheet) {
                                     DescriptionView(for: event.description)
                                         .presentationDetents([.large])
                                         .presentationDragIndicator(.visible)
                                 }
+                                
+                                Button("Исполнение") {
+                                    isPresentedHistorySheet.toggle()
+                                }
+                                .sheet(isPresented: $isPresentedHistorySheet) {
+                                    HistoryDetailView(eventId: id)
+                                        .presentationDetents([.large])
+                                        .presentationDragIndicator(.visible)
+                                }
                             }
+                            .buttonStyle(.borderedProminent)
                             
-//                            HStack {
-//                                if event.isCompleted {
-//                                    CompletedButton(isCompleted: .constant(true))
-//                                }
-//                                if event.isOptional {
-//                                    OptionalButton(isOptional: .constant(true))
-//                                }
-//                            }
+                            //                            HStack {
+                            //                                if event.isCompleted {
+                            //                                    CompletedButton(isCompleted: .constant(true))
+                            //                                }
+                            //                                if event.isOptional {
+                            //                                    OptionalButton(isOptional: .constant(true))
+                            //                                }
+                            //                            }
                         }
                         .listRowBackground(Color.clear)
                         
@@ -106,9 +114,10 @@ struct EventDetail: View {
                     } // Form
                     .formStyle(.grouped)
                     
-                } // VStack
+                }
                 .font(.callout)
                 
+                // Toolbar
                 #if os(iOS)
                 .toolbar {
                     ToolbarItemGroup {
@@ -126,9 +135,8 @@ struct EventDetail: View {
                 } // .toolbar
                 #endif
                 
-            } // if let event
+//            }
         } // NavigationStack
-        
         
 //        // ОБОСНОВАНИЕ
 //        .fullScreenCover(isPresented: $isPresentedJustificationSheet) {
@@ -185,8 +193,8 @@ struct EventDetail: View {
     
 }
 
-
 #Preview {
     EventDetail(id: Event.example.id)
         .environmentObject(EventModel.example )
+        .environmentObject(HistoryModel.example)
 }

@@ -372,14 +372,6 @@
 			path = Subgroup;
 			sourceTree = "<group>";
 		};
-		D1238C6C2D53EB7A00419D72 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				D1D890552CD2C83D0052710D /* EventListView.swift */,
-			);
-			path = Event;
-			sourceTree = "<group>";
-		};
 		D1387D602AFFB31600570446 = {
 			isa = PBXGroup;
 			children = (
@@ -731,7 +723,7 @@
 		D1D890542CD2C80A0052710D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D1238C6C2D53EB7A00419D72 /* Event */,
+				D1D890552CD2C83D0052710D /* EventListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
