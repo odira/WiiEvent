@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct EventDetail: View {
+    @Environment(\.openWindow) private var openWindow
     @Environment(\.dismiss) private var dismiss
     
     @EnvironmentObject var eventModel: EventModel
@@ -58,12 +59,18 @@ struct EventDetail: View {
                                 
                                 Button("Исполнение") {
                                     isPresentedHistorySheet.toggle()
+                                    
+                                    #if os(macOS)
+                                    openWindow(id: "history-detail", value: id)
+                                    #endif
                                 }
+                                #if os(iOS)
                                 .sheet(isPresented: $isPresentedHistorySheet) {
                                     HistoryDetailView(eventId: id)
                                         .presentationDetents([.large])
                                         .presentationDragIndicator(.visible)
                                 }
+                                #endif
                             }
                             .buttonStyle(.borderedProminent)
                             

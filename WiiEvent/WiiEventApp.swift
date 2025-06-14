@@ -47,6 +47,17 @@ struct WiiEventApp: App {
         .defaultSize(CGSize(width: 800, height: 1200))
 //        .windowResizability(.contentMinSize)
         .defaultPosition(.center)
+        
+        // HistoryDetail view (for macOS)
+        WindowGroup(id: "history-detail", for: Event.ID.self) { $eventID in
+            if let eventID {
+                HistoryDetailView(eventId: eventID)
+                    .environmentObject(historyModel)
+            }
+        }
+        .defaultSize(CGSize(width: 800, height: 1200))
+//        .windowResizability(.contentMinSize)
+        .defaultPosition(.center)
     }
     
     // MARK: - Splash View
