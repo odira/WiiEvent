@@ -19,27 +19,53 @@ struct HistoryAddView: View {
     @State private var history: String = ""
     @State private var note: String = ""
     
+//    @State private var showDatePicker = false
+    
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             
             VStack {
                 ScrollView {
-                    DatePicker(
-                        "Введите дату...",
-                        selection: $date,
-                        displayedComponents: [.date]
-                    )
+                    DatePicker("Select a Date", selection: $date, displayedComponents: [.date])
+//                    .datePickerStyle(FieldDatePickerStyle())
+                        .datePickerStyle(.compact)
+//                        .labelsHidden()
+//                    .contentShape(Rectangle())
+                    .padding()
+                    
+//                    Button("Date") {
+//                        showDatePicker.toggle()
+//                    }
+//                    .buttonStyle(.borderedProminent)
+//                    .padding()
+//                    
+//                    if showDatePicker {
+//                        DatePicker(
+//                                            "",
+//                                            selection: $date,
+//                                            displayedComponents: .date
+//                                        )
+//                                        .labelsHidden()
+//                                        .datePickerStyle(.graphical)
+//                                        .frame(maxHeight: 400)
+//                    }
+                    
                     TextEditor(text: $history)
-                        .font(.caption2)
-                        .frame(height: 50)
-                        .foregroundStyle(.secondary)
-                        .cornerRadius(5)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.black, lineWidth: 1)
-                        }
-                    TextField("Введите примечание...", text: $note)
-                        .font(.caption2)
+//                        .font(.caption2)
+//                        .frame(height: 50)
+//                        .foregroundStyle(.secondary)
+//                        .cornerRadius(5)
+//                        .overlay {
+//                            RoundedRectangle(cornerRadius: 5)
+//                                .stroke(.black, lineWidth: 1)
+//                        }
+                        .frame(height: 200)
+                    
+//                    TextField("Введите примечание...", text: $note)
+//                        .font(.caption2)
+                    
+                    TextEditor(text: $note)
+                        .frame(height: 200)
                 }
                 .padding()
                 
@@ -78,7 +104,7 @@ struct HistoryAddView: View {
                 .padding()
                 #endif
             }
-        }
+//        }
     } // body
 }
 
