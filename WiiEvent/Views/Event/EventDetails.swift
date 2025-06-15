@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct EventDetail: View {
+struct EventDetails: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismiss) private var dismiss
     
@@ -57,7 +57,7 @@ struct EventDetail: View {
                                     isPresentedHistorySheet.toggle()
                                     
                                     #if os(macOS)
-                                    openWindow(id: "event-history", value: id)
+                                    openWindow(id: "event-history-details", value: id)
                                     #endif
                                 }
                                 #if os(iOS)
@@ -129,6 +129,17 @@ struct EventDetail: View {
 //                } // .toolbar
 //                #endif
                 
+                #if os(macOS)
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
+                #endif
+                
             }
         } // NavigationStack
         
@@ -178,7 +189,6 @@ struct EventDetail: View {
                 .frame(maxWidth: .infinity)
 //                Button("Close", role: .cancel) { }
             }
-            .frame(width: .infinity)
             .buttonStyle(.borderedProminent)
         }
 //        #endif
@@ -188,7 +198,8 @@ struct EventDetail: View {
 }
 
 #Preview {
-    EventDetail(id: Event.example.id)
+    EventDetails(id: Event.example.id)
+        .frame(width: 600, height: 800)
         .environmentObject(EventModel.example )
         .environmentObject(HistoryModel.example)
 }

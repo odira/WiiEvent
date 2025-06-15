@@ -34,28 +34,39 @@ struct WiiEventApp: App {
                 await dealModel.fetch()
             }
         }
+        .defaultSize(CGSize(width: 1200, height: 800))
         
         #if os(macOS)
         // EventDetail view (for macOS)
-        WindowGroup(id: "event-detail", for: Event.ID.self) { $eventID in
+        WindowGroup(id: "event-details", for: Event.ID.self) { $eventID in
             if let eventID {
-                EventDetail(id: eventID)
+                EventDetails(id: eventID)
                     .environmentObject(eventModel)
                     .environmentObject(historyModel)
             }
         }
-        .defaultSize(CGSize(width: 800, height: 1200))
+        .defaultSize(CGSize(width: 600, height: 800))
         .defaultPosition(.center)
         
         // HistoryDetail view (for macOS)
-        WindowGroup(id: "event-history", for: Event.ID.self) { $eventID in
+        WindowGroup(id: "event-history-details", for: Event.ID.self) { $eventID in
             if let eventID {
-                HistoryDetailView(eventId: eventID)
+                HistoryList(eventId: eventID)
                     .environmentObject(eventModel)
                     .environmentObject(historyModel)
             }
         }
-        .defaultSize(CGSize(width: 800, height: 1200))
+        .defaultSize(CGSize(width: 600, height: 800))
+        .defaultPosition(.center)
+        
+        WindowGroup(id: "history-add", for: Event.ID.self) { $eventID in
+            if let eventID {
+                HistoryAddView(eventId: eventID)
+                    .environmentObject(eventModel)
+                    .environmentObject(historyModel)
+            }
+        }
+        .defaultSize(CGSize(width: 600, height: 800))
         .defaultPosition(.center)
         #endif
     }

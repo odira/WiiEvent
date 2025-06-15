@@ -26,10 +26,12 @@
 		D19132B72D0A09B700AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D19132B82D0A09C800AFCCAD /* WiiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; };
 		D19132B92D0A09C800AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D1A730702B383B49003A3A49 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetail.swift */; };
+		D1A730702B383B49003A3A49 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetails.swift */; };
 		D1C55A2B2C7E2F0800AB75EC /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = D1C55A2A2C7E2F0800AB75EC /* PostgresClientKit */; };
 		D1C55A2E2C7E301A00AB75EC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C55A2D2C7E301A00AB75EC /* MapView.swift */; };
 		D1CA167E2DFE1C730016C99B /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */; };
+		D1CA16802DFF08150016C99B /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA167F2DFF080B0016C99B /* HistoryRow.swift */; };
+		D1CA16812DFF08150016C99B /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA167F2DFF080B0016C99B /* HistoryRow.swift */; };
 		D1D575AE2B55A89C0035478E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575AD2B55A89C0035478E /* Profile.swift */; };
 		D1D575B12B55B18D0035478E /* ProfileHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B02B55B18D0035478E /* ProfileHost.swift */; };
 		D1D575B32B55B2080035478E /* ProfileSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B22B55B2080035478E /* ProfileSummary.swift */; };
@@ -52,18 +54,18 @@
 		D1D8905D2CD2CB720052710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
 		D1D8905E2CD2CBA40052710D /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D814D2B6970F8005E6D2B /* Filters.swift */; };
 		D1DC71C42C443B3200D5725E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C32C443B3200D5725E /* History.swift */; };
-		D1DC71C92C445CE300D5725E /* HistoryDetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryDetailVIew.swift */; };
+		D1DC71C92C445CE300D5725E /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryList.swift */; };
 		D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
 		D1DF9F602D070C1C004E2E96 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F5F2D070C19004E2E96 /* Deal.swift */; };
 		D1DF9F612D070C1C004E2E96 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F5F2D070C19004E2E96 /* Deal.swift */; };
 		D1DF9F632D0739B8004E2E96 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F622D0739B2004E2E96 /* DealModel.swift */; };
 		D1DF9F642D0739B8004E2E96 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F622D0739B2004E2E96 /* DealModel.swift */; };
-		D1DFA1472D0EE2C9004E2E96 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetail.swift */; };
+		D1DFA1472D0EE2C9004E2E96 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetails.swift */; };
 		D1DFA1482D0EE2E5004E2E96 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
 		D1DFA1492D0EE2F3004E2E96 /* JustificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA612CA5D49D00403E82 /* JustificationView.swift */; };
 		D1DFA14A2D0EE2F8004E2E96 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10215E32CF90C140075631B /* DescriptionView.swift */; };
 		D1DFA14B2D0EE31E004E2E96 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA642CA5E32700403E82 /* PriceView.swift */; };
-		D1DFA14C2D0EE327004E2E96 /* HistoryDetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryDetailVIew.swift */; };
+		D1DFA14C2D0EE327004E2E96 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryList.swift */; };
 		D1DFA14D2D0EE33C004E2E96 /* HistoryEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115824F2C8A286D00E96DB1 /* HistoryEditSheet.swift */; };
 		D1DFA14E2D0EE33C004E2E96 /* HistoryAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17EEF6C2C9205D500E6E51B /* HistoryAddSheet.swift */; };
 		D1DFA14F2D0EE353004E2E96 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C55A2D2C7E301A00AB75EC /* MapView.swift */; };
@@ -194,8 +196,9 @@
 		D19132AC2D0A09AF00AFCCAD /* WiiKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WiiKit.h; sourceTree = "<group>"; };
 		D19132AE2D0A09AF00AFCCAD /* WiiKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WiiKit.xcassets; sourceTree = "<group>"; };
 		D19132AF2D0A09AF00AFCCAD /* WiiKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = WiiKit.xcodeproj; sourceTree = "<group>"; };
-		D1A7306F2B383B49003A3A49 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
+		D1A7306F2B383B49003A3A49 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
 		D1C55A2D2C7E301A00AB75EC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D1CA167F2DFF080B0016C99B /* HistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRow.swift; sourceTree = "<group>"; };
 		D1D575AD2B55A89C0035478E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D1D575B02B55B18D0035478E /* ProfileHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHost.swift; sourceTree = "<group>"; };
 		D1D575B22B55B2080035478E /* ProfileSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSummary.swift; sourceTree = "<group>"; };
@@ -210,7 +213,7 @@
 		D1D890492CD2C61C0052710D /* WiiEventMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WiiEventMac.entitlements; sourceTree = "<group>"; };
 		D1D890552CD2C83D0052710D /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D1DC71C32C443B3200D5725E /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		D1DC71C82C445CE300D5725E /* HistoryDetailVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailVIew.swift; sourceTree = "<group>"; };
+		D1DC71C82C445CE300D5725E /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
 		D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		D1DF9F5F2D070C19004E2E96 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		D1DF9F622D0739B2004E2E96 /* DealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
@@ -337,9 +340,10 @@
 		D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */ = {
 			isa = PBXGroup;
 			children = (
+				D1CA167F2DFF080B0016C99B /* HistoryRow.swift */,
 				D17EEF6C2C9205D500E6E51B /* HistoryAddSheet.swift */,
 				D115824F2C8A286D00E96DB1 /* HistoryEditSheet.swift */,
-				D1DC71C82C445CE300D5725E /* HistoryDetailVIew.swift */,
+				D1DC71C82C445CE300D5725E /* HistoryList.swift */,
 			);
 			path = HistoryHelper;
 			sourceTree = "<group>";
@@ -658,26 +662,27 @@
 			path = Deal;
 			sourceTree = "<group>";
 		};
-		D1E9B36B2B4C5F5D0073768D /* Helper */ = {
+		D1E9B36B2B4C5F5D0073768D /* EventHelper */ = {
 			isa = PBXGroup;
 			children = (
 				D1C55A2D2C7E301A00AB75EC /* MapView.swift */,
 				D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */,
 				D1E9B3692B4C5AB40073768D /* DealTransparant.swift */,
 			);
-			path = Helper;
+			path = EventHelper;
 			sourceTree = "<group>";
 		};
 		D1E9B36C2B4C5F6F0073768D /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */,
+				D1E9B36B2B4C5F5D0073768D /* EventHelper */,
 				D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */,
 				D11CAA642CA5E32700403E82 /* PriceView.swift */,
 				D10215E32CF90C140075631B /* DescriptionView.swift */,
 				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
 				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
-				D1A7306F2B383B49003A3A49 /* EventDetail.swift */,
-				D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */,
+				D1A7306F2B383B49003A3A49 /* EventDetails.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -689,7 +694,6 @@
 				D10EEF302C3D7BD600E200F3 /* Subgroup */,
 				D1D6F1632B585E2E007758E1 /* PageView */,
 				D1D575AF2B55B16E0035478E /* Profile */,
-				D1E9B36B2B4C5F5D0073768D /* Helper */,
 				D1E9B36C2B4C5F6F0073768D /* Event */,
 				D16B20B72B5061ED00B96160 /* Category */,
 			);
@@ -849,6 +853,7 @@
 				D1D575AE2B55A89C0035478E /* Profile.swift in Sources */,
 				D10EEF2F2C3D78A300E200F3 /* SubgroupHomeView.swift in Sources */,
 				D1387D6F2AFFB31600570446 /* ContentView.swift in Sources */,
+				D1CA16802DFF08150016C99B /* HistoryRow.swift in Sources */,
 				D1FCA2842B1CF62900E2DB42 /* EventRow.swift in Sources */,
 				D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */,
 				D17EEF6D2C9205E100E6E51B /* HistoryAddSheet.swift in Sources */,
@@ -866,7 +871,7 @@
 				D11CAA652CA5E32700403E82 /* PriceView.swift in Sources */,
 				D1DF9F632D0739B8004E2E96 /* DealModel.swift in Sources */,
 				D10215E42CF90C140075631B /* DescriptionView.swift in Sources */,
-				D1DC71C92C445CE300D5725E /* HistoryDetailVIew.swift in Sources */,
+				D1DC71C92C445CE300D5725E /* HistoryList.swift in Sources */,
 				D15D814E2B6970F8005E6D2B /* Filters.swift in Sources */,
 				D1387D6D2AFFB31600570446 /* WiiEventApp.swift in Sources */,
 				D1D575B12B55B18D0035478E /* ProfileHost.swift in Sources */,
@@ -874,7 +879,7 @@
 				D1FCA2772B1CE54700E2DB42 /* CircleImage.swift in Sources */,
 				D1DC71C42C443B3200D5725E /* History.swift in Sources */,
 				D1C55A2E2C7E301A00AB75EC /* MapView.swift in Sources */,
-				D1A730702B383B49003A3A49 /* EventDetail.swift in Sources */,
+				D1A730702B383B49003A3A49 /* EventDetails.swift in Sources */,
 				D1D6F1692B59A8C9007758E1 /* PageView.swift in Sources */,
 				D1CA167E2DFE1C730016C99B /* EventListView.swift in Sources */,
 				D16B20B92B50621E00B96160 /* CategoryItem.swift in Sources */,
@@ -889,11 +894,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D890572CD2CB070052710D /* WiiEventApp.swift in Sources */,
-				D1DFA1472D0EE2C9004E2E96 /* EventDetail.swift in Sources */,
+				D1DFA1472D0EE2C9004E2E96 /* EventDetails.swift in Sources */,
 				D1D8905A2CD2CB520052710D /* Profile.swift in Sources */,
-				D1DFA14C2D0EE327004E2E96 /* HistoryDetailVIew.swift in Sources */,
+				D1DFA14C2D0EE327004E2E96 /* HistoryList.swift in Sources */,
 				D1D8905B2CD2CB520052710D /* ModelData.swift in Sources */,
 				D1DFA14B2D0EE31E004E2E96 /* PriceView.swift in Sources */,
+				D1CA16812DFF08150016C99B /* HistoryRow.swift in Sources */,
 				D1D8905E2CD2CBA40052710D /* Filters.swift in Sources */,
 				D1DFA14A2D0EE2F8004E2E96 /* DescriptionView.swift in Sources */,
 				D1D8905C2CD2CB520052710D /* Extentions.swift in Sources */,

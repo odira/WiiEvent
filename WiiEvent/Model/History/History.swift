@@ -1,17 +1,15 @@
 import SwiftUI
 import CoreLocation
 
+// MARK: - History definition
+
 public struct History: Hashable, Codable, Identifiable {
-    
-    // MARK: - Main parameters
     
     public var id: Int                //  0
     public var eventId: Int           //  1
     public var date: Date             //  2
     public var history: String        //  3
     public var note: String           //  4
-    
-    // MARK: - Initializations
     
     public init(
         id: Int,                      //  0
@@ -28,7 +26,7 @@ public struct History: Hashable, Codable, Identifiable {
     }
 }
 
-// MARK: - Event example
+// MARK: - History example
 
 #if DEBUG
 public extension History {

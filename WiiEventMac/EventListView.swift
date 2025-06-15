@@ -2,13 +2,12 @@
 //  Created by Wiipuri Developer on 30.10.2024.
 //
 
-
 import SwiftUI
 import WiiKit
 
-
 struct EventListView: View {
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismiss) private var dismiss
     
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var dealModel: DealModel
@@ -168,7 +167,7 @@ struct EventListView: View {
             .contextMenu(forSelectionType: Event.ID.self) { eventIDs in
             } primaryAction: { eventIDs in
                 if let id = eventIDs.first {
-                    openWindow(id: "event-detail", value: id)
+                    openWindow(id: "event-details", value: id)
                 }
             }
             
@@ -182,6 +181,16 @@ struct EventListView: View {
                 .frame(height: 50)
                 Spacer()
             }
+            .padding()
+            
+            HStack {
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                    NSApplication.shared.terminate(nil)
+                }
+            }
+            .buttonStyle(.borderedProminent)
             .padding()
         }
     }
@@ -225,6 +234,7 @@ struct EventListView: View {
         .environmentObject(EventModel.example)
         .environmentObject(DealModel.example)
         .environmentObject(HistoryModel.example)
+        .frame(width: 600, height: 800)
 }
 
 
