@@ -120,9 +120,11 @@ struct HistoryList: View {
 
 #Preview {
     HistoryList(eventId: Event.example.id)
-        .frame(width: 600, height: 812)
         .environmentObject(EventModel.example)
         .environmentObject(HistoryModel.example)
+        #if os(macOS)
+        .frame(width: 600, height: 800)
+        #endif
 }
 
 

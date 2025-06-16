@@ -22,7 +22,6 @@ struct HistoryRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
             Text(dateFormatter.string(from: history.date))
-                .font(.system(.caption2, design: .monospaced))
                 .foregroundStyle(.blue)
                 .bold()
                 .background(.clear)
@@ -40,19 +39,22 @@ struct HistoryRow: View {
                     Spacer()
                 }
             }
-//            .frame(width: 10)
-//            .padding(.top, 0).padding(.bottom, 0)
             
             VStack(alignment: .leading) {
                 Text(history.history)
-                    .font(.system(.caption2, design: .monospaced))
                     .background(.clear)
                     .multilineTextAlignment(.leading)
                     .padding()
             }
             
             Spacer()
+            
+            Button("Edit") {
+                
+            }
+            .padding()
         }
+        .font(.system(.callout, design: .monospaced))
     }
 }
 
