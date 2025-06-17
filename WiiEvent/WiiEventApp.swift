@@ -68,6 +68,16 @@ struct WiiEventApp: App {
         }
         .defaultSize(CGSize(width: 600, height: 800))
         .defaultPosition(.center)
+        
+        WindowGroup(id: "history-edit", for: History.ID.self) { $id in
+            if let id {
+                HistoryEditSheet(history: id)
+                    .environmentObject(eventModel)
+                    .environmentObject(historyModel)
+            }
+        }
+        .defaultSize(CGSize(width: 600, height: 800))
+        .defaultPosition(.center)
         #endif
     }
 }
