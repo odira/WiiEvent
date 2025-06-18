@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HistoryRow: View {
-//    @EnvironmentObject var
-    
+    @Environment(\.openWindow) private var openWindow
+
     let history: History
     
     let dateFormatter: DateFormatter = {
@@ -50,7 +50,7 @@ struct HistoryRow: View {
             Spacer()
             
             Button("Edit") {
-                
+                openWindow(id: "history-edit", value: history)
             }
             .padding()
         }
@@ -60,4 +60,5 @@ struct HistoryRow: View {
 
 #Preview {
     HistoryRow(history: History.example)
+        .environmentObject(HistoryModel())
 }

@@ -11,7 +11,6 @@ public class HistoryModel: ObservableObject {
     @Published public var histories = [History]()
     @Published public var isFetching: Bool = true
     
-   
 //    var optionalOnes: [Event] {
 //        events.filter { $0.isOptional }
 //    }
@@ -98,10 +97,8 @@ public class HistoryModel: ObservableObject {
         }
         
         isFetching = false
-        
-    } // fetch()
+    }
 }
-
 
 // MARK: - HistoryModel example
 
