@@ -16,8 +16,48 @@ struct EventListView: View {
     @State private var selection = Set<Event.ID>()
     @State private var isPresentedEventDetailsView: Bool = false
     
+//    var filteredEvents: [Event] {
+//        eventModel.events
+//    }
+    
+    // MARK: - FILTERING
+    
+    @State private var cityFilter: String = ""
+    
     var filteredEvents: [Event] {
-        eventModel.events
+        var result = eventModel.events
+        
+        // city
+        if !cityFilter.isEmpty {
+            result = result.filter { event in
+                event.city!.lowercased().contains(cityFilter.lowercased())
+            }
+        }
+        
+//        result = result.filter { event in
+//            (!showValidOnly || !event.isCompleted && !event.isOptional)
+//        }
+//        
+//        result = result.filter { event in
+//            //                if optionalStatus == OptionalStatus.option {
+//            //                    return event.isOptional == true
+//            //                } else if optionalStatus == OptionalStatus.main {
+//            //                    return event.isOptional == false
+//            //                } else {
+//            //                    return true
+//            //                }
+//            (!showOptionalOnly || event.isOptional && !showValidOnly)
+//        }
+//        
+//        result = result.filter { event in
+//            if !searchableText.isEmpty {
+//                return event.city!.contains( searchableText )
+//            } else {
+//                return true
+//            }
+//        }
+        
+        return result
     }
     
     
@@ -174,12 +214,11 @@ struct EventListView: View {
             // Table
             
             HStack {
-                Text("Filter")
-                List {
-                    Text("TEST")
+                Label("Search", systemImage: "magnifyingglass")
+                TextField("Search", text: $cityFilter)
+                Button("Clear") {
+                    cityFilter = ""
                 }
-                .frame(height: 50)
-                Spacer()
             }
             .padding()
             

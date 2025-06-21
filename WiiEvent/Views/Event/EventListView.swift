@@ -10,12 +10,13 @@ struct EventListView: View {
     // Filtered events
     @State private var showCompletedOnly = false
 //    @State private var optionalStatus = OptionalStatus.all
+
+    // MARK: - FILTERING
+
     @State private var showPlan = ""
     @State private var showValidOnly = true
     @State private var showOptionalOnly = false
-    
-    
-    // MARK: - FILTERING
+
     var filteredEvents: [Event] {
         var result = eventModel.events
         
