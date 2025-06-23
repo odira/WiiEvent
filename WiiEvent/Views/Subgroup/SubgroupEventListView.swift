@@ -51,7 +51,9 @@ struct SubgroupEventListView: View {
                     
                     ForEach(filteredEvents) { event in
                         NavigationLink {
+                            #if os(macOS)
                             EventDetail(id: event.id)
+                            #endif
                         } label: {
                             EventRow(event: event)
                         }

@@ -31,6 +31,8 @@
 		D1CA16802DFF08150016C99B /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA167F2DFF080B0016C99B /* HistoryRow.swift */; };
 		D1CA16812DFF08150016C99B /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA167F2DFF080B0016C99B /* HistoryRow.swift */; };
 		D1CA16842E032F860016C99B /* HistoryFieldsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA16822E032F860016C99B /* HistoryFieldsEditor.swift */; };
+		D1CA16872E0769200016C99B /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA16862E0769200016C99B /* Filter.swift */; };
+		D1CA16882E0769200016C99B /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA16862E0769200016C99B /* Filter.swift */; };
 		D1D575AE2B55A89C0035478E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575AD2B55A89C0035478E /* Profile.swift */; };
 		D1D575B12B55B18D0035478E /* ProfileHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B02B55B18D0035478E /* ProfileHost.swift */; };
 		D1D575B32B55B2080035478E /* ProfileSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B22B55B2080035478E /* ProfileSummary.swift */; };
@@ -199,6 +201,7 @@
 		D1C55A2D2C7E301A00AB75EC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D1CA167F2DFF080B0016C99B /* HistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRow.swift; sourceTree = "<group>"; };
 		D1CA16822E032F860016C99B /* HistoryFieldsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFieldsEditor.swift; sourceTree = "<group>"; };
+		D1CA16862E0769200016C99B /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		D1D575AD2B55A89C0035478E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D1D575B02B55B18D0035478E /* ProfileHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHost.swift; sourceTree = "<group>"; };
 		D1D575B22B55B2080035478E /* ProfileSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSummary.swift; sourceTree = "<group>"; };
@@ -594,6 +597,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D1CA16892E076E4B0016C99B /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D1CA16862E0769200016C99B /* Filter.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
 		D1D575AF2B55B16E0035478E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				D1387D6E2AFFB31600570446 /* ContentView.swift */,
+				D1CA16892E076E4B0016C99B /* Filter */,
 				D10EEF302C3D7BD600E200F3 /* Subgroup */,
 				D1D6F1632B585E2E007758E1 /* PageView */,
 				D1D575AF2B55B16E0035478E /* Profile */,
@@ -777,7 +789,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					D1387D682AFFB31600570446 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -859,6 +871,7 @@
 				D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */,
 				D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */,
 				D1D575B72B56FEFE0035478E /* ProfileEditor.swift in Sources */,
+				D1CA16882E0769200016C99B /* Filter.swift in Sources */,
 				D1DF9F602D070C1C004E2E96 /* Deal.swift in Sources */,
 				D10274882B4F0BD500DEBBAB /* CategoryRow.swift in Sources */,
 				D1D575B52B55B7B90035478E /* EventBadge.swift in Sources */,
@@ -893,6 +906,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D890572CD2CB070052710D /* WiiEventApp.swift in Sources */,
+				D1CA16872E0769200016C99B /* Filter.swift in Sources */,
 				D1DFA1472D0EE2C9004E2E96 /* EventDetails.swift in Sources */,
 				D1D8905A2CD2CB520052710D /* Profile.swift in Sources */,
 				D1DFA14C2D0EE327004E2E96 /* HistoryList.swift in Sources */,
@@ -959,6 +973,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1022,6 +1037,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1051,7 +1067,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Планы мероприятий";
@@ -1086,7 +1101,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Планы мероприятий";
@@ -1124,7 +1138,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"WiiEventMac/Preview Content\"";
-				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1159,7 +1172,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"WiiEventMac/Preview Content\"";
-				DEVELOPMENT_TEAM = 8GMTTB5285;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1220,7 +1232,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/codewinsdotcom/PostgresClientKit.git";
 			requirement = {
-				branch = master;
+				branch = main;
 				kind = branch;
 			};
 		};

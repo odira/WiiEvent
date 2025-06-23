@@ -16,7 +16,7 @@ struct CategoryRow: View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(items) { event in
                         NavigationLink {
-                            EventDetail(id: event.id)
+//                            EventDetail(id: event.id)
                         } label: {
                             CategoryItem(event: event)
                         }

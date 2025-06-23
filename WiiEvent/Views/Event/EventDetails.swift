@@ -62,9 +62,11 @@ struct EventDetails: View {
                                 }
                                 #if os(iOS)
                                 .sheet(isPresented: $isPresentedHistorySheet) {
+                                    #if os(macOS)
                                     HistoryDetailView(eventId: id)
                                         .presentationDetents([.large])
                                         .presentationDragIndicator(.visible)
+                                    #endif
                                 }
                                 #endif
                             }
@@ -169,8 +171,10 @@ struct EventDetails: View {
         #if os(iOS)
         // ИСПОЛНЕНИЕ
         .fullScreenCover(isPresented: $isPresentedHistorySheet) {
+            #if os(macOS)
             HistoryDetailView(eventId: event.id)
                 .presentationSizing(.page)
+            #endif
         }
         #endif
         

@@ -65,9 +65,11 @@ struct EventListView: View {
                 }
                 
                 ForEach(filteredEvents) { event in
+                    #if os(macOS)
                     NavigationLink(destination: EventDetail(id: event.id)) {
                         EventRow(event: event)
                     }
+                    #endif
                 }
             }
             .listStyle(.grouped)

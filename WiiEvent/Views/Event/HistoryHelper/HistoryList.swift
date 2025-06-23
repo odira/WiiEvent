@@ -68,8 +68,8 @@ struct HistoryList: View {
                         .navigationBarTitle("Исполнение", displayMode: .inline)
                         
                         .sheet(item: $selectedHistory) { history in
-                            HistoryEditSheet(history: history)
-                                .environmentObject(historyModel)
+//                            HistoryEditSheet(history: history)
+//                                .environmentObject(historyModel)
                         }
                         
                         .toolbar {
@@ -81,8 +81,8 @@ struct HistoryList: View {
                                     }
                                 }
                                 .sheet(isPresented: $isPresentingAddSheet) {
-                                    HistoryAddSheet(eventId: self.eventId)
-                                        .environmentObject(historyModel)
+//                                    HistoryAddSheet(eventId: self.eventId)
+//                                        .environmentObject(historyModel)
                                 }
                             }
                             ToolbarItem(placement: .destructiveAction) {

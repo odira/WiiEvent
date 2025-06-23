@@ -17,7 +17,6 @@ public enum OptionalStatus: String, CaseIterable, Identifiable {
     public var id: String { self.rawValue }
 }
 
-
 // MARK: -- Filters Class
 
 public class Filters: ObservableObject {
@@ -94,7 +93,6 @@ struct FiltersView: View {
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var filters: Filters
-    
     
     var body: some View {
         NavigationView {
