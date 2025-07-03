@@ -66,18 +66,18 @@ struct EventListView: View {
         VStack {
             Table(of: Event.self, selection: $selection) {
                 
-                // City
-                TableColumn(cityColumnHeader()) { event in
-                    cityColumnContext(for: event)
-                        .padding(15)
-                }
-                
-                // Event
-                TableColumn(eventColumnHeader()) { event in
-                    eventColumnContext(for: event)
-                        .lineLimit(5)
-                        .padding(15)
-                }
+                    // City
+                    TableColumn(cityColumnHeader()) { event in
+                        cityColumnContext(for: event)
+                            .padding(15)
+                    }
+                    
+                    // Event
+                    TableColumn(eventColumnHeader()) { event in
+                        eventColumnContext(for: event)
+                            .lineLimit(5)
+                            .padding(15)
+                    }
                 
                 // _contract number_ & _date of conclusion_
                 TableColumn(contractColumnHeader()) { event in
@@ -143,34 +143,42 @@ struct EventListView: View {
 //                    }
 //                }
                 
-                // price
-                TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
-                    Group {
-                        Text((event.price ?? 0.0), format: .number) +
-                        Text(" ")                                   +
-                        Text("₽").fontWeight(.heavy)
-                    }.frame(maxWidth: .infinity, alignment: .trailing)
-                }
-                .width(ideal: 50)
-                
-                // contragent - subcontractor
-                TableColumn(Text("Подрядчик\nСубподрядчик").bold().foregroundStyle(.blue)) { event in
-                    VStack(alignment: .leading, spacing: 7) {
-                        if let contragent = event.contragent {
-                            Text("\(contragent)")
+                    // price
+                    TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
+                        Group {
+                            Text((event.price ?? 0.0), format: .number) +
+                            Text(" ")                                   +
+                            Text("₽").fontWeight(.heavy)
+                        }.frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .width(ideal: 50)
+                    
+                    // contragent - subcontractor
+                    TableColumn(Text("Подрядчик\nСубподрядчик").bold().foregroundStyle(.blue)) { event in
+                        VStack(alignment: .leading, spacing: 7) {
+                            if let contragent = event.contragent {
+                                Text("\(contragent)")
+                            }
+                            if let subcontractor = event.subcontractor {
+                                Text("\(subcontractor)")
+                            }
+                            EmptyView()
                         }
-                        if let subcontractor = event.subcontractor {
-                            Text("\(subcontractor)")
-                        }
+                        .padding(15)
+                    }
+                    
+                    // senior
+                TableColumn(seniorColumnHeader()) { event in
+                    if let senior = event.senior {
+                        Text("\(senior)")
+                    } else {
                         EmptyView()
                     }
-                    .padding(15)
                 }
                 
                 // equipment
                 // phase
                 // years
-                // senior
                 // end_morder
                 // event_description
                 // is_completed
@@ -260,6 +268,13 @@ struct EventListView: View {
     // contract
     func contractColumnHeader() -> Text {
         Text("Договор/контракт")
+            .bold()
+            .foregroundStyle(.blue)
+    }
+    
+    // senior
+    func seniorColumnHeader() -> Text {
+        Text("Ответственный\nисполнитель")
             .bold()
             .foregroundStyle(.blue)
     }

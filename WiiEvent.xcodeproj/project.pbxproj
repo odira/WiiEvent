@@ -44,7 +44,6 @@
 		D1D890452CD2C61C0052710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D890442CD2C61C0052710D /* Assets.xcassets */; };
 		D1D890482CD2C61C0052710D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D890472CD2C61C0052710D /* Preview Assets.xcassets */; };
 		D1D8904D2CD2C6540052710D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
-		D1D890532CD2C7340052710D /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = D1D890522CD2C7340052710D /* PostgresClientKit */; };
 		D1D890562CD2C83D0052710D /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D890552CD2C83D0052710D /* EventListView.swift */; };
 		D1D890572CD2CB070052710D /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
 		D1D890582CD2CB300052710D /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
@@ -282,7 +281,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D890532CD2C7340052710D /* PostgresClientKit in Frameworks */,
 				D19132B82D0A09C800AFCCAD /* WiiKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,7 +773,6 @@
 			);
 			name = WiiEventMac;
 			packageProductDependencies = (
-				D1D890522CD2C7340052710D /* PostgresClientKit */,
 			);
 			productName = WiiEventMac;
 			productReference = D1D8903E2CD2C61B0052710D /* WiiEventMac.app */;
@@ -1232,7 +1229,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/codewinsdotcom/PostgresClientKit.git";
 			requirement = {
-				branch = main;
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -1240,11 +1237,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		D1C55A2A2C7E2F0800AB75EC /* PostgresClientKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D1C55A292C7E2F0800AB75EC /* XCRemoteSwiftPackageReference "PostgresClientKit" */;
-			productName = PostgresClientKit;
-		};
-		D1D890522CD2C7340052710D /* PostgresClientKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D1C55A292C7E2F0800AB75EC /* XCRemoteSwiftPackageReference "PostgresClientKit" */;
 			productName = PostgresClientKit;
