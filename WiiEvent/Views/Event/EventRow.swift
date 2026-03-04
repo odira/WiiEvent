@@ -7,11 +7,11 @@ struct EventRow: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            HStack(spacing: 10) {
                 cityView()
                 eventView()
                 dealView()
-                priceView()
+//                priceView()
                 contragentView()
                 seniorView()
             }
@@ -35,7 +35,6 @@ struct EventRow: View {
             
             Spacer()
         }
-        .frame(maxWidth: .infinity)
     }
     
     // event
@@ -61,36 +60,29 @@ struct EventRow: View {
                         Spacer()
                     }
                     
-                    // Deal is planning & not concluded
+                    // Deal is planning
                     if deal.isPlanning {
                         Text(DateFormatter.planningMonth.string(from: deal.startingDate))
-                        
-                        // Deal is concluded
+                            .font(.footnote)
+                     // Deal is concluded
                     } else {
-                        HStack {
-                            Text(deal.typeAbbr)
-                            Text("№ ")
-                            Text(deal.deal ?? "")
-                                .fontWeight(.bold)
-                                .foregroundStyle(.primary)
+                        VStack(alignment: .leading) {
+                            Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startingDate))")
                             
-                            //                            if deals.count > 1 {
-                            //                                Image(systemName: "list.bullet.circle")
-                            //                                    .foregroundColor(.orange)
-                            //                            }
-                        }
-                        
-                        Text(DateFormatter.longDateFormatter.string(from: deal.startingDate))
-                        
-                        // Deal is not completed
-                        if let endingDate = deal.endingDate, !deal.isCompleted {
-                            VStack(alignment: .leading) {
-                                Text(DateFormatter.longDateFormatter.string(from: endingDate))
+                            HStack {
+                                Text("цена договора: ") +
+                                Text((event.limitTotal ?? 0.0), format: .number) +
+                                Text(" ") +
+                                Text("руб.")
+                                    .fontWeight(.heavy)
                             }
+//                            .frame(maxWidth: .infinity, alignment: .trailing)
                         }
+                        .font(.footnote)
                         
                         Spacer()
                     }
+                    
                 } else {
                     EmptyView()
                 }
@@ -101,20 +93,20 @@ struct EventRow: View {
         }
     }
     
-    // price
-    fileprivate func priceView() -> some View {
-        HStack {
-            Group {
-                Text((event.limitTotal ?? 0.0), format: .number) +
-                Text(" ") +
-                Text("руб.")
-                    .fontWeight(.heavy)
-            }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            
-            Spacer()
-        }
-    }
+//    // price
+//    fileprivate func priceView() -> some View {
+//        HStack {
+//            Group {
+//                Text((event.limitTotal ?? 0.0), format: .number) +
+//                Text(" ") +
+//                Text("руб.")
+//                    .fontWeight(.heavy)
+//            }
+//            .frame(maxWidth: .infinity, alignment: .trailing)
+//            
+//            Spacer()
+//        }
+//    }
     
     // contragent
     fileprivate func contragentView() -> some View {
