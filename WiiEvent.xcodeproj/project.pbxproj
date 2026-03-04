@@ -14,6 +14,7 @@
 		D10EEF4E2C3F21F700E200F3 /* SubgroupEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10EEF4D2C3F21F700E200F3 /* SubgroupEventListView.swift */; };
 		D11CAA622CA5D49D00403E82 /* JustificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA612CA5D49D00403E82 /* JustificationView.swift */; };
 		D11CAA652CA5E32700403E82 /* EventLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA642CA5E32700403E82 /* EventLimitView.swift */; };
+		D11E867E2F58B065009BD520 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D890552CD2C83D0052710D /* EventListView.swift */; };
 		D1387D6D2AFFB31600570446 /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
 		D1387D6F2AFFB31600570446 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
 		D1387D712AFFB31800570446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
@@ -54,8 +55,6 @@
 		D1D6F1692B59A8C9007758E1 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F1682B59A8C9007758E1 /* PageView.swift */; };
 		D1D890452CD2C61C0052710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D890442CD2C61C0052710D /* Assets.xcassets */; };
 		D1D890482CD2C61C0052710D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D890472CD2C61C0052710D /* Preview Assets.xcassets */; };
-		D1D8904D2CD2C6540052710D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
-		D1D890562CD2C83D0052710D /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D890552CD2C83D0052710D /* EventListView.swift */; };
 		D1D890572CD2CB070052710D /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
 		D1D890582CD2CB300052710D /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
 		D1D890592CD2CB300052710D /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C32C443B3200D5725E /* History.swift */; };
@@ -981,14 +980,13 @@
 				D1DF9F642D0739B8004E2E96 /* DealModel.swift in Sources */,
 				D1945A132E590FE200843956 /* Info.swift in Sources */,
 				D1DFA15D2D0EE3C2004E2E96 /* EventBadge.swift in Sources */,
+				D11E867E2F58B065009BD520 /* EventListView.swift in Sources */,
 				D1DFA15E2D0EE3C2004E2E96 /* ProfileEditor.swift in Sources */,
 				D16B461F2ECF7DE500F18E4A /* InfoDetails.swift in Sources */,
 				D1DFA15F2D0EE3C2004E2E96 /* ProfileSummary.swift in Sources */,
 				D1D890582CD2CB300052710D /* HistoryModel.swift in Sources */,
 				D1D047C72E252AC6002025C2 /* Plan.swift in Sources */,
 				D1D890592CD2CB300052710D /* History.swift in Sources */,
-				D1D8904D2CD2C6540052710D /* ContentView.swift in Sources */,
-				D1D890562CD2C83D0052710D /* EventListView.swift in Sources */,
 				D1D047CA2E252AD0002025C2 /* PlanModel.swift in Sources */,
 				D1DFA14D2D0EE33C004E2E96 /* HistoryEditView.swift in Sources */,
 				D1DFA14E2D0EE33C004E2E96 /* HistoryAddView.swift in Sources */,
@@ -1139,8 +1137,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1151,7 +1149,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1173,8 +1171,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1185,7 +1183,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

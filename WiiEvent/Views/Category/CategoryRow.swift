@@ -31,8 +31,8 @@ struct CategoryRow: View {
 
 #Preview {
     let events = EventModel.eventExamples
-    return CategoryRow(
-        categoryName: events[0].category.rawValue,
+    CategoryRow(
+        categoryName: events[0].status.rawValue,
         items: Array(events.prefix(3))
     )
 }

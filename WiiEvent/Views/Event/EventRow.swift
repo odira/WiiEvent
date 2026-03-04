@@ -6,15 +6,17 @@ struct EventRow: View {
     let event: Event
     
     var body: some View {
-        HStack {
-            cityView()
-            eventView()
-            dealView()
-            priceView()
-            contragentView()
-            seniorView()
+        VStack(alignment: .leading) {
+            HStack {
+                cityView()
+                eventView()
+                dealView()
+                priceView()
+                contragentView()
+                seniorView()
+            }
+            .padding()
         }
-        .padding()
     }
     
     // city
@@ -31,23 +33,27 @@ struct EventRow: View {
                     .font(.footnote)
             }
             
-//            Spacer()
+            Spacer()
         }
         .frame(maxWidth: .infinity)
     }
     
     // event
     fileprivate func eventView() -> some View {
-        VStack(alignment: .leading) {
-            Text(event.event)
-                .font(.footnote)
-                .bold()
-                .lineLimit(3)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(event.event)
+                    .font(.footnote)
+                    .bold()
+                    .lineLimit(3)
+            }
+            Spacer()
         }
     }
     
     // deal
     fileprivate func dealView() -> some View {
+        HStack {
             VStack(alignment: .leading) {
                 if let deal = dealModel.findDeals(byEventID: event.id)?.first {
                     HStack {
@@ -58,8 +64,8 @@ struct EventRow: View {
                     // Deal is planning & not concluded
                     if deal.isPlanning {
                         Text(DateFormatter.planningMonth.string(from: deal.startingDate))
-                    
-                    // Deal is concluded
+                        
+                        // Deal is concluded
                     } else {
                         HStack {
                             Text(deal.typeAbbr)
@@ -68,10 +74,10 @@ struct EventRow: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.primary)
                             
-//                            if deals.count > 1 {
-//                                Image(systemName: "list.bullet.circle")
-//                                    .foregroundColor(.orange)
-//                            }
+                            //                            if deals.count > 1 {
+                            //                                Image(systemName: "list.bullet.circle")
+                            //                                    .foregroundColor(.orange)
+                            //                            }
                         }
                         
                         Text(DateFormatter.longDateFormatter.string(from: deal.startingDate))
@@ -90,39 +96,54 @@ struct EventRow: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            
+            Spacer()
+        }
     }
     
     // price
     fileprivate func priceView() -> some View {
-        Group {
-            Text((event.limitTotal ?? 0.0), format: .number) +
-            Text(" ") +
-            Text("руб.")
-                .fontWeight(.heavy)
+        HStack {
+            Group {
+                Text((event.limitTotal ?? 0.0), format: .number) +
+                Text(" ") +
+                Text("руб.")
+                    .fontWeight(.heavy)
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            
+            Spacer()
         }
-        .frame(maxWidth: .infinity, alignment: .trailing)
     }
     
     // contragent
     fileprivate func contragentView() -> some View {
-        VStack(alignment: .leading) {
-            if let contragent = event.contragent {
-                Text(contragent)
+        HStack {
+            VStack(alignment: .leading) {
+                if let contragent = event.contragent {
+                    Text(contragent)
+                }
+                if let subcontractor = event.subcontractor {
+                    Text(subcontractor)
+                }
+                EmptyView()
             }
-            if let subcontractor = event.subcontractor {
-                Text(subcontractor)
-            }
-            EmptyView()
+            
+            Spacer()
         }
     }
     
     fileprivate func seniorView() -> some View {
-        VStack {
-            if let senior = event.senior {
-                Text("\(senior)")
-            } else {
-                EmptyView()
+        HStack {
+            VStack {
+                if let senior = event.senior {
+                    Text("\(senior)")
+                } else {
+                    EmptyView()
+                }
             }
+            
+            Spacer()
         }
     }
 }
@@ -141,6 +162,7 @@ struct EventRow: View {
 
 #Preview("Dark Theme", traits: .sizeThatFitsLayout) {
     Group {
+        EventRow(event: Event.example)
         EventRow(event: Event.example)
         EventRow(event: Event.example)
     }

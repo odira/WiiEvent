@@ -184,27 +184,28 @@ public class EventModel: Identifiable, ObservableObject {
     }
 }
 
-
 // MARK: - EventModel Example extension
 
 #if DEBUG
 public extension EventModel {
     
     static let eventExamples: [Event] = [
+        Event.example,
+        Event.example,
         Event.example
     ]
     
     static let example = samples[0]
     static let samples: [EventModel] = [
+        EventModel(events: eventExamples),
+        EventModel(events: eventExamples),
         EventModel(events: eventExamples)
     ]
     
 }
 #endif
 
-
 public extension EventModel {
-    
     func findEventById(_ id: Int) -> Event? {
         let result = events.filter { $0.id == id }
         if result.isEmpty {
