@@ -216,4 +216,15 @@ public extension Event {
                     .stroke(.gray, lineWidth: 1)
             }
     }
+    
+    func isOptionTransparant(for event: Event) -> some View {
+        Text("опцион".uppercased())
+            .font(.system(.caption, design: .monospaced))
+            .foregroundStyle(.cyan)
+            .padding(3)
+            .overlay {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(.cyan, lineWidth: 1)
+            }
+    }
 }

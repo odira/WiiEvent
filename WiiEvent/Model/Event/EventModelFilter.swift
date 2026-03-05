@@ -14,6 +14,7 @@ public class EventModelFilter: ObservableObject {
     @Published public var dealNumber: String = ""
     @Published public var isChanged: Bool = false
     @Published public var isValid: Bool = true
+    @Published public var isOption: Bool = false
     
     @Published public var filteredEvents: [Event] = []
     
@@ -60,7 +61,6 @@ public class EventModelFilter: ObservableObject {
         
         // dealNumber
         if !dealNumber.isEmpty {
-//            print("Deal number " + dealNumber)
 //            if let eventIds = dealModel.findEventIdsByDealNumber(dealNumber) {
 //                self.eventIds = eventIds
 //            }
@@ -69,6 +69,12 @@ public class EventModelFilter: ObservableObject {
         if self.isValid {
             filteredEvents = filteredEvents.filter {
                 $0.isValid == true
+            }
+        }
+        
+        if !self.isOption {
+            filteredEvents = filteredEvents.filter {
+                $0.isOption == false
             }
         }
         

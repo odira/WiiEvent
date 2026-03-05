@@ -84,6 +84,7 @@
 		D1DFA15F2D0EE3C2004E2E96 /* ProfileSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B22B55B2080035478E /* ProfileSummary.swift */; };
 		D1E9B36A2B4C5AB40073768D /* DealTransparant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B3692B4C5AB40073768D /* DealTransparant.swift */; };
 		D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B36D2B4DC9960073768D /* CategoryHome.swift */; };
+		D1ED44282F5A017600015EFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
 		D1FCA2772B1CE54700E2DB42 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
 		D1FCA27F2B1CF43B00E2DB42 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA27E2B1CF43B00E2DB42 /* ModelData.swift */; };
 		D1FCA2842B1CF62900E2DB42 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2832B1CF62900E2DB42 /* EventRow.swift */; };
@@ -987,6 +988,7 @@
 				D1D890582CD2CB300052710D /* HistoryModel.swift in Sources */,
 				D1D047C72E252AC6002025C2 /* Plan.swift in Sources */,
 				D1D890592CD2CB300052710D /* History.swift in Sources */,
+				D1ED44282F5A017600015EFF /* ContentView.swift in Sources */,
 				D1D047CA2E252AD0002025C2 /* PlanModel.swift in Sources */,
 				D1DFA14D2D0EE33C004E2E96 /* HistoryEditView.swift in Sources */,
 				D1DFA14E2D0EE33C004E2E96 /* HistoryAddView.swift in Sources */,

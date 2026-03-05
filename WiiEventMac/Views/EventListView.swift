@@ -33,10 +33,13 @@ struct EventListView: View {
                 TableColumn(eventColumnHeader()) { event in
                     VStack(alignment: .leading) {
                         HStack {
+                            event.statusTransparant(for: event)
                             if let plan = planModel.findPlanByID(id: event.planId) {
                                 plan.transparant(for: plan)
                             }
-                            event.statusTransparant(for: event)
+                            if event.isOption {
+                                event.isOptionTransparant(for: event)
+                            }
                             Spacer()
                         }
                         
@@ -192,6 +195,7 @@ struct EventListView: View {
             HStack {
                 Button("Reload") {
                     Task { await eventModel.reload() }
+                    eventModelFilter.reset()
                 }
                 .keyboardShortcut("r", modifiers: [.command])
                 

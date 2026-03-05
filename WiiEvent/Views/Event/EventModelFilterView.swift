@@ -30,6 +30,7 @@ struct EventModelFilterView: View {
             dealStatusBlock().padding()
             dealIdBlock().padding()
             eventIsValidBlock().padding()
+            showIsOptionBlock().padding()
         
             HStack {
                 Spacer()
@@ -53,7 +54,6 @@ struct EventModelFilterView: View {
     }
     
     private func update() {
-//        eventModel.events = eventModelFilter.filterEvents(eventModel.events)
         eventModelFilter.filteredEvents = eventModelFilter.filterEvents(eventModel.events)
     }
 }
@@ -151,6 +151,20 @@ extension EventModelFilterView {
                 }
                 .pickerStyle(.segmented)
                 Text("Current value: \(eventModelFilter.isValid.description)")
+                Spacer()
+            }
+        }
+    }
+    
+    private func showIsOptionBlock() -> some View {
+        VStack(alignment: .leading) {
+            Label("Показывать опцион", systemImage: "bookmark")
+            HStack {
+                Picker("", selection: $eventModelFilter.isOption) {
+                    Text("Все").tag(true)
+                    Text("Исключая опцион").tag(false)
+                }
+                .pickerStyle(.segmented)
                 Spacer()
             }
         }
