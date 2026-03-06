@@ -23,19 +23,21 @@ struct EventDetails: View {
             if let event = eventModel.findEventById(id) {
                 VStack {
                     Form {
-                        VStack(alignment: .center) {
-                            HStack(alignment: .center) {
-                                Spacer()
-                                CircleImage(image: event.image)
-                                Spacer()
+                        ZStack {
+                            VStack(alignment: .center) {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    CircleImage(image: event.image)
+                                    Spacer()
+                                }
+                                
+                                Text(event.event)
+                                    .bold()
+                                    .multilineTextAlignment(.center)
+                                    .padding()
                             }
-                            
-                            Text(event.event)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                                .padding()
-                            
-                            HStack {
+                                
+                            VStack {
                                 Button("Описание") {
                                     isPresentedDescriptionSheet.toggle()
                                 }
@@ -63,11 +65,6 @@ struct EventDetails: View {
                                 }
                                 #if os(iOS)
                                 .sheet(isPresented: $isPresentedHistorySheet) {
-//                                    #if os(macOS)
-//                                    HistoryDetailView(eventId: id)
-//                                        .presentationDetents([.large])
-//                                        .presentationDragIndicator(.visible)
-//                                    #endif
                                 }
                                 #endif
                                 
@@ -78,15 +75,11 @@ struct EventDetails: View {
                                     openWindow(id: "event-info", value: id)
                                     #endif
                                 }
-//                                .sheet(isPresented: $isPresentedJustificationSheet) {
-//                                    JustificationView(for: event.justification)
-//                                        .presentationDetents([.large])
-//                                        .presentationDragIndicator(.visible)
-//                                }
+                                
+                                Spacer()
                             }
                             .buttonStyle(.borderedProminent)
                         }
-                        .listRowBackground(Color.clear)
                         
                         Section("Реквизиты договора/контракта") {
                             LabeledContent("Дата заключения", value: "N/A")
@@ -217,4 +210,10 @@ struct EventDetails: View {
         .frame(width: 600, height: 800)
         .environmentObject(EventModel.example )
         .environmentObject(HistoryModel.example)
+}
+
+struct ButtonBlockView: View {
+    var body: some View {
+        Text("Hello, World!")
+    }
 }
