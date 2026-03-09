@@ -142,31 +142,22 @@ extension EventModelFilterView {
     }
     
     private func eventIsValidBlock() -> some View {
-        VStack(alignment: .leading) {
-            Label("Мероприятие валидно", systemImage: "trash")
-            HStack {
-                Picker("", selection: $eventModelFilter.isValid) {
-                    Text("Valid").tag(true)
-                    Text("All").tag(false)
-                }
-                .pickerStyle(.segmented)
-                Text("Current value: \(eventModelFilter.isValid.description)")
-                Spacer()
+        HStack {
+            Toggle(isOn: $eventModelFilter.isValid) {
+                Text("Показывать только валидные")
             }
+            .toggleStyle(.checkbox)
+            Spacer()
         }
     }
     
     private func showIsOptionBlock() -> some View {
-        VStack(alignment: .leading) {
-            Label("Показывать опцион", systemImage: "bookmark")
-            HStack {
-                Picker("", selection: $eventModelFilter.isOption) {
-                    Text("Все").tag(true)
-                    Text("Исключая опцион").tag(false)
-                }
-                .pickerStyle(.segmented)
-                Spacer()
+        HStack {
+            Toggle(isOn: $eventModelFilter.isOption) {
+                Text("Показывать опцион")
             }
+            .toggleStyle(.checkbox)
+            Spacer()
         }
     }
 }

@@ -66,9 +66,12 @@ public class EventModelFilter: ObservableObject {
 //            }
         }
         
-        if self.isValid {
-            filteredEvents = filteredEvents.filter {
+
+        filteredEvents = filteredEvents.filter {
+            if self.isValid {
                 $0.isValid == true
+            } else {
+                $0.isValid == true || $0.isValid == false
             }
         }
         
