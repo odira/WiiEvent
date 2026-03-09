@@ -29,23 +29,25 @@ struct EventListView: View {
                 placement: .navigationBarDrawer,
                 prompt: "Поиск по городу..."
             )
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        showSearchSheet.toggle()
+                    }, label: {
+                        Label("Search", systemImage: "magnifyingglass")
+                            .labelStyle(.iconOnly)
+                    })
+                    .sheet(isPresented: $showSearchSheet) {
+    //                    FiltersView()
+//                        Text("Filter")
+                        EventModelFilterView()
+                    }
+                }
+            } // toolbar
         }
         .onAppear {
             eventModelFilter.filteredEvents = eventModel.events
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    showSearchSheet.toggle()
-                }, label: {
-                    Label("Search", systemImage: "magnifyingglass")
-                        .labelStyle(.iconOnly)
-                })
-                .sheet(isPresented: $showSearchSheet) {
-//                    FiltersView()
-                }
-            }
-        } // toolbar
             
     } // body
 }

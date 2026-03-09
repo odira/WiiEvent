@@ -146,7 +146,7 @@ extension EventModelFilterView {
             Toggle(isOn: $eventModelFilter.isValid) {
                 Text("Показывать только валидные")
             }
-            .toggleStyle(.checkbox)
+//            .toggleStyle(.)
             Spacer()
         }
     }
@@ -156,7 +156,7 @@ extension EventModelFilterView {
             Toggle(isOn: $eventModelFilter.isOption) {
                 Text("Показывать опцион")
             }
-            .toggleStyle(.checkbox)
+//            .toggleStyle(.checkbox)
             Spacer()
         }
     }

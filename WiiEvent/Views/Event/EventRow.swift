@@ -30,7 +30,7 @@ struct EventRow: View {
                 Text(event.city ?? "")
                     .lineLimit(1)
                     .foregroundStyle(.secondary)
-                    .font(.footnote)
+//                    .font(.footnote)
             }
             
             Spacer()
@@ -42,7 +42,7 @@ struct EventRow: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(event.event)
-                    .font(.footnote)
+//                    .font(.footnote)
                     .bold()
                     .lineLimit(3)
             }
@@ -78,7 +78,7 @@ struct EventRow: View {
                             }
 //                            .frame(maxWidth: .infinity, alignment: .trailing)
                         }
-                        .font(.footnote)
+//                        .font(.footnote)
                         
                         Spacer()
                     }
