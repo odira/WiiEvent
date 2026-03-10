@@ -2,6 +2,7 @@ import SwiftUI
 
 struct EventRow: View {
     @EnvironmentObject private var dealModel: DealModel
+    @EnvironmentObject var planModel: PlanModel
     
     let event: Event
     
@@ -11,7 +12,6 @@ struct EventRow: View {
                 cityView()
                 eventView()
                 dealView()
-//                priceView()
                 contragentView()
                 seniorView()
             }
@@ -27,32 +27,43 @@ struct EventRow: View {
                 .frame(width: 50, height: 50)
             
             VStack(alignment: .leading) {
-                Text(event.city ?? "")
-                    .lineLimit(1)
+                Text("Аэронавигация Северо-Восточной Сибири")
+                    .lineLimit(2)
                     .foregroundStyle(.secondary)
-//                    .font(.footnote)
+                Text(event.city ?? "")
+                    .lineLimit(3)
             }
+            .font(.footnote)
             
             Spacer()
         }
     }
     
-    // event
+    // Event
     fileprivate func eventView() -> some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading) {
+                HStack {
+                    event.statusTransparant(for: event)
+                    if let plan = planModel.findPlanByID(id: event.planId) {
+                        plan.transparant(for: plan)
+                    }
+                    if event.isOption {
+                        event.isOptionTransparant(for: event)
+                    }
+                }
                 Text(event.event)
-//                    .font(.footnote)
                     .bold()
-                    .lineLimit(3)
+                    .lineLimit(5)
+                Spacer()
             }
             Spacer()
         }
     }
     
-    // deal
+    // Deal
     fileprivate func dealView() -> some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 if let deal = dealModel.findDeals(byEventID: event.id)?.first {
                     HStack {
@@ -60,25 +71,16 @@ struct EventRow: View {
                         Spacer()
                     }
                     
-                    // Deal is planning
+                    /// Deal is planning
                     if deal.isPlanning {
                         Text(DateFormatter.planningMonth.string(from: deal.startingDate))
                             .font(.footnote)
-                     // Deal is concluded
+                     /// Deal is concluded
                     } else {
                         VStack(alignment: .leading) {
                             Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startingDate))")
-                            
-                            HStack {
-                                Text("цена договора: ") +
-                                Text((event.limitTotal ?? 0.0), format: .number) +
-                                Text(" ") +
-                                Text("руб.")
-                                    .fontWeight(.heavy)
-                            }
-//                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            Text("\((event.limitTotal ?? 0.0), format: .number) руб.")
                         }
-//                        .font(.footnote)
                         
                         Spacer()
                     }
@@ -92,21 +94,6 @@ struct EventRow: View {
             Spacer()
         }
     }
-    
-//    // price
-//    fileprivate func priceView() -> some View {
-//        HStack {
-//            Group {
-//                Text((event.limitTotal ?? 0.0), format: .number) +
-//                Text(" ") +
-//                Text("руб.")
-//                    .fontWeight(.heavy)
-//            }
-//            .frame(maxWidth: .infinity, alignment: .trailing)
-//            
-//            Spacer()
-//        }
-//    }
     
     // contragent
     fileprivate func contragentView() -> some View {
@@ -147,9 +134,11 @@ struct EventRow: View {
     Group {
         EventRow(event: Event.example)
         EventRow(event: Event.example)
+        EventRow(event: Event.example)
     }
     .preferredColorScheme(.light)
     .environmentObject(DealModel.example)
+    .environmentObject(PlanModel.example)
 }
 
 #Preview("Dark Theme", traits: .sizeThatFitsLayout) {
@@ -159,4 +148,6 @@ struct EventRow: View {
         EventRow(event: Event.example)
     }
     .preferredColorScheme(.dark)
+    .environmentObject(DealModel.example)
+    .environmentObject(PlanModel.example)
 }

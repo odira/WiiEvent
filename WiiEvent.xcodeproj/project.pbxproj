@@ -681,6 +681,14 @@
 			path = PageView;
 			sourceTree = "<group>";
 		};
+		D1D77E6E2F60ABAC006619FA /* EventRow */ = {
+			isa = PBXGroup;
+			children = (
+				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
+			);
+			path = EventRow;
+			sourceTree = "<group>";
+		};
 		D1D8903F2CD2C61B0052710D /* WiiEventMac */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +747,7 @@
 		D1E9B36C2B4C5F6F0073768D /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				D1D77E6E2F60ABAC006619FA /* EventRow */,
 				D1945A1B2E5E2BA700843956 /* InfoHelper */,
 				D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */,
 				D1E9B36B2B4C5F5D0073768D /* EventHelper */,
@@ -746,7 +755,6 @@
 				D11CAA642CA5E32700403E82 /* EventLimitView.swift */,
 				D10215E32CF90C140075631B /* DescriptionView.swift */,
 				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
-				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
 				D1D047C02E203E5A002025C2 /* EventModelFilterView.swift */,
 				D1A7306F2B383B49003A3A49 /* EventDetails.swift */,
 			);
@@ -1140,7 +1148,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1174,7 +1181,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -15,6 +15,13 @@ struct ContentView: View {
                 // SubgroupHomeView()
                 Text("Not developed")
             }
+            Tab {
+                EventModelFilterView()
+            } label: {
+                Label("Find", systemImage: "magnifyingglass")
+                    .labelStyle(.iconOnly)
+            }
+            
         }
     }
 }

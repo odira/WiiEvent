@@ -2,7 +2,8 @@ import SwiftUI
 
 struct EventListView: View {
     @EnvironmentObject var eventModel: EventModel
-//    @EnvironmentObject var dealModel: DealModel
+    @EnvironmentObject var dealModel: DealModel
+    @EnvironmentObject var planModel: PlanModel
     @EnvironmentObject var eventModelFilter: EventModelFilter
     
     @State private var searchableText = ""
@@ -23,12 +24,14 @@ struct EventListView: View {
             }
             .listStyle(.grouped)
             .listRowSpacing(0)
-//            .animation(.default, value: filteredEvents)
             .searchable(
                 text: $searchableText,  
                 placement: .navigationBarDrawer,
                 prompt: "Поиск по городу..."
             )
+            .refreshable {
+//                Task { await eventModel.reload() }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
@@ -38,12 +41,20 @@ struct EventListView: View {
                             .labelStyle(.iconOnly)
                     })
                     .sheet(isPresented: $showSearchSheet) {
-    //                    FiltersView()
-//                        Text("Filter")
                         EventModelFilterView()
                     }
                 }
-            } // toolbar
+                
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    Button(action: {
+//                        Task { await eventModel.reload() }
+////                        eventModelFilter.reset()
+//                    }, label: {
+//                        Label("Reload", systemImage: "goforward")
+//                            .labelStyle(.iconOnly)
+//                    })
+//                }
+            }
         }
         .onAppear {
             eventModelFilter.filteredEvents = eventModel.events
@@ -57,5 +68,6 @@ struct EventListView: View {
     EventListView()
         .environmentObject(EventModel.example)
         .environmentObject(DealModel.example)
+        .environmentObject(PlanModel.example)
         .environmentObject(EventModelFilter.shared)
 }
