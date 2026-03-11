@@ -6,7 +6,6 @@ import SwiftUI
 
 @main
 struct WiiEventApp: App {
-    // models
     @StateObject var eventModel = EventModel()
     @StateObject var historyModel = HistoryModel()
     @StateObject var dealModel = DealModel()
@@ -15,14 +14,11 @@ struct WiiEventApp: App {
     @StateObject var eventModelFilter = EventModelFilter()
     
     var body: some Scene {
-        
-        // SplashView & ContentView
         WindowGroup {
             ZStack {
                 if eventModel.isFetching {
                     SplashView()
                 } else {
-                    
                      ContentView()
                         .environmentObject(eventModel)
                         .environmentObject(historyModel)
@@ -40,7 +36,6 @@ struct WiiEventApp: App {
                 await infoModel.fetch()
             }
         }
-        .defaultSize(CGSize(width: 1200, height: 800))
         
         #if os(macOS)
         

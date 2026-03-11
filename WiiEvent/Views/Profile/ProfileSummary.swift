@@ -13,7 +13,7 @@ struct ProfileSummary: View {
                 
                 Text("Notifications: \(profile.prefersNotifications ? "On" : "Off")")
                 Text("Phase Photos: \(profile.phasePhoto.rawValue)")
-                Text("Goal Date: ") + Text(profile.goalDate, style: .date)
+                Text("Goal Date: \(profile.goalDate, style: .date)")
                 
                 Divider()
                 

@@ -13,7 +13,7 @@ public class EventModel: Identifiable, ObservableObject {
     static let shared = EventModel()
     
     // INITIALIZATION
-    
+    //
     init() {
         self.events = []
     }
@@ -24,13 +24,13 @@ public class EventModel: Identifiable, ObservableObject {
     }
     
     // DEINITIALIZATION
-    
+    //
     deinit {
         self.events.removeAll()
     }
     
     // OTHER
-    
+    //
     func reload() async {
         self.events.removeAll()
         await self.fetch()

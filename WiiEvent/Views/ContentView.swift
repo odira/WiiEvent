@@ -8,11 +8,9 @@ struct ContentView: View {
                 EventListView()
             }
             Tab("Категория", systemImage: "star") {
-                // CategoryHome()
                 Text("Not developed")
             }
             Tab("Группа", systemImage: "rectangle.3.group.fill") {
-                // SubgroupHomeView()
                 Text("Not developed")
             }
             Tab {
@@ -20,8 +18,7 @@ struct ContentView: View {
             } label: {
                 Label("Find", systemImage: "magnifyingglass")
                     .labelStyle(.iconOnly)
-            }
-            
+            }   
         }
     }
 }
@@ -29,9 +26,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(EventModel())
-//        .environmentObject(HistoryModel())
-//        .environmentObject(DealModel())
-//        .environmentObject(PlanModel())
-//        .environmentObject(InfoModel())
         .environmentObject(EventModelFilter())
 }
