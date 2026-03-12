@@ -195,7 +195,7 @@ struct EventListView: View {
             HStack {
                 Button("Reload") {
 //                    @MainActor
-                    Task { await eventModel.reload()
+                    Task { await eventModel.reload() }
 //                        .receive(on: DispatchQueue.main)}
                         
 //                        .result { print($0) }

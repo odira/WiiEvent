@@ -29,7 +29,10 @@ struct EventListView: View {
                     prompt: "Поиск по городу..."
                 )
                 .refreshable {
-
+//                    Task {
+//                        await eventModel.reload()
+//                    }
+                    eventModelFilter.filteredEvents = eventModel.events
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -44,9 +47,6 @@ struct EventListView: View {
                         }
                     }
                 }
-            }
-            .onAppear {
-                eventModelFilter.filteredEvents = eventModel.events
             }
         }
             

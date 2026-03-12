@@ -7,8 +7,9 @@ import SwiftData
 // MARK: - DEFINITION
 
 public class EventModel: Identifiable, ObservableObject {
-    @Published public var events = [Event]()
     @Published public var isFetching: Bool = true
+    @Published public var events = [Event]()
+    @Published public var filteredEvents: [Event] = []
     
     static let shared = EventModel()
     
@@ -31,6 +32,7 @@ public class EventModel: Identifiable, ObservableObject {
     
     // OTHER
     //
+    @MainActor
     func reload() async {
         self.events.removeAll()
         await self.fetch()
