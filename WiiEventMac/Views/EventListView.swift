@@ -194,8 +194,12 @@ struct EventListView: View {
             
             HStack {
                 Button("Reload") {
-                    Task { await eventModel.reload() }
-                    eventModelFilter.reset()
+//                    @MainActor
+                    Task { await eventModel.reload()
+//                        .receive(on: DispatchQueue.main)}
+                        
+//                        .result { print($0) }
+//                    eventModelFilter.reset()
                 }
                 .keyboardShortcut("r", modifiers: [.command])
                 
