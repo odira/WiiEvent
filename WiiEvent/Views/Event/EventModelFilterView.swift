@@ -36,6 +36,7 @@ struct EventModelFilterView: View {
                 Spacer()
                 Button("Search") {
                     update()
+                    print("SEARCH")
                 }
                 Button("Done") {
                     update()

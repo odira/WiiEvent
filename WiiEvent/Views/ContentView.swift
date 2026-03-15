@@ -22,9 +22,9 @@ struct ContentView: View {
                     .labelStyle(.iconOnly)
             }   
         }
-        .onAppear {
-            eventModelFilter.filteredEvents = eventModel.events
-        }
+//        .onAppear {
+//            eventModelFilter.filteredEvents = eventModel.events
+//        }
     }
 }
 

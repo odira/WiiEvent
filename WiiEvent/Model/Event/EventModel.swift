@@ -11,6 +11,8 @@ public class EventModel: Identifiable, ObservableObject {
     @Published public var events = [Event]()
     @Published public var filteredEvents: [Event] = []
     
+    @Published public var filter = EventModelFilter()
+    
     static let shared = EventModel()
     
     // INITIALIZATION

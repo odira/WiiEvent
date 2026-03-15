@@ -12,44 +12,41 @@ struct EventListView: View {
     @State private var showCompletedOnly = false
 
     var body: some View {
-        VStack {
-            NavigationStack {
-                List {
-                    ForEach(eventModelFilter.filteredEvents) { event in
-                        NavigationLink(destination: EventDetails(id: event.id)) {
-                            EventRow(event: event)
-                        }
-                    }
-                }
-                .listStyle(.grouped)
-                .listRowSpacing(0)
-                .searchable(
-                    text: $searchableText,
-                    placement: .navigationBarDrawer,
-                    prompt: "Поиск по городу..."
-                )
-                .refreshable {
-//                    Task {
-//                        await eventModel.reload()
-//                    }
-                    eventModelFilter.filteredEvents = eventModel.events
-                }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: {
-                            showSearchSheet.toggle()
-                        }, label: {
-                            Label("Search", systemImage: "magnifyingglass")
-                                .labelStyle(.iconOnly)
-                        })
-                        .sheet(isPresented: $showSearchSheet) {
-                            EventModelFilterView()
-                        }
+        NavigationStack {
+            List {
+                ForEach(eventModelFilter.filteredEvents) { event in
+                    NavigationLink(destination: EventDetails(id: event.id)) {
+                        EventRow(event: event)
                     }
                 }
             }
+            .listStyle(.grouped)
+            .listRowSpacing(0)
+            .searchable(
+                text: $searchableText,
+                placement: .navigationBarDrawer,
+                prompt: "Поиск по городу..."
+            )
+            .refreshable {
+                eventModelFilter.filteredEvents = eventModel.events
+            }
+//            .toolbar {
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    Button(action: {
+//                        showSearchSheet.toggle()
+//                    }, label: {
+//                        Label("Search", systemImage: "magnifyingglass")
+//                            .labelStyle(.iconOnly)
+//                    })
+//                    .sheet(isPresented: $showSearchSheet) {
+//                        EventModelFilterView()
+//                    }
+//                }
+//            }
         }
-            
+        .onAppear {
+            eventModelFilter.filteredEvents = eventModelFilter.filterEvents(eventModel.events)
+        }
     } // body
 }
 
