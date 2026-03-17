@@ -16,7 +16,7 @@ struct EventListView: View {
             List {
                 ForEach(eventModelFilter.filteredEvents) { event in
                     NavigationLink(destination: EventDetails(id: event.id)) {
-                        EventRow(event: event)
+                        EventRow(for: event)
                     }
                 }
             }

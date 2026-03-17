@@ -6,6 +6,10 @@ struct EventRow: View {
     
     let event: Event
     
+    init(for event: Event) {
+        self.event = event
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 10) {
@@ -132,9 +136,9 @@ struct EventRow: View {
 
 #Preview("Light Theme", traits: .sizeThatFitsLayout) {
     Group {
-        EventRow(event: Event.example)
-        EventRow(event: Event.example)
-        EventRow(event: Event.example)
+        EventRow(for: Event.example)
+        EventRow(for: Event.example)
+        EventRow(for: Event.example)
     }
     .preferredColorScheme(.light)
     .environmentObject(DealModel.example)
@@ -143,9 +147,9 @@ struct EventRow: View {
 
 #Preview("Dark Theme", traits: .sizeThatFitsLayout) {
     Group {
-        EventRow(event: Event.example)
-        EventRow(event: Event.example)
-        EventRow(event: Event.example)
+        EventRow(for: Event.example)
+        EventRow(for: Event.example)
+        EventRow(for: Event.example)
     }
     .preferredColorScheme(.dark)
     .environmentObject(DealModel.example)

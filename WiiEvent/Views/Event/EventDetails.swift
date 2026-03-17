@@ -6,20 +6,21 @@ struct EventDetails: View {
     
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var historyModel: HistoryModel
-    
-    @State private var isPresentedJustificationSheet: Bool = false
+
     @State private var isPresentedDescriptionSheet: Bool = false
+    @State private var isPresentedJustificationSheet: Bool = false
     @State private var isPresentedHistorySheet: Bool = false
     @State private var isPresentedInfoSheet: Bool = false
     @State private var isPresentedMenu: Bool = false
+    
+//    @State private var path: [String] = []
     
     let id: Int
 
     // MARK: - body
     
     var body: some View {
-        NavigationStack {
-            
+        VStack {
             if let event = eventModel.findEventById(id) {
                 VStack {
                     Form {
@@ -36,49 +37,52 @@ struct EventDetails: View {
                                     .multilineTextAlignment(.center)
                                     .padding()
                             }
-                                
-                            VStack {
-                                Button("Описание") {
-                                    isPresentedDescriptionSheet.toggle()
-                                }
-                                .sheet(isPresented: $isPresentedDescriptionSheet) {
-                                    DescriptionView(for: event.description)
-                                        .presentationDetents([.large])
-                                        .presentationDragIndicator(.visible)
-                                }
-                                
-                                Button("Обоснование") {
-                                    isPresentedJustificationSheet.toggle()
-                                }
-                                .sheet(isPresented: $isPresentedJustificationSheet) {
-                                    JustificationView(for: event.justification)
-                                        .presentationDetents([.large])
-                                        .presentationDragIndicator(.visible)
-                                }
-                                
-                                Button("Исполнение") {
-                                    isPresentedHistorySheet.toggle()
-                                    
-                                    #if os(macOS)
-                                    openWindow(id: "event-history-details", value: id)
-                                    #endif
-                                }
-                                #if os(iOS)
-                                .sheet(isPresented: $isPresentedHistorySheet) {
-                                }
-                                #endif
-                                
-                                Button("Справка") {
-                                    isPresentedInfoSheet.toggle()
-                                    
-                                    #if os(macOS)
-                                    openWindow(id: "event-info", value: id)
-                                    #endif
-                                }
-                                
+                            
+                            HStack {
                                 Spacer()
+                                VStack(alignment: .trailing) {
+                                    Button("Описание") {
+                                        isPresentedDescriptionSheet.toggle()
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .sheet(isPresented: $isPresentedDescriptionSheet) {
+                                        DescriptionView(for: event.description)
+                                            .presentationDetents([.large])
+                                            .presentationDragIndicator(.visible)
+                                    }
+                                    
+                                    Button("Обоснование") {
+                                        isPresentedJustificationSheet.toggle()
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .sheet(isPresented: $isPresentedJustificationSheet) {
+                                        JustificationView(for: event.justification)
+                                            .presentationDetents([.large])
+                                            .presentationDragIndicator(.visible)
+                                    }
+
+                                    Button("Исполнение") {
+                                        isPresentedHistorySheet.toggle()
+#if os(macOS)
+                                        openWindow(id: "event-history-details", value: id)
+#endif
+                                    }
+#if os(iOS)
+                                    .sheet(isPresented: $isPresentedHistorySheet) {
+                                    }
+#endif
+
+                                    Button("Справка") {
+                                        isPresentedInfoSheet.toggle()
+#if os(macOS)
+                                        openWindow(id: "event-info", value: id)
+#endif
+                                    }
+                                    
+                                    Spacer()
+                                }
                             }
-                            .buttonStyle(.borderedProminent)
+                            
                         }
                         
                         Section("Реквизиты договора/контракта") {
@@ -89,7 +93,7 @@ struct EventDetails: View {
                         Section("Исполнение договора") {
                             LabeledContent("Год реализации", value: event.years ?? "")
                             LabeledContent("Ответственный исполнитель", value: event.senior ?? "")
-//                            LabeledContent("Номер позиции в Плане закупок", value: event.numberPZ ?? 0, format: .number)
+                            //                            LabeledContent("Номер позиции в Плане закупок", value: event.numberPZ ?? 0, format: .number)
                         }
                         
                         Section("Стоимость мероприятия") {
@@ -120,24 +124,24 @@ struct EventDetails: View {
                 .font(.callout)
                 
                 // Toolbar
-//                #if os(iOS)
-//                .toolbar {
-//                    ToolbarItemGroup {
-//                        Button  {
-//                            isPresentedMenu.toggle()
-//                        } label: {
-//                            HStack {
-//                                Image(systemName: "list.bullet.circle")
-//                                Text("Menu")
-//                            }
-//                        }
-//                        .buttonStyle(.borderedProminent)
-//                        .controlSize(.regular)
-//                    }
-//                } // .toolbar
-//                #endif
+                //                #if os(iOS)
+                //                .toolbar {
+                //                    ToolbarItemGroup {
+                //                        Button  {
+                //                            isPresentedMenu.toggle()
+                //                        } label: {
+                //                            HStack {
+                //                                Image(systemName: "list.bullet.circle")
+                //                                Text("Menu")
+                //                            }
+                //                        }
+                //                        .buttonStyle(.borderedProminent)
+                //                        .controlSize(.regular)
+                //                    }
+                //                } // .toolbar
+                //                #endif
                 
-                #if os(macOS)
+#if os(macOS)
                 HStack {
                     Spacer()
                     Button("Done") {
@@ -146,62 +150,10 @@ struct EventDetails: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
-                #endif
+#endif
                 
             }
-        } // NavigationStack
-        
-//        // ОБОСНОВАНИЕ
-//        .fullScreenCover(isPresented: $isPresentedJustificationSheet) {
-//            NavigationStack {
-//                VStack {
-//                    Text("Обоснование выполнения мероприятия")
-//                        .font(.title)
-//                        .multilineTextAlignment(.center)
-//                        .bold()
-//                    Text(event.justification ?? "")
-//                        .font(.subheadline)
-//                    Spacer()
-//                }
-//                .toolbar {
-//                    ToolbarItem(placement: .destructiveAction) {
-//                        Button("Close") {
-//                            isPresentedJustificationSheet.toggle()
-//                        }
-//                    }
-//                }
-//            }
-//            .presentationSizing(.page)
-//        }
-        
-        #if os(iOS)
-        // ИСПОЛНЕНИЕ
-        .fullScreenCover(isPresented: $isPresentedHistorySheet) {
-            #if os(macOS)
-            HistoryDetailView(eventId: event.id)
-                .presentationSizing(.page)
-            #endif
         }
-        #endif
-        
-//        #if os(iOS)
-        // MENU
-        .confirmationDialog("Menu", isPresented: $isPresentedMenu, titleVisibility: .hidden) {
-//        .sheet(isPresented: $isPresentedMenu) {
-            VStack {
-                Button("Исполнение") {
-                    isPresentedHistorySheet.toggle()
-                }
-                .frame(maxWidth: .infinity)
-                Button("Календарный план") {
-                    
-                }
-                .frame(maxWidth: .infinity)
-//                Button("Close", role: .cancel) { }
-            }
-            .buttonStyle(.borderedProminent)
-        }
-//        #endif
     }
 }
 

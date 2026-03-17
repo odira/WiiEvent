@@ -55,7 +55,7 @@ struct SubgroupEventListView: View {
                             EventDetail(id: event.id)
                             #endif
                         } label: {
-                            EventRow(event: event)
+                            EventRow(for: event)
                         }
                     }
                     

@@ -116,11 +116,8 @@ struct EventListView: View {
                 
                     // price
                     TableColumn(Text("Стоимость мероприятия, ₽ (руб)").bold().foregroundStyle(.blue)) { event in
-                        Group {
-                            Text((event.limitTotal ?? 0.0), format: .number) +
-                            Text(" ")                                   +
-                            Text("₽").fontWeight(.heavy)
-                        }.frame(maxWidth: .infinity, alignment: .trailing)
+                        Text("\((event.limitTotal ?? 0.0), format: .number) ₽")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .width(ideal: 50)
                     
