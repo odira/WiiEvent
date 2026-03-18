@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HistoryRow: View {
+struct HistoryListRowView: View {
     @Environment(\.openWindow) private var openWindow
     @EnvironmentObject var historyModel: HistoryModel
 
@@ -87,7 +87,7 @@ struct HistoryRow: View {
 }
 
 #Preview {
-    HistoryRow(history: History.example)
+    HistoryListRowView(history: History.example)
         .environmentObject(EventModel())
         .environmentObject(HistoryModel())
 }

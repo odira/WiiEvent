@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HistoryList: View {
+struct HistoryListView: View {
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismiss) var dismiss
     
@@ -25,6 +25,10 @@ struct HistoryList: View {
     
     let eventId: Int
     
+    init(for event: Event) {
+        self.eventId = event.id
+    }
+    
     // MARK: - body
 
     var body: some View {
@@ -35,7 +39,7 @@ struct HistoryList: View {
                     
                     VStack {
                         List(histories) { history in
-                            HistoryRow(history: history)
+                            HistoryListRowView(history: history)
                                 .listRowSeparator(.hidden)
                                 .listRowInsets(.init())
                                 #if os(iOS)
@@ -119,7 +123,7 @@ struct HistoryList: View {
 }
 
 #Preview {
-    HistoryList(eventId: Event.example.id)
+    HistoryListView(for: Event.example)
         .environmentObject(EventModel.example)
         .environmentObject(HistoryModel.example)
         #if os(macOS)

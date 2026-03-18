@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct EventDetails: View {
+struct EventDetailsView: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismiss) private var dismiss
     
@@ -40,11 +40,10 @@ struct EventDetails: View {
                             
                             HStack {
                                 Spacer()
-                                VStack(alignment: .trailing) {
+                                VStack(alignment: .center) {
                                     Button("Описание") {
                                         isPresentedDescriptionSheet.toggle()
                                     }
-                                    .buttonStyle(.borderedProminent)
                                     .sheet(isPresented: $isPresentedDescriptionSheet) {
                                         DescriptionView(for: event.description)
                                             .presentationDetents([.large])
@@ -54,7 +53,6 @@ struct EventDetails: View {
                                     Button("Обоснование") {
                                         isPresentedJustificationSheet.toggle()
                                     }
-                                    .buttonStyle(.borderedProminent)
                                     .sheet(isPresented: $isPresentedJustificationSheet) {
                                         JustificationView(for: event.justification)
                                             .presentationDetents([.large])
@@ -63,24 +61,31 @@ struct EventDetails: View {
 
                                     Button("Исполнение") {
                                         isPresentedHistorySheet.toggle()
-#if os(macOS)
+                                        #if os(macOS)
                                         openWindow(id: "event-history-details", value: id)
-#endif
+                                        #endif
                                     }
-#if os(iOS)
                                     .sheet(isPresented: $isPresentedHistorySheet) {
+                                        HistoryListView(for: event)
+                                            .presentationDetents([.large])
+                                            .presentationDragIndicator(.visible)
                                     }
-#endif
 
                                     Button("Справка") {
                                         isPresentedInfoSheet.toggle()
-#if os(macOS)
+                                        #if os(macOS)
                                         openWindow(id: "event-info", value: id)
-#endif
+                                        #endif
+                                    }
+                                    .sheet(isPresented: $isPresentedInfoSheet) {
+                                        InfoListView(for: event)
+                                            .presentationDetents([.large])
+                                            .presentationDragIndicator(.visible)
                                     }
                                     
                                     Spacer()
                                 }
+                                .buttonStyle(.borderedProminent)
                             }
                             
                         }
@@ -93,7 +98,6 @@ struct EventDetails: View {
                         Section("Исполнение договора") {
                             LabeledContent("Год реализации", value: event.years ?? "")
                             LabeledContent("Ответственный исполнитель", value: event.senior ?? "")
-                            //                            LabeledContent("Номер позиции в Плане закупок", value: event.numberPZ ?? 0, format: .number)
                         }
                         
                         Section("Стоимость мероприятия") {
@@ -123,25 +127,7 @@ struct EventDetails: View {
                 }
                 .font(.callout)
                 
-                // Toolbar
-                //                #if os(iOS)
-                //                .toolbar {
-                //                    ToolbarItemGroup {
-                //                        Button  {
-                //                            isPresentedMenu.toggle()
-                //                        } label: {
-                //                            HStack {
-                //                                Image(systemName: "list.bullet.circle")
-                //                                Text("Menu")
-                //                            }
-                //                        }
-                //                        .buttonStyle(.borderedProminent)
-                //                        .controlSize(.regular)
-                //                    }
-                //                } // .toolbar
-                //                #endif
-                
-#if os(macOS)
+                #if os(macOS)
                 HStack {
                     Spacer()
                     Button("Done") {
@@ -150,7 +136,7 @@ struct EventDetails: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
-#endif
+                #endif
                 
             }
         }
@@ -158,7 +144,7 @@ struct EventDetails: View {
 }
 
 #Preview {
-    EventDetails(id: Event.example.id)
+    EventDetailsView(id: Event.example.id)
         .frame(width: 600, height: 800)
         .environmentObject(EventModel.example )
         .environmentObject(HistoryModel.example)

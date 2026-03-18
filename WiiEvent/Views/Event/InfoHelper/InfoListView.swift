@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InfoList: View {
+struct InfoListView: View {
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismiss) var dismiss
     
@@ -19,8 +19,6 @@ struct InfoList: View {
     @State private var isPresentingEditSheet: Bool = false
 
     @State private var isFetching = true
-
-    let eventID: Int
     
     private var infos: [Info]? {
         if let infos = infoModel.findInfos(byEventID: eventID) {
@@ -31,20 +29,10 @@ struct InfoList: View {
     
     @State private var currentIndex = -1
     
-    private func nextInfo() {
-        if infos != nil {
-            if currentIndex < infos!.count - 1 {
-                currentIndex += 1
-            }
-        }
-    }
+    let eventID: Int
     
-    private func prevInfo() {
-        if infos != nil {
-            if currentIndex > 0 {
-                currentIndex -= 1
-            }
-        }
+    init(for event: Event) {
+        self.eventID = event.id
     }
     
     // MARK: - body
@@ -85,7 +73,7 @@ struct InfoList: View {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         LazyHStack(spacing: 0) {
                                             ForEach(Array(zip(infos!.indices, infos!)), id: \.0) { index, info in
-                                                InfoDetails(info: info)
+                                                InfoDetailsView(for: info)
                                                     .containerRelativeFrame(.horizontal)
                                                     .id(index)
                                             }
@@ -130,10 +118,26 @@ struct InfoList: View {
             await infoModel.fetch()
         }
     }
+    
+    private func nextInfo() {
+        if infos != nil {
+            if currentIndex < infos!.count - 1 {
+                currentIndex += 1
+            }
+        }
+    }
+    
+    private func prevInfo() {
+        if infos != nil {
+            if currentIndex > 0 {
+                currentIndex -= 1
+            }
+        }
+    }
 }
 
 #Preview {
-    InfoList(eventID: Event.example.id)
+    InfoListView(for: Event.example)
         .environmentObject(InfoModel.example)
     
         #if os(macOS)

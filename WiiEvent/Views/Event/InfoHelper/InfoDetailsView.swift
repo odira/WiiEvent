@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct InfoDetails: View {
+struct InfoDetailsView: View {
     @Environment(\.openWindow) var openWindow
     
     @EnvironmentObject var infoModel: InfoModel
     
     let info: Info
+    
+    init(for info: Info) {
+        self.info = info
+    }
     
     var body: some View {
         VStack {
@@ -50,7 +54,7 @@ struct InfoDetails: View {
 }
 
 #Preview {
-    InfoDetails(info: Info.example)
+    InfoDetailsView(for: Info.example)
         .environmentObject(InfoModel.example)
         #if os(macOS)
         .frame(width: 600, height: 800)

@@ -15,7 +15,7 @@ struct EventListView: View {
         NavigationStack {
             List {
                 ForEach(eventModelFilter.filteredEvents) { event in
-                    NavigationLink(destination: EventDetails(id: event.id)) {
+                    NavigationLink(destination: EventDetailsView(id: event.id)) {
                         EventRow(for: event)
                     }
                 }
