@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct EventRow: View {
+struct EventRowView: View {
     @EnvironmentObject private var dealModel: DealModel
     @EnvironmentObject var planModel: PlanModel
     
@@ -17,7 +17,7 @@ struct EventRow: View {
                 eventView()
                 dealView()
                 contragentView()
-                seniorView()
+//                seniorView()
             }
             .padding()
         }
@@ -136,9 +136,9 @@ struct EventRow: View {
 
 #Preview("Light Theme", traits: .sizeThatFitsLayout) {
     Group {
-        EventRow(for: Event.example)
-        EventRow(for: Event.example)
-        EventRow(for: Event.example)
+        EventRowView(for: Event.example)
+        EventRowView(for: Event.example)
+        EventRowView(for: Event.example)
     }
     .preferredColorScheme(.light)
     .environmentObject(DealModel.example)
@@ -147,9 +147,9 @@ struct EventRow: View {
 
 #Preview("Dark Theme", traits: .sizeThatFitsLayout) {
     Group {
-        EventRow(for: Event.example)
-        EventRow(for: Event.example)
-        EventRow(for: Event.example)
+        EventRowView(for: Event.example)
+        EventRowView(for: Event.example)
+        EventRowView(for: Event.example)
     }
     .preferredColorScheme(.dark)
     .environmentObject(DealModel.example)

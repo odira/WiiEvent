@@ -8,7 +8,6 @@ struct EventListView: View {
     
     @State private var searchableText = ""
     @State private var showSearchSheet = false
-    // Filtered events
     @State private var showCompletedOnly = false
 
     var body: some View {
@@ -16,7 +15,7 @@ struct EventListView: View {
             List {
                 ForEach(eventModelFilter.filteredEvents) { event in
                     NavigationLink(destination: EventDetailsView(id: event.id)) {
-                        EventRow(for: event)
+                        EventRowView(for: event)
                     }
                 }
             }
@@ -30,26 +29,12 @@ struct EventListView: View {
             .refreshable {
                 eventModelFilter.filteredEvents = eventModel.events
             }
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    Button(action: {
-//                        showSearchSheet.toggle()
-//                    }, label: {
-//                        Label("Search", systemImage: "magnifyingglass")
-//                            .labelStyle(.iconOnly)
-//                    })
-//                    .sheet(isPresented: $showSearchSheet) {
-//                        EventModelFilterView()
-//                    }
-//                }
-//            }
         }
         .onAppear {
             eventModelFilter.filteredEvents = eventModelFilter.filterEvents(eventModel.events)
         }
-    } // body
+    }
 }
-
 
 #Preview {
     EventListView()
