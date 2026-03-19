@@ -37,89 +37,89 @@ struct WiiEventApp: App {
             }
         }
         
-        #if os(macOS)
-        
-            // EventDetail view (for macOS)
-            WindowGroup(id: "event-details", for: Event.ID.self) { $eventID in
-                if let eventID {
-                    EventDetails(id: eventID)
-                        .environmentObject(eventModel)
-                        .environmentObject(historyModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-            
-            // HistoryDetail view (for macOS)
-            WindowGroup(id: "event-history-details", for: Event.ID.self) { $eventID in
-                if let eventID {
-                    HistoryList(eventId: eventID)
-                        .environmentObject(eventModel)
-                        .environmentObject(historyModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-            
-            WindowGroup(id: "history-add", for: Event.ID.self) { $eventID in
-                if let eventID {
-                    HistoryAddView(eventId: eventID)
-                        .environmentObject(eventModel)
-                        .environmentObject(historyModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-            
-            WindowGroup(id: "history-edit", for: History.self) { $history in
-                if let history {
-                    HistoryEditView(history: history)
-                        .environmentObject(historyModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-            
-            WindowGroup(id: "event-search") {
-                EventModelFilterView()
-                    .environmentObject(eventModel)
-                    .environmentObject(eventModelFilter)
-                    .environmentObject(planModel)
-                    .environmentObject(dealModel)
-            }
-            .defaultPosition(.center)
-        
-            // InfoDetail view (for macOS)
-            WindowGroup(id: "event-info", for: Event.ID.self) { $eventID in
-                if let eventID {
-                    InfoList(eventID: eventID)
-                        .environmentObject(eventModel)
-                        .environmentObject(infoModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-        
-            WindowGroup(id: "info-add", for: Event.ID.self) { $eventID in
-                if let eventID {
-                    InfoAddView(eventId: eventID)
+//        #if os(macOS)
+//        
+//            // EventDetail view (for macOS)
+//            WindowGroup(id: "event-details", for: Event.ID.self) { $eventID in
+//                if let eventID {
+//                    EventDetailsView(id: eventID)
 //                        .environmentObject(eventModel)
-                        .environmentObject(infoModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-        
-            WindowGroup(id: "info-edit", for: Info.self) { $info in
-                if let info {
-                    InfoEditView(info: info)
-                        .environmentObject(infoModel)
-                }
-            }
-            .defaultSize(CGSize(width: 600, height: 800))
-            .defaultPosition(.center)
-        
-        #endif
+//                        .environmentObject(historyModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//            
+//            // HistoryDetail view (for macOS)
+//            WindowGroup(id: "event-history-details", for: Event.self) { $event in
+//                if let event {
+//                    HistoryListView(for: event)
+//                        .environmentObject(eventModel)
+//                        .environmentObject(historyModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//            
+//            WindowGroup(id: "history-add", for: Event.ID.self) { $eventID in
+//                if let eventID {
+//                    HistoryAddView(eventId: eventID)
+//                        .environmentObject(eventModel)
+//                        .environmentObject(historyModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//            
+//            WindowGroup(id: "history-edit", for: History.self) { $history in
+//                if let history {
+//                    HistoryEditView(history: history)
+//                        .environmentObject(historyModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//            
+//            WindowGroup(id: "event-search") {
+//                EventModelFilterView()
+//                    .environmentObject(eventModel)
+//                    .environmentObject(eventModelFilter)
+//                    .environmentObject(planModel)
+//                    .environmentObject(dealModel)
+//            }
+//            .defaultPosition(.center)
+//        
+//            // InfoDetail view (for macOS)
+//            WindowGroup(id: "event-info", for: Event.self) { $event in
+//                if let event {
+//                    InfoListView(for: event)
+//                        .environmentObject(eventModel)
+//                        .environmentObject(infoModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//        
+//            WindowGroup(id: "info-add", for: Event.ID.self) { $eventID in
+//                if let eventID {
+//                    InfoAddView(eventId: eventID)
+////                        .environmentObject(eventModel)
+//                        .environmentObject(infoModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//        
+//            WindowGroup(id: "info-edit", for: Info.self) { $info in
+//                if let info {
+//                    InfoEditView(info: info)
+//                        .environmentObject(infoModel)
+//                }
+//            }
+//            .defaultSize(CGSize(width: 600, height: 800))
+//            .defaultPosition(.center)
+//        
+//        #endif
     }
 }
 

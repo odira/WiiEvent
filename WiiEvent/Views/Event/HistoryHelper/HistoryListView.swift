@@ -23,7 +23,7 @@ struct HistoryListView: View {
     // Selection
     @State var selectedHistory: History? = nil
     
-    let eventId: Int
+    private let eventId: Int
     
     init(for event: Event) {
         self.eventId = event.id

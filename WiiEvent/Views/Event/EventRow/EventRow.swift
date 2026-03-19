@@ -17,7 +17,6 @@ struct EventRowView: View {
                 eventView()
                 dealView()
                 contragentView()
-//                seniorView()
             }
             .padding()
         }
@@ -116,19 +115,19 @@ struct EventRowView: View {
         }
     }
     
-    fileprivate func seniorView() -> some View {
-        HStack {
-            VStack {
-                if let senior = event.senior {
-                    Text("\(senior)")
-                } else {
-                    EmptyView()
-                }
-            }
-            
-            Spacer()
-        }
-    }
+//    fileprivate func seniorView() -> some View {
+//        HStack {
+//            VStack {
+//                if let senior = event.senior {
+//                    Text("\(senior)")
+//                } else {
+//                    EmptyView()
+//                }
+//            }
+//            
+//            Spacer()
+//        }
+//    }
 }
 
 

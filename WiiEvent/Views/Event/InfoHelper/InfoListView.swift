@@ -29,7 +29,7 @@ struct InfoListView: View {
     
     @State private var currentIndex = -1
     
-    let eventID: Int
+    private let eventID: Int
     
     init(for event: Event) {
         self.eventID = event.id
