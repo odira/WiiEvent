@@ -18,10 +18,14 @@ struct HistoryAddView: View {
     @State private var history: String = ""
     @State private var note: String = ""
     
+//    init(for event: Event) {
+//        self.eventId = event.id
+//    }
+    
 //    @State private var showDatePicker = false
     
     var body: some View {
-//        NavigationStack {
+        NavigationView {
         VStack {
             #if os(macOS)
             HistoryFieldsEditor(date: $date, history: $history, note: $note)
@@ -29,7 +33,7 @@ struct HistoryAddView: View {
             #endif
             
             
-            //        }
+                    }
             #if os(iOS)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

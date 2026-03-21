@@ -15,6 +15,7 @@
 		D11CAA622CA5D49D00403E82 /* JustificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA612CA5D49D00403E82 /* JustificationView.swift */; };
 		D11CAA652CA5E32700403E82 /* EventLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA642CA5E32700403E82 /* EventLimitView.swift */; };
 		D11E867E2F58B065009BD520 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D890552CD2C83D0052710D /* EventListView.swift */; };
+		D1340B282F6D291F0052F87F /* HistoryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17EEF6C2C9205D500E6E51B /* HistoryAddView.swift */; };
 		D1387D6D2AFFB31600570446 /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
 		D1387D6F2AFFB31600570446 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
 		D1387D712AFFB31800570446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
@@ -360,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				D1CA167F2DFF080B0016C99B /* HistoryListRowView.swift */,
+				D17EEF6C2C9205D500E6E51B /* HistoryAddView.swift */,
 				D1DC71C82C445CE300D5725E /* HistoryListView.swift */,
 			);
 			path = HistoryHelper;
@@ -636,7 +638,6 @@
 			isa = PBXGroup;
 			children = (
 				D115824F2C8A286D00E96DB1 /* HistoryEditView.swift */,
-				D17EEF6C2C9205D500E6E51B /* HistoryAddView.swift */,
 				D1CA16822E032F860016C99B /* HistoryFieldsEditor.swift */,
 			);
 			path = HistoryHelper;
@@ -936,6 +937,7 @@
 				D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */,
 				D1D575B72B56FEFE0035478E /* ProfileEditor.swift in Sources */,
 				D1DF9F602D070C1C004E2E96 /* Deal.swift in Sources */,
+				D1340B282F6D291F0052F87F /* HistoryAddView.swift in Sources */,
 				D10274882B4F0BD500DEBBAB /* CategoryRow.swift in Sources */,
 				D1D575B52B55B7B90035478E /* EventBadge.swift in Sources */,
 				D1E9B36A2B4C5AB40073768D /* DealTransparant.swift in Sources */,

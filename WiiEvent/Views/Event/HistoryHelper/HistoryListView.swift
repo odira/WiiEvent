@@ -32,6 +32,7 @@ struct HistoryListView: View {
     // MARK: - body
 
     var body: some View {
+        NavigationView {
             ZStack {
                 if historyModel.isFetching {
                     ProgressView("Fetching...")
@@ -42,7 +43,7 @@ struct HistoryListView: View {
                             HistoryListRowView(history: history)
                                 .listRowSeparator(.hidden)
                                 .listRowInsets(.init())
-                                #if os(iOS)
+#if os(iOS)
                                 .swipeActions(allowsFullSwipe: false) {
                                     Button(role: .destructive, action: {
                                         Task {
@@ -61,18 +62,18 @@ struct HistoryListView: View {
                                     })
                                     .tint(.orange)
                                 }
-                                #endif
+#endif
                         }
-//                        .scrollContentBackground(.hidden)
-//                        .background(Color.orange)
+                        //                        .scrollContentBackground(.hidden)
+                        //                        .background(Color.orange)
                         .defaultScrollAnchor(.top)
                         
-                        #if os(iOS)
+#if os(iOS)
                         .navigationBarTitle("Исполнение", displayMode: .inline)
                         
                         .sheet(item: $selectedHistory) { history in
-//                            HistoryEditSheet(history: history)
-//                                .environmentObject(historyModel)
+                            //                            HistoryEditSheet(history: history)
+                            //                                .environmentObject(historyModel)
                         }
                         
                         .toolbar {
@@ -84,8 +85,8 @@ struct HistoryListView: View {
                                     }
                                 }
                                 .sheet(isPresented: $isPresentingAddSheet) {
-//                                    HistoryAddSheet(eventId: self.eventId)
-//                                        .environmentObject(historyModel)
+                                    HistoryAddView(eventId: eventId)
+                                        .environmentObject(historyModel)
                                 }
                             }
                             ToolbarItem(placement: .destructiveAction) {
@@ -115,8 +116,9 @@ struct HistoryListView: View {
                     }
                 }
             }
-        .task {
-            await historyModel.fetch()
+            .task {
+                await historyModel.fetch()
+            }
         }
         
     } // body
