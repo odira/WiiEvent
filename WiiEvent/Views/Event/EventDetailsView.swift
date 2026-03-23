@@ -59,17 +59,18 @@ struct EventDetailsView: View {
                                             .presentationDragIndicator(.visible)
                                     }
 
-                                    Button("Исполнение") {
-                                        isPresentedHistorySheet.toggle()
-                                        #if os(macOS)
-                                        openWindow(id: "event-history-details", value: id)
-                                        #endif
-                                    }
-                                    .sheet(isPresented: $isPresentedHistorySheet) {
-                                        HistoryListView(for: event)
-                                            .presentationDetents([.large])
-                                            .presentationDragIndicator(.visible)
-                                    }
+//                                    Button("Исполнение") {
+//                                        isPresentedHistorySheet.toggle()
+//                                        #if os(macOS)
+//                                        openWindow(id: "event-history-details", value: id)
+//                                        #endif
+//                                    }
+//                                    .sheet(isPresented: $isPresentedHistorySheet) {
+//                                        HistoryListView(for: event)
+//                                            .presentationDetents([.large])
+//                                            .presentationDragIndicator(.visible)
+//                                    }
+
 
                                     Button("Справка") {
                                         isPresentedInfoSheet.toggle()
@@ -87,7 +88,12 @@ struct EventDetailsView: View {
                                 }
                                 .buttonStyle(.borderedProminent)
                             }
-                            
+                        }
+                        
+                        Section("Справочная информация") {
+                            NavigationLink(destination: HistoryListView(for: event)) {
+                                Text("Исполнение")
+                            }
                         }
                         
                         Section("Реквизиты договора/контракта") {

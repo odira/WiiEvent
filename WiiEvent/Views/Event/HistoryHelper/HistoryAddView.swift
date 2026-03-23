@@ -25,50 +25,28 @@ struct HistoryAddView: View {
 //    @State private var showDatePicker = false
     
     var body: some View {
-        NavigationView {
-        VStack {
-            #if os(macOS)
-            HistoryFieldsEditor(date: $date, history: $history, note: $note)
-                .padding()
-            #endif
-            
-            
-                    }
-            #if os(iOS)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(role: .destructive, action: { dismiss() }) {
-                            Text("Close")
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Save") {
-                            Task {
-                                await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note)
-                                dismiss()
-                            }
-                        }
-                    }
-                } // .toolbar
-            #endif
-            #if os(macOS)
-            HStack {
-                Button("Save") {
-                    Task {
-                        await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note)
-                        dismiss()
+        NavigationStack {
+            VStack {
+                HistoryFieldsEditor(date: $date, history: $history, note: $note)
+                    .padding()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(role: .destructive, action: { dismiss() }) {
+                        Text("Close")
                     }
                 }
-                Spacer()
-                Button("Close") {
-                    dismiss()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        Task {
+                            await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note)
+                            dismiss()
+                        }
+                    }
                 }
             }
-            .buttonStyle(.borderedProminent)
-            .padding()
-            #endif
         }
-    } // body
+    }
 }
 
 

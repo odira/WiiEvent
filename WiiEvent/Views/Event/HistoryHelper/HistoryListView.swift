@@ -32,7 +32,7 @@ struct HistoryListView: View {
     // MARK: - body
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 if historyModel.isFetching {
                     ProgressView("Fetching...")
@@ -41,9 +41,9 @@ struct HistoryListView: View {
                     VStack {
                         List(histories) { history in
                             HistoryListRowView(history: history)
+                                .id(history.id)
                                 .listRowSeparator(.hidden)
                                 .listRowInsets(.init())
-#if os(iOS)
                                 .swipeActions(allowsFullSwipe: false) {
                                     Button(role: .destructive, action: {
                                         Task {
@@ -62,20 +62,8 @@ struct HistoryListView: View {
                                     })
                                     .tint(.orange)
                                 }
-#endif
                         }
-                        //                        .scrollContentBackground(.hidden)
-                        //                        .background(Color.orange)
-                        .defaultScrollAnchor(.top)
-                        
-#if os(iOS)
                         .navigationBarTitle("Исполнение", displayMode: .inline)
-                        
-                        .sheet(item: $selectedHistory) { history in
-                            //                            HistoryEditSheet(history: history)
-                            //                                .environmentObject(historyModel)
-                        }
-                        
                         .toolbar {
                             ToolbarItem(placement: .cancellationAction) {
                                 Button("Add") {
@@ -95,24 +83,6 @@ struct HistoryListView: View {
                                 }
                             }
                         }
-                        #endif
-                        
-                        #if os(macOS)
-                        HStack {
-                            Button("Add") {
-                                openWindow(id: "history-add", value: eventId)
-                            }
-                            
-                            Spacer()
-                            
-                            Button("Done") {
-                                dismiss()
-                            }
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
-                        .background(Color.yellow.opacity(0.1))
-                        #endif
                     }
                 }
             }
@@ -120,8 +90,7 @@ struct HistoryListView: View {
                 await historyModel.fetch()
             }
         }
-        
-    } // body
+    }
 }
 
 #Preview {
