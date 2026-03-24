@@ -683,14 +683,6 @@
 			path = PageView;
 			sourceTree = "<group>";
 		};
-		D1D77E6E2F60ABAC006619FA /* EventRow */ = {
-			isa = PBXGroup;
-			children = (
-				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
-			);
-			path = EventRow;
-			sourceTree = "<group>";
-		};
 		D1D8903F2CD2C61B0052710D /* WiiEventMac */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,7 +741,6 @@
 		D1E9B36C2B4C5F6F0073768D /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				D1D77E6E2F60ABAC006619FA /* EventRow */,
 				D1945A1B2E5E2BA700843956 /* InfoHelper */,
 				D17EEF6B2C90BD2C00E6E51B /* HistoryHelper */,
 				D1E9B36B2B4C5F5D0073768D /* EventHelper */,
@@ -758,6 +749,7 @@
 				D10215E32CF90C140075631B /* DescriptionView.swift */,
 				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
 				D1D047C02E203E5A002025C2 /* EventModelFilterView.swift */,
+				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
 				D1A7306F2B383B49003A3A49 /* EventDetailsView.swift */,
 			);
 			path = Event;

@@ -38,6 +38,8 @@ public struct Event: Hashable, Codable, Identifiable {
     public var subgroup: String?        /// 30
     public var subgroupId: Int?         /// 31
     public var statusId: Int?           /// 32
+    public var dealId: Int?             /// 33
+    public var deal: String?            /// 34
     
     public enum Status: String, CaseIterable, Codable {
         case planning = "планируется"   /// 1
@@ -120,7 +122,9 @@ public struct Event: Hashable, Codable, Identifiable {
         limit2030: Decimal? = nil,            /// 29
         subgroup: String? = nil,              /// 30
         subgroupId: Int? = nil,               /// 31
-        statusId: Int? = nil                  /// 32
+        statusId: Int? = nil,                 /// 32
+        dealId: Int? = nil,                   /// 33
+        deal: String? = nil                   /// 34
     ) {
         self.id = id                          ///  0
         self.event = event                    ///  1
@@ -155,6 +159,8 @@ public struct Event: Hashable, Codable, Identifiable {
         self.subgroup = subgroup              /// 30
         self.subgroupId = subgroupId          /// 31
         self.statusId = statusId              /// 32
+        self.dealId = dealId                  /// 33
+        self.deal = deal                      /// 34
     }
 }
 
@@ -196,7 +202,9 @@ public extension Event {
               limit2030: 2030,                        /// 29
               subgroup: "SUB",                        /// 30
               subgroupId: 0,                          /// 31
-              statusId: 0                             /// 32
+              statusId: 0,                            /// 32
+              dealId: 100,                            /// 33
+              deal: "Москва-Резерв"                   /// 34
         )
     ]
     

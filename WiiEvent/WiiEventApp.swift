@@ -35,7 +35,7 @@ struct WiiEventApp: App {
                 await planModel.fetch()
                 await infoModel.fetch()
             }
-        }
+        }  
     }
 }
 

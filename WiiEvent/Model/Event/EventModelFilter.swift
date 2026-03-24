@@ -64,6 +64,13 @@ public class EventModelFilter: ObservableObject {
 //            if let eventIds = dealModel.findEventIdsByDealNumber(dealNumber) {
 //                self.eventIds = eventIds
 //            }
+            filteredEvents = filteredEvents.filter {
+                if $0.deal != nil {
+                    return $0.deal!.lowercased().contains(dealNumber.lowercased())
+                } else {
+                    return false
+                }
+            }
         }
         
 

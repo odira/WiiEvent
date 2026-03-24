@@ -97,6 +97,15 @@ struct EventRowView: View {
             Spacer()
         }
     }
+//    fileprivate func dealView() -> some View {
+//        HStack(alignment: .top) {
+//            VStack(alignment: .leading) {
+//                Text("№ \(event.deal ?? "NOT")")
+//                Spacer()
+//            }
+//            Spacer()
+//        }
+//    }
     
     // contragent
     fileprivate func contragentView() -> some View {

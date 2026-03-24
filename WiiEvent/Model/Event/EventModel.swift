@@ -90,7 +90,9 @@ public class EventModel: Identifiable, ObservableObject {
                     limit_2030,       -- 29
                     subgroup,         -- 30
                     subgroup_id,      -- 31
-                    status_id         -- 32
+                    status_id,        -- 32
+                    deal_id,          -- 33
+                    deal              -- 34
                 FROM
                     event.vw_event
             """
@@ -141,6 +143,8 @@ public class EventModel: Identifiable, ObservableObject {
                 let subgroup = try? columns[30].string()          // 30
                 let subgroupId = try? columns[31].int()           // 31
                 let statusId = try? columns[32].int()             // 32
+                let dealId = try? columns[33].int()               // 33
+                let deal = try? columns[34].string()              // 34
                 
                 events.append(
                     Event(
@@ -176,7 +180,9 @@ public class EventModel: Identifiable, ObservableObject {
                         limit2030: limit2030,                     // 29
                         subgroup: subgroup,                       // 30
                         subgroupId: subgroupId,                   // 31
-                        statusId: statusId                        // 32
+                        statusId: statusId,                       // 32
+                        dealId: dealId,                           // 33
+                        deal: deal                                // 34
                     )
                 )
             }

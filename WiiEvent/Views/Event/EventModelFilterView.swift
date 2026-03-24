@@ -19,12 +19,12 @@ struct EventModelFilterView: View {
     
 //    @State private var planIdFilter: Int? = nil
     @State private var dealStatusFilter: Int? = nil
-//    @State private var dealFilter: String = ""
+    @State private var dealFilter: String = ""
     
     @FocusState private var searchFieldFocusState: Bool
     
     var body: some View {
-        VStack {
+        ScrollView {
             cityBlock().padding()
             planIdBlock().padding()
             dealStatusBlock().padding()
