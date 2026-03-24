@@ -65,7 +65,7 @@ struct HistoryListView: View {
                         }
                         .navigationBarTitle("Исполнение", displayMode: .inline)
                         .toolbar {
-                            ToolbarItem(placement: .cancellationAction) {
+                            ToolbarItem(placement: .confirmationAction) {
                                 Button("Add") {
                                     isPresentingAddSheet.toggle()
                                     Task {
@@ -75,11 +75,6 @@ struct HistoryListView: View {
                                 .sheet(isPresented: $isPresentingAddSheet) {
                                     HistoryAddView(eventId: eventId)
                                         .environmentObject(historyModel)
-                                }
-                            }
-                            ToolbarItem(placement: .destructiveAction) {
-                                Button("Close") {
-                                    dismiss()
                                 }
                             }
                         }

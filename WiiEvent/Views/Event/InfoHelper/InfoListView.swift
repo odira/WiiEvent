@@ -38,11 +38,12 @@ struct InfoListView: View {
     // MARK: - body
 
     var body: some View {
-        ZStack {
-            if infoModel.isFetching {
-                ProgressView("Fetching...")
-            } else {
-                
+        NavigationStack {
+            ZStack {
+                if infoModel.isFetching {
+                    ProgressView("Fetching...")
+                } else {
+                    
                     VStack {
                         if infos != nil {
                             
@@ -85,6 +86,20 @@ struct InfoListView: View {
                                     .defaultScrollAnchor(.trailing)
                                 }
                             }
+                            .toolbar {
+                                ToolbarItem(placement: .confirmationAction) {
+                                    Button("Add") {
+                                        isPresentingAddSheet.toggle()
+//                                        Task {
+//                                           await historyModel.fetch()
+//                                        }
+                                    }
+                                    .sheet(isPresented: $isPresentingAddSheet) {
+//                                        HistoryAddView(eventId: eventId)
+//                                            .environmentObject(historyModel)
+                                    }
+                                }
+                            }
                             
                         } else {
                             Text("**Справочная информация отсутствует**")
@@ -98,13 +113,13 @@ struct InfoListView: View {
                         }
                         //
                         HStack {
-                            Button("Add") {
-                                openWindow(id: "info-add", value: eventID)
-                            }
-                            Spacer()
-                            Button("Close") {
-                                dismiss()
-                            }
+//                            Button("Add") {
+//                                openWindow(id: "info-add", value: eventID)
+//                            }
+//                            Spacer()
+//                            Button("Close") {
+//                                dismiss()
+//                            }
                         }
                         .buttonStyle(.glassProminent)
                     }
@@ -112,7 +127,8 @@ struct InfoListView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.yellow.opacity(0.1))
                 }
-            
+                
+            }
         }
         .task {
             await infoModel.fetch()
