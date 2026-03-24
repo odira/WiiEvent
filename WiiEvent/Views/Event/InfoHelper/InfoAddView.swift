@@ -19,21 +19,23 @@ struct InfoAddView: View {
     @State private var note: String = ""
     
     var body: some View {
-        VStack {
-            InfoFieldsEditor(date: $date, info: $info, note: $note)
-                .padding()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(role: .destructive, action: { dismiss() }) {
-                    Text("Close")
-                }
+        NavigationStack {
+            VStack {
+                InfoFieldsEditor(date: $date, info: $info, note: $note)
+                    .padding()
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Save") {
-                    Task {
-                        await infoModel.sqlINSERT(eventId: self.eventId, date: self.date, info: self.info, note: self.note)
-                        dismiss()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(role: .destructive, action: { dismiss() }) {
+                        Text("Close")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        Task {
+                            await infoModel.sqlINSERT(eventId: self.eventId, date: self.date, info: self.info, note: self.note)
+                            dismiss()
+                        }
                     }
                 }
             }

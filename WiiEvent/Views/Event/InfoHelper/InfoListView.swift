@@ -95,8 +95,8 @@ struct InfoListView: View {
                                         }
                                     }
                                     .sheet(isPresented: $isPresentingAddSheet) {
-//                                        InfoAddView(eventId: eventId)
-//                                            .environmentObject(historyModel)
+                                        InfoAddView(eventId: eventID)
+                                            .environmentObject(infoModel)
                                     }
                                 }
                             }
