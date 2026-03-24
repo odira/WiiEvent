@@ -14,11 +14,7 @@
 		D10EEF4E2C3F21F700E200F3 /* SubgroupEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10EEF4D2C3F21F700E200F3 /* SubgroupEventListView.swift */; };
 		D11CAA622CA5D49D00403E82 /* JustificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA612CA5D49D00403E82 /* JustificationView.swift */; };
 		D11CAA652CA5E32700403E82 /* EventLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA642CA5E32700403E82 /* EventLimitView.swift */; };
-		D11E867E2F58B065009BD520 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D890552CD2C83D0052710D /* EventListView.swift */; };
 		D1340B282F6D291F0052F87F /* HistoryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17EEF6C2C9205D500E6E51B /* HistoryAddView.swift */; };
-		D1386FE22F730BB200C01B56 /* InfoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1386FDF2F730BB200C01B56 /* InfoAddView.swift */; };
-		D1386FE32F730BB200C01B56 /* InfoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1386FE02F730BB200C01B56 /* InfoEditView.swift */; };
-		D1386FE42F730BB200C01B56 /* InfoFieldsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1386FE12F730BB200C01B56 /* InfoFieldsEditor.swift */; };
 		D1386FE62F7321CF00C01B56 /* InfoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1386FDF2F730BB200C01B56 /* InfoAddView.swift */; };
 		D1386FE72F7321EA00C01B56 /* InfoFieldsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1386FE12F730BB200C01B56 /* InfoFieldsEditor.swift */; };
 		D1387D6D2AFFB31600570446 /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
@@ -28,30 +24,19 @@
 		D165505C2F71D21900CA4B3E /* HistoryFieldsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA16822E032F860016C99B /* HistoryFieldsEditor.swift */; };
 		D16B20B92B50621E00B96160 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16B20B82B50621E00B96160 /* CategoryItem.swift */; };
 		D16B461E2ECF7DE500F18E4A /* InfoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16B461D2ECF7DE500F18E4A /* InfoDetailsView.swift */; };
-		D16B461F2ECF7DE500F18E4A /* InfoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16B461D2ECF7DE500F18E4A /* InfoDetailsView.swift */; };
 		D178A5402E609AFB003CF98C /* InfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178A53F2E609AF4003CF98C /* InfoListView.swift */; };
-		D178A5412E609AFB003CF98C /* InfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178A53F2E609AF4003CF98C /* InfoListView.swift */; };
 		D19132B62D0A09B700AFCCAD /* WiiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; platformFilter = ios; };
 		D19132B72D0A09B700AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D19132B82D0A09C800AFCCAD /* WiiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; };
-		D19132B92D0A09C800AFCCAD /* WiiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D19132B52D0A09AF00AFCCAD /* WiiKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1945A122E590FE200843956 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1945A112E590FE200843956 /* Info.swift */; };
-		D1945A132E590FE200843956 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1945A112E590FE200843956 /* Info.swift */; };
-		D1945A152E5B2D2F00843956 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1945A142E5B2D2B00843956 /* InfoModel.swift */; };
 		D1945A162E5B2D2F00843956 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1945A142E5B2D2B00843956 /* InfoModel.swift */; };
 		D1A730702B383B49003A3A49 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetailsView.swift */; };
 		D1C55A2B2C7E2F0800AB75EC /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = D1C55A2A2C7E2F0800AB75EC /* PostgresClientKit */; };
 		D1C55A2E2C7E301A00AB75EC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C55A2D2C7E301A00AB75EC /* MapView.swift */; };
 		D1CA167E2DFE1C730016C99B /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */; };
 		D1CA16802DFF08150016C99B /* HistoryListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA167F2DFF080B0016C99B /* HistoryListRowView.swift */; };
-		D1CA16812DFF08150016C99B /* HistoryListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA167F2DFF080B0016C99B /* HistoryListRowView.swift */; };
-		D1CA16842E032F860016C99B /* HistoryFieldsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA16822E032F860016C99B /* HistoryFieldsEditor.swift */; };
 		D1D047C12E203E5A002025C2 /* EventModelFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D047C02E203E5A002025C2 /* EventModelFilterView.swift */; };
-		D1D047C22E203E5A002025C2 /* EventModelFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D047C02E203E5A002025C2 /* EventModelFilterView.swift */; };
 		D1D047C62E252AC6002025C2 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D047C52E252AC3002025C2 /* Plan.swift */; };
-		D1D047C72E252AC6002025C2 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D047C52E252AC3002025C2 /* Plan.swift */; };
 		D1D047C92E252AD0002025C2 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D047C82E252ACC002025C2 /* PlanModel.swift */; };
-		D1D047CA2E252AD0002025C2 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D047C82E252ACC002025C2 /* PlanModel.swift */; };
 		D1D575AE2B55A89C0035478E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575AD2B55A89C0035478E /* Profile.swift */; };
 		D1D575B12B55B18D0035478E /* ProfileHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B02B55B18D0035478E /* ProfileHost.swift */; };
 		D1D575B32B55B2080035478E /* ProfileSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B22B55B2080035478E /* ProfileSummary.swift */; };
@@ -60,38 +45,13 @@
 		D1D6F1652B585EE8007758E1 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F1642B585EE7007758E1 /* PageViewController.swift */; };
 		D1D6F1672B59A4FD007758E1 /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F1662B59A4FD007758E1 /* PlanCard.swift */; };
 		D1D6F1692B59A8C9007758E1 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F1682B59A8C9007758E1 /* PageView.swift */; };
-		D1D890452CD2C61C0052710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D890442CD2C61C0052710D /* Assets.xcassets */; };
-		D1D890482CD2C61C0052710D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D890472CD2C61C0052710D /* Preview Assets.xcassets */; };
-		D1D890572CD2CB070052710D /* WiiEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6C2AFFB31600570446 /* WiiEventApp.swift */; };
-		D1D890582CD2CB300052710D /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
-		D1D890592CD2CB300052710D /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C32C443B3200D5725E /* History.swift */; };
-		D1D8905A2CD2CB520052710D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575AD2B55A89C0035478E /* Profile.swift */; };
-		D1D8905B2CD2CB520052710D /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA27E2B1CF43B00E2DB42 /* ModelData.swift */; };
-		D1D8905C2CD2CB520052710D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D81512B69826A005E6D2B /* Extentions.swift */; };
-		D1D8905D2CD2CB720052710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1387D702AFFB31800570446 /* Assets.xcassets */; };
 		D1DC71C42C443B3200D5725E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C32C443B3200D5725E /* History.swift */; };
 		D1DC71C92C445CE300D5725E /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryListView.swift */; };
 		D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
 		D1DF9F602D070C1C004E2E96 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F5F2D070C19004E2E96 /* Deal.swift */; };
-		D1DF9F612D070C1C004E2E96 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F5F2D070C19004E2E96 /* Deal.swift */; };
 		D1DF9F632D0739B8004E2E96 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F622D0739B2004E2E96 /* DealModel.swift */; };
-		D1DF9F642D0739B8004E2E96 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F622D0739B2004E2E96 /* DealModel.swift */; };
-		D1DFA1472D0EE2C9004E2E96 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7306F2B383B49003A3A49 /* EventDetailsView.swift */; };
-		D1DFA1482D0EE2E5004E2E96 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
-		D1DFA1492D0EE2F3004E2E96 /* JustificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA612CA5D49D00403E82 /* JustificationView.swift */; };
-		D1DFA14A2D0EE2F8004E2E96 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10215E32CF90C140075631B /* DescriptionView.swift */; };
-		D1DFA14B2D0EE31E004E2E96 /* EventLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CAA642CA5E32700403E82 /* EventLimitView.swift */; };
-		D1DFA14C2D0EE327004E2E96 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC71C82C445CE300D5725E /* HistoryListView.swift */; };
-		D1DFA14D2D0EE33C004E2E96 /* HistoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115824F2C8A286D00E96DB1 /* HistoryEditView.swift */; };
-		D1DFA14E2D0EE33C004E2E96 /* HistoryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17EEF6C2C9205D500E6E51B /* HistoryAddView.swift */; };
-		D1DFA14F2D0EE353004E2E96 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C55A2D2C7E301A00AB75EC /* MapView.swift */; };
-		D1DFA1502D0EE353004E2E96 /* DealTransparant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B3692B4C5AB40073768D /* DealTransparant.swift */; };
-		D1DFA15D2D0EE3C2004E2E96 /* EventBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B42B55B7B90035478E /* EventBadge.swift */; };
-		D1DFA15E2D0EE3C2004E2E96 /* ProfileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B62B56FEFE0035478E /* ProfileEditor.swift */; };
-		D1DFA15F2D0EE3C2004E2E96 /* ProfileSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D575B22B55B2080035478E /* ProfileSummary.swift */; };
 		D1E9B36A2B4C5AB40073768D /* DealTransparant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B3692B4C5AB40073768D /* DealTransparant.swift */; };
 		D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B36D2B4DC9960073768D /* CategoryHome.swift */; };
-		D1ED44282F5A017600015EFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1387D6E2AFFB31600570446 /* ContentView.swift */; };
 		D1FCA2772B1CE54700E2DB42 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
 		D1FCA27F2B1CF43B00E2DB42 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA27E2B1CF43B00E2DB42 /* ModelData.swift */; };
 		D1FCA2842B1CF62900E2DB42 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2832B1CF62900E2DB42 /* EventRow.swift */; };
@@ -108,17 +68,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D102160D2D0A00C40075631B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D19132B92D0A09C800AFCCAD /* WiiKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D1DF9FC42D09DA2D004E2E96 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,11 +183,6 @@
 		D1D6F1642B585EE7007758E1 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		D1D6F1662B59A4FD007758E1 /* PlanCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCard.swift; sourceTree = "<group>"; };
 		D1D6F1682B59A8C9007758E1 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
-		D1D8903E2CD2C61B0052710D /* WiiEventMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiiEventMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1D890442CD2C61C0052710D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D1D890472CD2C61C0052710D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D1D890492CD2C61C0052710D /* WiiEventMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WiiEventMac.entitlements; sourceTree = "<group>"; };
-		D1D890552CD2C83D0052710D /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D1DC71C32C443B3200D5725E /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		D1DC71C82C445CE300D5725E /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
@@ -270,29 +214,11 @@
 			);
 			target = D1387D682AFFB31600570446 /* WiiEvent */;
 		};
-		D1D890502CD2C6F70052710D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Event.swift,
-				EventModel.swift,
-				EventModelFilter.swift,
-			);
-			target = D1D8903D2CD2C61B0052710D /* WiiEventMac */;
-		};
-		D1D890612CD2CD810052710D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Subgroup.swift,
-				SubgroupModel.swift,
-			);
-			target = D1D8903D2CD2C61B0052710D /* WiiEventMac */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D10EEF222C3A16DC00E200F3 /* Event */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D10EEF232C3A16EC00E200F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D1D890502CD2C6F70052710D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Event; sourceTree = "<group>"; };
-		D10EEF242C3A19A400E200F3 /* Subgroup */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D10EEF2B2C3D765300E200F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D1D890612CD2CD810052710D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Subgroup; sourceTree = "<group>"; };
-		D196AAE52EA802EF002CD5B8 /* InfoHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = InfoHelper; sourceTree = "<group>"; };
+		D10EEF222C3A16DC00E200F3 /* Event */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D10EEF232C3A16EC00E200F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Event; sourceTree = "<group>"; };
+		D10EEF242C3A19A400E200F3 /* Subgroup */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D10EEF2B2C3D765300E200F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Subgroup; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,14 +228,6 @@
 			files = (
 				D1C55A2B2C7E2F0800AB75EC /* PostgresClientKit in Frameworks */,
 				D19132B62D0A09B700AFCCAD /* WiiKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D1D8903B2CD2C61B0052710D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D19132B82D0A09C800AFCCAD /* WiiKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				D1387D6B2AFFB31600570446 /* WiiEvent */,
-				D1D8903F2CD2C61B0052710D /* WiiEventMac */,
 				D1387D6A2AFFB31600570446 /* Products */,
 				D1D890512CD2C7340052710D /* Frameworks */,
 			);
@@ -340,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				D1387D692AFFB31600570446 /* WiiEvent.app */,
-				D1D8903E2CD2C61B0052710D /* WiiEventMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -635,23 +551,6 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		D1945A172E5E26FB00843956 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D1D890552CD2C83D0052710D /* EventListView.swift */,
-				D196AAE52EA802EF002CD5B8 /* InfoHelper */,
-				D1945A192E5E271000843956 /* HistoryHelper */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		D1945A192E5E271000843956 /* HistoryHelper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HistoryHelper;
-			sourceTree = "<group>";
-		};
 		D1945A1B2E5E2BA700843956 /* InfoHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,25 +591,6 @@
 				D1D6F1682B59A8C9007758E1 /* PageView.swift */,
 			);
 			path = PageView;
-			sourceTree = "<group>";
-		};
-		D1D8903F2CD2C61B0052710D /* WiiEventMac */ = {
-			isa = PBXGroup;
-			children = (
-				D1945A172E5E26FB00843956 /* Views */,
-				D1D890442CD2C61C0052710D /* Assets.xcassets */,
-				D1D890492CD2C61C0052710D /* WiiEventMac.entitlements */,
-				D1D890462CD2C61C0052710D /* Preview Content */,
-			);
-			path = WiiEventMac;
-			sourceTree = "<group>";
-		};
-		D1D890462CD2C61C0052710D /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D1D890472CD2C61C0052710D /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		D1D890512CD2C7340052710D /* Frameworks */ = {
@@ -827,29 +707,6 @@
 			productReference = D1387D692AFFB31600570446 /* WiiEvent.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D1D8903D2CD2C61B0052710D /* WiiEventMac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D1D8904C2CD2C61C0052710D /* Build configuration list for PBXNativeTarget "WiiEventMac" */;
-			buildPhases = (
-				D1D8903A2CD2C61B0052710D /* Sources */,
-				D1D8903B2CD2C61B0052710D /* Frameworks */,
-				D1D8903C2CD2C61B0052710D /* Resources */,
-				D102160D2D0A00C40075631B /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D196AAE52EA802EF002CD5B8 /* InfoHelper */,
-			);
-			name = WiiEventMac;
-			packageProductDependencies = (
-			);
-			productName = WiiEventMac;
-			productReference = D1D8903E2CD2C61B0052710D /* WiiEventMac.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -862,9 +719,6 @@
 				TargetAttributes = {
 					D1387D682AFFB31600570446 = {
 						CreatedOnToolsVersion = 15.0.1;
-					};
-					D1D8903D2CD2C61B0052710D = {
-						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -891,7 +745,6 @@
 			projectRoot = "";
 			targets = (
 				D1387D682AFFB31600570446 /* WiiEvent */,
-				D1D8903D2CD2C61B0052710D /* WiiEventMac */,
 			);
 		};
 /* End PBXProject section */
@@ -912,16 +765,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1387D712AFFB31800570446 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D1D8903C2CD2C61B0052710D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1D890482CD2C61C0052710D /* Preview Assets.xcassets in Resources */,
-				D1D8905D2CD2CB720052710D /* Assets.xcassets in Resources */,
-				D1D890452CD2C61C0052710D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,48 +819,6 @@
 				D10EEF4E2C3F21F700E200F3 /* SubgroupEventListView.swift in Sources */,
 				D1FCA27F2B1CF43B00E2DB42 /* ModelData.swift in Sources */,
 				D165505C2F71D21900CA4B3E /* HistoryFieldsEditor.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D1D8903A2CD2C61B0052710D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1D890572CD2CB070052710D /* WiiEventApp.swift in Sources */,
-				D178A5412E609AFB003CF98C /* InfoListView.swift in Sources */,
-				D1DFA1472D0EE2C9004E2E96 /* EventDetailsView.swift in Sources */,
-				D1D8905A2CD2CB520052710D /* Profile.swift in Sources */,
-				D1DFA14C2D0EE327004E2E96 /* HistoryListView.swift in Sources */,
-				D1D047C22E203E5A002025C2 /* EventModelFilterView.swift in Sources */,
-				D1D8905B2CD2CB520052710D /* ModelData.swift in Sources */,
-				D1DFA14B2D0EE31E004E2E96 /* EventLimitView.swift in Sources */,
-				D1CA16812DFF08150016C99B /* HistoryListRowView.swift in Sources */,
-				D1DFA14A2D0EE2F8004E2E96 /* DescriptionView.swift in Sources */,
-				D1945A152E5B2D2F00843956 /* InfoModel.swift in Sources */,
-				D1D8905C2CD2CB520052710D /* Extentions.swift in Sources */,
-				D1DF9F642D0739B8004E2E96 /* DealModel.swift in Sources */,
-				D1945A132E590FE200843956 /* Info.swift in Sources */,
-				D1DFA15D2D0EE3C2004E2E96 /* EventBadge.swift in Sources */,
-				D11E867E2F58B065009BD520 /* EventListView.swift in Sources */,
-				D1DFA15E2D0EE3C2004E2E96 /* ProfileEditor.swift in Sources */,
-				D16B461F2ECF7DE500F18E4A /* InfoDetailsView.swift in Sources */,
-				D1DFA15F2D0EE3C2004E2E96 /* ProfileSummary.swift in Sources */,
-				D1D890582CD2CB300052710D /* HistoryModel.swift in Sources */,
-				D1D047C72E252AC6002025C2 /* Plan.swift in Sources */,
-				D1D890592CD2CB300052710D /* History.swift in Sources */,
-				D1ED44282F5A017600015EFF /* ContentView.swift in Sources */,
-				D1D047CA2E252AD0002025C2 /* PlanModel.swift in Sources */,
-				D1DFA14D2D0EE33C004E2E96 /* HistoryEditView.swift in Sources */,
-				D1386FE22F730BB200C01B56 /* InfoAddView.swift in Sources */,
-				D1386FE32F730BB200C01B56 /* InfoEditView.swift in Sources */,
-				D1386FE42F730BB200C01B56 /* InfoFieldsEditor.swift in Sources */,
-				D1DFA14E2D0EE33C004E2E96 /* HistoryAddView.swift in Sources */,
-				D1DFA14F2D0EE353004E2E96 /* MapView.swift in Sources */,
-				D1DFA1502D0EE353004E2E96 /* DealTransparant.swift in Sources */,
-				D1CA16842E032F860016C99B /* HistoryFieldsEditor.swift in Sources */,
-				D1DFA1492D0EE2F3004E2E96 /* JustificationView.swift in Sources */,
-				D1DFA1482D0EE2E5004E2E96 /* CircleImage.swift in Sources */,
-				D1DF9F612D070C1C004E2E96 /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1211,74 +1012,6 @@
 			};
 			name = Release;
 		};
-		D1D8904A2CD2C61C0052710D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WiiEventMac/WiiEventMac.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"WiiEventMac/Preview Content\"";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "План мероприятий";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tercas.WiiEventMac;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		D1D8904B2CD2C61C0052710D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WiiEventMac/WiiEventMac.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"WiiEventMac/Preview Content\"";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "План мероприятий";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tercas.WiiEventMac;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1296,15 +1029,6 @@
 			buildConfigurations = (
 				D1387D782AFFB31800570446 /* Debug */,
 				D1387D792AFFB31800570446 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D1D8904C2CD2C61C0052710D /* Build configuration list for PBXNativeTarget "WiiEventMac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D1D8904A2CD2C61C0052710D /* Debug */,
-				D1D8904B2CD2C61C0052710D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

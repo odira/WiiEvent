@@ -22,9 +22,6 @@ struct ContentView: View {
                     .labelStyle(.iconOnly)
             }   
         }
-//        .onAppear {
-//            eventModelFilter.filteredEvents = eventModel.events
-//        }
     }
 }
 

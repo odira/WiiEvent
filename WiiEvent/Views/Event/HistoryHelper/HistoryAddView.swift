@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryAddView: View {
     @Environment(\.dismiss) var dismiss
-    
+
     @EnvironmentObject var historyModel: HistoryModel
     
     let eventId: Int

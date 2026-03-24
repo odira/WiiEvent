@@ -19,11 +19,20 @@ struct InfoFieldsEditor: View {
                 .padding()
             
             TextEditor(text: $info)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.black, lineWidth: 1)
+                }
                 .frame(height: 200)
             
             TextEditor(text: $note)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.black, lineWidth: 1)
+                }
                 .frame(height: 200)
         }
+        .padding()
     }
 }
 

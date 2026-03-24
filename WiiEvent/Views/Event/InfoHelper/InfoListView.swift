@@ -90,12 +90,12 @@ struct InfoListView: View {
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("Add") {
                                         isPresentingAddSheet.toggle()
-//                                        Task {
-//                                           await historyModel.fetch()
-//                                        }
+                                        Task {
+                                           await infoModel.fetch()
+                                        }
                                     }
                                     .sheet(isPresented: $isPresentingAddSheet) {
-//                                        HistoryAddView(eventId: eventId)
+//                                        InfoAddView(eventId: eventId)
 //                                            .environmentObject(historyModel)
                                     }
                                 }

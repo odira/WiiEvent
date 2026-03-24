@@ -29,7 +29,6 @@ struct InfoDetailsView: View {
             .buttonStyle(.glassProminent)
             
             Text(LocalizedStringKey(info.info))
-//                .lineSpacing(8)
                 .frame(minHeight: 180)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .fixedSize(horizontal: false, vertical: false)
