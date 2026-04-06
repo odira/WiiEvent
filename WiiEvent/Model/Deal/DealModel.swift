@@ -48,8 +48,8 @@ public class DealModel: ObservableObject {
                     is_planning,     --  4
                     is_completed,    --  5
                     deal,            --  6
-                    starting_date,   --  7
-                    ending_date,     --  8
+                    start_date,      --  7
+                    end_date,        --  8
                     note,            --  9
                     parent_id,       -- 10
                     event_id,        -- 11
@@ -57,7 +57,7 @@ public class DealModel: ObservableObject {
                     description      -- 13
                 FROM 
                     deal.vw_deal
-                ORDER BY starting_date ASC
+                ORDER BY start_date ASC
             """
             let statement = try connection.prepareStatement(text: sqlText)
             defer { statement.close() }
