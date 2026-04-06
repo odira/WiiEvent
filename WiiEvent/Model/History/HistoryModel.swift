@@ -66,16 +66,35 @@ public class HistoryModel: ObservableObject {
             for row in cursor {
                 let columns = try row.get().columns
                 
-                let id = try columns[0].int()            //  0
-                let eventId = try columns[1].int()       //  1
-                let datePg = try columns[2].date()       //  2
-                let history = try columns[3].string()    //  3
-                let note = try? columns[4].string()      //  4
+                let id = try columns[0].int()                //  0
+                let eventId = try columns[1].int()           //  1
+                let datePg = try columns[2].date()           //  2
+                let history = try columns[3].string()        //  3
+                let note = try? columns[4].string()          //  4
+                let letter1 = try? columns[5].string()       //  5
+                let letter1datePg = try? columns[6].date()   //  6
+                let letter1note = try? columns[7].string()   //  7
+                let letter1unit = try? columns[8].int()      //  8
+                let letter2 = try? columns[9].string()       //  9
+                let letter2datePg = try? columns[10].date()  // 10
+                let letter2note = try? columns[11].string()  // 11
+                let letter2unit = try? columns[12].int()     // 12
+                let inOut = try? columns[13].string()        // 13
+
+                // The UTC/GMT time zone.
+                let utcTimeZone = TimeZone(secondsFromGMT: 0)!
                 
                 var date: Date {
-                    /// The UTC/GMT time zone.
-                    let utcTimeZone = TimeZone(secondsFromGMT: 0)!
                     return datePg.date(in: utcTimeZone)
+                }
+                var letter1date: Date? {
+                    if let date = letter1datePg {
+                        return date.date(in: utcTimeZone)
+                    }
+                    return nil
+                }
+                var letter2date: Date? {
+                    return letter2datePg?.date(in: utcTimeZone)
                 }
                 
                 histories.append(
@@ -84,7 +103,16 @@ public class HistoryModel: ObservableObject {
                         eventId: eventId,
                         date: date,
                         history: history,
-                        note: note ?? ""
+                        note: note ?? "",
+                        letter1: letter1,
+                        letter1date: letter1date,
+                        letter1note: letter1note,
+                        letter1unit: letter1unit,
+                        letter2: letter2,
+                        letter2date: letter2date,
+                        letter2note: letter2note,
+                        letter2unit: letter2unit,
+                        inOut: inOut
                     )
                 )
             }

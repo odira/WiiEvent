@@ -25,6 +25,7 @@ struct HistoryFieldsEditor: View {
                 }
                 .frame(height: 200)
             
+            
             TextEditor(text: $note)
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
@@ -40,6 +41,6 @@ struct HistoryFieldsEditor: View {
     HistoryFieldsEditor(
         date: .constant(History.example.date),
         history: .constant(History.example.history),
-        note: .constant(History.example.note)
+        note: .constant(History.example.note!)
     )
 }
