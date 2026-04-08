@@ -55,8 +55,29 @@ public class HistoryModel: ObservableObject {
             
             let connection = try PostgresClientKit.Connection(configuration: configuration)
             defer { connection.close() }
-            
-            let sqlText = "SELECT * FROM event.vw_history ORDER BY date"
+
+            let sqlText = """
+            SELECT
+                id,             --  0
+                event_id,       --  1
+                date,           --  2
+                history,        --  3
+                note,           --  4
+                letter_1,       --  5
+                letter_1_date,  --  6
+                letter_1_note,  --  7
+                letter_1_unit,  --  8
+                letter_2,       --  9
+                letter_2_date,  -- 10
+                letter_2_note,  -- 11
+                letter_2_unit,  -- 12
+                inOut           -- 13
+            FROM 
+                event.vw_history 
+            ORDER BY 
+                date
+            """
+        
             let statement = try connection.prepareStatement(text: sqlText)
             defer { statement.close() }
             
