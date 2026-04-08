@@ -48,45 +48,65 @@ struct HistoryListRowView: View {
                 .padding(.leading, 10)
             }
             
-            HStack {
-                Text(history.history)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                    .multilineTextAlignment(.leading)
-                    .padding()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(.clear)
-                            .stroke(Color.blue, lineWidth: 1)
+            
+            VStack {
+                HStack {
+                    HStack {
+                        Text(history.letter1 ?? "")
+                        if let date = history.letter1date {
+                            Text(date, format: .dateTime)
+                        }
                     }
-                
-                VStack {
-                    Button("Edit") {
-                        openWindow(id: "history-edit", value: history)
+                    Spacer()
+                    HStack {
+                        Text(history.letter2 ?? "")
+                        if let date = history.letter2date {
+                            Text(date, format: .dateTime)
+                        }
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.orange)
-                    .clipShape(Capsule())
-                    
-                    Button("Delete") {
-                        Task { await historyModel.sqlDELETE(historyId: history.id) }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
-                    .clipShape(Capsule())
                 }
-                .padding(0)
-                .fixedSize(horizontal: true, vertical: false)
+                .padding()
+                
+                HStack {
+                    Text(history.history)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                        .padding()
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .fill(.clear)
+                                .stroke(Color.blue, lineWidth: 1)
+                        }
+                    
+                    VStack {
+                        Button("Edit") {
+                            openWindow(id: "history-edit", value: history)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .clipShape(Capsule())
+                        
+                        Button("Delete") {
+                            Task { await historyModel.sqlDELETE(historyId: history.id) }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .clipShape(Capsule())
+                    }
+                    .padding(0)
+                    .fixedSize(horizontal: true, vertical: false)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.trailing, 10)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.trailing, 10)
-            .padding(.top, 10)
-            .padding(.bottom, 10)
         }
         .font(.system(.callout, design: .monospaced))
     }
 }
 
-#Preview {
+#Preview(traits: .fixedLayout(width: 900, height: 300)) {
     HistoryListRowView(history: History.example)
         .environmentObject(EventModel())
         .environmentObject(HistoryModel())
