@@ -67,6 +67,7 @@ struct EventRowView: View {
     // Deal
     fileprivate func dealView() -> some View {
         HStack(alignment: .top) {
+            Text(event.deal ?? "DEAL")
             VStack(alignment: .leading) {
                 if let deal = dealModel.findDeals(byEventID: event.id)?.first {
                     HStack {
@@ -74,19 +75,21 @@ struct EventRowView: View {
                         Spacer()
                     }
                     
+
+                    
                     /// Deal is planning
-                    if deal.isPlanning {
-                        Text(DateFormatter.planningMonth.string(from: deal.startingDate))
-                            .font(.footnote)
-                     /// Deal is concluded
-                    } else {
-                        VStack(alignment: .leading) {
-                            Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startingDate))")
-                            Text("\((event.limitTotal ?? 0.0), format: .number) руб.")
-                        }
-                        
-                        Spacer()
-                    }
+//                    if deal.isPlanning {
+//                        Text(DateFormatter.planningMonth.string(from: deal.startingDate))
+//                            .font(.footnote)
+//                     /// Deal is concluded
+//                    } else {
+//                        VStack(alignment: .leading) {
+//                            Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startingDate))")
+//                            Text("\((event.limitTotal ?? 0.0), format: .number) руб.")
+//                        }
+//                        
+//                        Spacer()
+//                    }
                     
                 } else {
                     EmptyView()

@@ -45,9 +45,9 @@ public class DealModel: ObservableObject {
                     type_id,         --  1
                     type_abbr,       --  2
                     type,            --  3
-                    is_planning,     --  4
-                    is_completed,    --  5
-                    deal,            --  6
+                    status_id,       --  4
+                    deal,            --  5
+                    price,           --  6
                     start_date,      --  7
                     end_date,        --  8
                     note,            --  9
@@ -72,26 +72,26 @@ public class DealModel: ObservableObject {
                 let typeID = try columns[1].int()               //  1
                 let typeAbbr = try columns[2].string()          //  2
                 let type = try columns[3].string()              //  3
-                let isPlanning = try columns[4].bool()          //  4
-                let isCompleted = try columns[5].bool()         //  5
-                let deal = try? columns[6].string()             //  6
-                let startingDatePg = try columns[7].date()      //  7
-                let endingDatePg = try? columns[8].date()       //  8
+                let statusID = try columns[4].int()             //  4
+                let deal = try? columns[5].string()             //  5
+                let price = try? columns[6].double()            //  6
+                let startDatePg = try columns[7].date()         //  7
+                let endDatePg = try? columns[8].date()          //  8
                 let note = try? columns[9].string()             //  9
                 let parentID = try? columns[10].int()           // 10
                 let eventID = try columns[11].int()             // 11
                 let justification = try? columns[12].string()   // 12
                 let description = try? columns[13].string()     // 13
                 
-                var startingDate: Date {
+                var startDate: Date {
                     let utcTimeZone = TimeZone(secondsFromGMT: 0)!       // UTC/GMT time zone
-                    return startingDatePg.date(in: utcTimeZone)
+                    return startDatePg.date(in: utcTimeZone)
                 }
                 
-                var endingDate: Date? {
-                    if let endingDatePg {
+                var endDate: Date? {
+                    if let endDatePg {
                         let utcTimeZone = TimeZone(secondsFromGMT: 0)!  // UTC/GMT time zone
-                        return endingDatePg.date(in: utcTimeZone)
+                        return endDatePg.date(in: utcTimeZone)
                     } else {
                         return nil
                     }
@@ -103,11 +103,11 @@ public class DealModel: ObservableObject {
                         typeID: typeID,                //   1
                         typeAbbr: typeAbbr,            //   2
                         type: type,                    //   3
-                        isPlanning: isPlanning,        //   4
-                        isCompleted: isCompleted,      //   5
-                        deal: deal,                    //   6
-                        startingDate: startingDate,    //   7
-                        endingDate: endingDate,        //   8
+                        statusID: statusID,            //   4
+                        deal: deal,                    //   5
+                        price: price,                  //   6
+                        startDate: startDate,          //   7
+                        endDate: endDate,              //   8
                         note: note,                    //   9
                         parentID: parentID,            //  10
                         eventID: eventID,              //  11
