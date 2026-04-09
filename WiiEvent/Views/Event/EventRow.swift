@@ -67,35 +67,35 @@ struct EventRowView: View {
     // Deal
     fileprivate func dealView() -> some View {
         HStack(alignment: .top) {
-            Text(event.deal ?? "DEAL")
-            VStack(alignment: .leading) {
-                if let deal = dealModel.findDeals(byEventID: event.id)?.first {
-                    HStack {
-                        DealStatusTransparant(for: deal)
-                        Spacer()
-                    }
-                    
-
-                    
-                    /// Deal is planning
-//                    if deal.isPlanning {
-//                        Text(DateFormatter.planningMonth.string(from: deal.startingDate))
+//            VStack(alignment: .leading) {
+//                if let deal = dealModel.findDeals(byEventID: event.id)?.first {
+//                    HStack {
+//                        DealStatusTransparant(for: deal)
+//                        Spacer()
+//                    }
+//                                        
+//                    /// Deal is planning
+//                    if deal.statusID != 0 {
+//                        Text(DateFormatter.planningMonth.string(from: deal.startDate))
 //                            .font(.footnote)
 //                     /// Deal is concluded
 //                    } else {
 //                        VStack(alignment: .leading) {
-//                            Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startingDate))")
+//                            Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startDate))")
 //                            Text("\((event.limitTotal ?? 0.0), format: .number) руб.")
 //                        }
 //                        
 //                        Spacer()
 //                    }
-                    
-                } else {
-                    EmptyView()
-                }
-            }
-            .frame(maxWidth: .infinity)
+//                    
+//                } else {
+//                    EmptyView()
+//                }
+//            }
+//            .frame(maxWidth: .infinity)
+            
+            Text(event.deal ?? "DEAL")
+//            Text(event.deal)
             
             Spacer()
         }
