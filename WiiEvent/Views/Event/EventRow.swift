@@ -95,7 +95,9 @@ struct EventRowView: View {
 //            .frame(maxWidth: .infinity)
             
             VStack(alignment: .leading) {
-                Text(event.deal ?? "DEAL")
+                if let deal = event.deal {
+                    Text(deal)
+                }
             }
 //            Text(event.deal)
             
