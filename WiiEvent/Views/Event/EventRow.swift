@@ -94,7 +94,9 @@ struct EventRowView: View {
 //            }
 //            .frame(maxWidth: .infinity)
             
-            Text(event.deal ?? "DEAL")
+            VStack(alignment: .leading) {
+                Text(event.deal ?? "DEAL")
+            }
 //            Text(event.deal)
             
             Spacer()

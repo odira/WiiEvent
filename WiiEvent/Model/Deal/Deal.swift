@@ -1,42 +1,20 @@
 import SwiftUI
-import CoreLocation
-
-// MARK: - Deal struct definition
 
 public struct Deal: Hashable, Codable, Identifiable {
-    public var id: Int                  //  0
-    public var typeID: Int              //  1
-    public var typeAbbr: String         //  2
-    public var type: String             //  3
-    public var statusID: Int            //  4
-    public var deal: String?            //  5
-    public var price: Double?           //  6
-    public var startDate: Date          //  7
-    public var endDate: Date?           //  8
-    public var note: String?            //  9
-    public var parentID: Int?           // 10
-    public var eventID: Int             // 11
-    public var justificatoin: String?   // 12
-    public var description: String?     // 13
-    
-//    public var status: DealStatus {
-//        if isTerminated {
-//            return .terminated
-//        } else {
-//            switch (isPlanning, isCompleted) {
-//                case (true, false):
-//                    return .planning
-//                case (false, true):
-//                    return .completed
-//                default:
-//                    return .pending
-//            }
-//        }
-//    }
-    
-    public var status: DealStatus {
-        return .pending
-    }
+    public var id: Int                      //  0
+    public var typeID: Int                  //  1
+    public var typeAbbr: String             //  2
+    public var type: String                 //  3
+    public var statusID: Int                //  4
+    public var deal: String?                //  5
+    public var price: Double?               //  6
+    public var startDate: Date              //  7
+    public var endDate: Date?               //  8
+    public var note: String?                //  9
+    public var parentID: Int?               // 10
+    public var eventID: Int                 // 11
+    public var justificatoin: String?       // 12
+    public var description: String?         // 13
     
     public init(
         id: Int,                            //  0
@@ -73,6 +51,25 @@ public struct Deal: Hashable, Codable, Identifiable {
 // MARK: - Deal extension for Status
 
 public extension Deal {
+    
+    //    public var status: DealStatus {
+    //        if isTerminated {
+    //            return .terminated
+    //        } else {
+    //            switch (isPlanning, isCompleted) {
+    //                case (true, false):
+    //                    return .planning
+    //                case (false, true):
+    //                    return .completed
+    //                default:
+    //                    return .pending
+    //            }
+    //        }
+    //    }
+        
+        public var status: DealStatus {
+            return .pending
+        }
     
     // Status
     enum DealStatus {
