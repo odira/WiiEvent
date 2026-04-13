@@ -151,10 +151,10 @@ public class EventModel: Identifiable, ObservableObject {
                 let dealID = try? columns[33].int()               // 33
                 let dealTypeID = try? columns[34].int()           // 34
                 let dealStatusID = try? columns[35].int()         // 35
-                let deal = try? columns[34].string()              // 36
-                let dealPrice = try? columns[36].decimal()        // 37
-                let dealStartDatePg = try? columns[37].date()     // 38
-                let dealEndDatePg = try? columns[38].date()       // 39
+                let deal = try? columns[36].string()              // 36
+                let dealPrice = try? columns[37].decimal()        // 37
+                let dealStartDatePg = try? columns[38].date()     // 38
+                let dealEndDatePg = try? columns[39].date()       // 39
                 
                 // The UTC/GMT time zone.
                 let utcTimeZone = TimeZone(secondsFromGMT: 0)!
