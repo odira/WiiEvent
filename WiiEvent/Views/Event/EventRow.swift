@@ -15,7 +15,7 @@ struct EventRowView: View {
             HStack(spacing: 10) {
                 cityView()
                 eventView()
-                dealView()
+//                dealView()
                 contragentView()
             }
             .padding()

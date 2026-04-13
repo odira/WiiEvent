@@ -37,11 +37,16 @@ public struct Event: Hashable, Codable, Identifiable {
     public var limit2030: Decimal?      /// 29
     public var subgroup: String?        /// 30
     public var subgroupId: Int?         /// 31
-    public var statusId: Int?           /// 32
-    public var dealId: Int?             /// 33
-    public var deal: String?            /// 34
+    public var statusID: Int?           /// 32
+    public var dealID: Int?             /// 33
+    public var dealTypeID: Int?         /// 34
+    public var dealStatusID: Int?       /// 35
+    public var deal: String?            /// 36
+    public var dealPrice: Decimal?      /// 37
+    public var dealStartDate: Date?     /// 38
+    public var dealEndDate: Date?       /// 39
     
-    public enum Status: String, CaseIterable, Codable {
+    public enum Status: String, CaseIterable {
         case planning = "планируется"   /// 1
         case pending = "выполняется"    /// 2
         case completed = "завершено"    /// 3
@@ -49,7 +54,7 @@ public struct Event: Hashable, Codable, Identifiable {
         case undefined = "неопределено" /// 5
     }
     public var status: Status {
-        switch self.statusId ?? 5 {  /// 'неопределено' defined in PostgreSQL tercase database as value 5
+        switch self.statusID ?? 5 {  /// 'неопределено' defined in PostgreSQL tercase database as value 5
         case 1: return .planning
         case 2: return .pending
         case 3: return .completed
@@ -66,6 +71,26 @@ public struct Event: Hashable, Codable, Identifiable {
             Image(systemName: "nosign")
         }
     }
+    
+//    public enum DealStatus: String, CaseIterable {
+//        case completed = "выполнен"
+//        case pending = "выполняется"
+//        case planning = "планируется"
+//        case terminated = "расторгнут"
+//    }
+//    public var dealStatus: DealStatus {
+//        switch self.dealStatusID ?? 1 {
+//        case 0: return .completed
+//        case 2: return .pending
+//        case 1: return .planning
+//        case 4: return .terminated
+//        default: return .planning
+//        }
+//    }
+//    public var dealStatus: DealStatus? {
+//        guard let dealStatusID else { return nil }
+//        return DealStatus.allCases.first(where: { $0.rawValue == dealStatusID })
+//    }
 
 //    var planImage: Image? {
 //        if let plan {
@@ -75,17 +100,17 @@ public struct Event: Hashable, Codable, Identifiable {
 //        }
 //    }
     
-    struct Coordinates: Hashable, Codable {
-        var latitude: Double
-        var longitude: Double
-    }
-    private var coordinates: Coordinates = Coordinates(latitude: 0.55, longitude: 0.35)
-    public var locationCoordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(
-            latitude: coordinates.latitude, 
-            longitude: coordinates.longitude
-        )
-    }
+//    struct Coordinates: Hashable, Codable {
+//        var latitude: Double
+//        var longitude: Double
+//    }
+//    private var coordinates: Coordinates = Coordinates(latitude: 0.55, longitude: 0.35)
+//    public var locationCoordinate: CLLocationCoordinate2D {
+//        CLLocationCoordinate2D(
+//            latitude: coordinates.latitude, 
+//            longitude: coordinates.longitude
+//        )
+//    }
 
     // MARK: - Initializations
     
@@ -122,9 +147,14 @@ public struct Event: Hashable, Codable, Identifiable {
         limit2030: Decimal? = nil,            /// 29
         subgroup: String? = nil,              /// 30
         subgroupId: Int? = nil,               /// 31
-        statusId: Int? = nil,                 /// 32
-        dealId: Int? = nil,                   /// 33
-        deal: String? = nil                   /// 34
+        statusID: Int? = nil,                 /// 32
+        dealID: Int? = nil,                   /// 33
+        dealTypeID: Int? = nil,               /// 34
+        dealStatusID: Int? = nil,             /// 35
+        deal: String? = nil,                  /// 36
+        dealPrice: Decimal? = nil,            /// 37
+        dealStartDate: Date? = nil,           /// 38
+        dealEndDate: Date? = nil              /// 39
     ) {
         self.id = id                          ///  0
         self.event = event                    ///  1
@@ -158,9 +188,14 @@ public struct Event: Hashable, Codable, Identifiable {
         self.limit2030 = limit2030            /// 29
         self.subgroup = subgroup              /// 30
         self.subgroupId = subgroupId          /// 31
-        self.statusId = statusId              /// 32
-        self.dealId = dealId                  /// 33
-        self.deal = deal                      /// 34
+        self.statusID = statusID              /// 32
+        self.dealID = dealID                  /// 33
+        self.dealTypeID = dealTypeID          /// 34
+        self.dealStatusID = dealStatusID      /// 35
+        self.deal = deal                      /// 36
+        self.dealPrice = dealPrice            /// 37
+        self.dealStartDate = dealStartDate    /// 38
+        self.dealEndDate = dealEndDate        /// 39
     }
 }
 
@@ -202,9 +237,14 @@ public extension Event {
               limit2030: 2030,                        /// 29
               subgroup: "SUB",                        /// 30
               subgroupId: 0,                          /// 31
-              statusId: 0,                            /// 32
-              dealId: 100,                            /// 33
-              deal: "Москва-Резерв"                   /// 34
+              statusID: 0,                            /// 32
+              dealID: 100,                            /// 33
+              dealTypeID: 1,                          /// 34
+              dealStatusID: 1,                        /// 35
+              deal: "Москва-Резерв",                  /// 36
+              dealPrice: 1000.00,                     /// 37
+              dealStartDate: Date(timeIntervalSince1970: 1000),   /// 38
+              dealEndDate: Date(timeIntervalSince1970: 2000)      /// 39
         )
     ]
     

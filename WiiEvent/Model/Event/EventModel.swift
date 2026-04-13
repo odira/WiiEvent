@@ -92,7 +92,12 @@ public class EventModel: Identifiable, ObservableObject {
                     subgroup_id,      -- 31
                     status_id,        -- 32
                     deal_id,          -- 33
-                    deal              -- 34
+                    deal_type_id,     -- 34
+                    deal_status_id,   -- 35
+                    deal,             -- 36
+                    deal_price,       -- 37
+                    deal_start_date,  -- 38
+                    deal_end_date     -- 39
                 FROM
                     event.vw_event
             """
@@ -142,9 +147,30 @@ public class EventModel: Identifiable, ObservableObject {
                 let limit2030 = try? columns[29].decimal()        // 29
                 let subgroup = try? columns[30].string()          // 30
                 let subgroupId = try? columns[31].int()           // 31
-                let statusId = try? columns[32].int()             // 32
-                let dealId = try? columns[33].int()               // 33
-                let deal = try? columns[34].string()              // 34
+                let statusID = try? columns[32].int()             // 32
+                let dealID = try? columns[33].int()               // 33
+                let dealTypeID = try? columns[34].int()           // 34
+                let dealStatusID = try? columns[35].int()         // 35
+                let deal = try? columns[34].string()              // 36
+                let dealPrice = try? columns[36].decimal()        // 37
+                let dealStartDatePg = try? columns[37].date()     // 38
+                let dealEndDatePg = try? columns[38].date()       // 39
+                
+                // The UTC/GMT time zone.
+                let utcTimeZone = TimeZone(secondsFromGMT: 0)!
+                
+                var dealStartDate: Date? {
+                    if let date = dealStartDatePg {
+                        return date.date(in: utcTimeZone)
+                    }
+                    return nil
+                }
+                var dealEndDate: Date? {
+                    if let date = dealEndDatePg {
+                        return date.date(in: utcTimeZone)
+                    }
+                    return nil
+                }
                 
                 events.append(
                     Event(
@@ -180,9 +206,14 @@ public class EventModel: Identifiable, ObservableObject {
                         limit2030: limit2030,                     // 29
                         subgroup: subgroup,                       // 30
                         subgroupId: subgroupId,                   // 31
-                        statusId: statusId,                       // 32
-                        dealId: dealId,                           // 33
-                        deal: deal                                // 34
+                        statusID: statusID,                       // 32
+                        dealID: dealID,                           // 33
+                        dealTypeID: dealTypeID,                   // 34
+                        dealStatusID: dealStatusID,               // 35
+                        deal: deal,                               // 36
+                        dealPrice: dealPrice,                     // 37
+                        dealStartDate: dealStartDate,             // 38
+                        dealEndDate: dealEndDate                  // 39
                     )
                 )
             }
