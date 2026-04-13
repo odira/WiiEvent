@@ -63,15 +63,8 @@ public class HistoryModel: ObservableObject {
                 date,           --  2
                 history,        --  3
                 note,           --  4
-                letter_1,       --  5
-                letter_1_date,  --  6
-                letter_1_note,  --  7
-                letter_1_unit,  --  8
-                letter_2,       --  9
-                letter_2_date,  -- 10
-                letter_2_note,  -- 11
-                letter_2_unit,  -- 12
-                inOut           -- 13
+                letter,         --  5
+                letter_date     --  6
             FROM 
                 event.vw_history 
             ORDER BY 
@@ -92,15 +85,8 @@ public class HistoryModel: ObservableObject {
                 let datePg = try columns[2].date()           //  2
                 let history = try columns[3].string()        //  3
                 let note = try? columns[4].string()          //  4
-                let letter1 = try? columns[5].string()       //  5
-                let letter1datePg = try? columns[6].date()   //  6
-                let letter1note = try? columns[7].string()   //  7
-                let letter1unit = try? columns[8].int()      //  8
-                let letter2 = try? columns[9].string()       //  9
-                let letter2datePg = try? columns[10].date()  // 10
-                let letter2note = try? columns[11].string()  // 11
-                let letter2unit = try? columns[12].int()     // 12
-                let inOut = try? columns[13].string()        // 13
+                let letter = try? columns[5].string()        //  5
+                let letterDatePg = try? columns[6].date()    //  6
 
                 // The UTC/GMT time zone.
                 let utcTimeZone = TimeZone(secondsFromGMT: 0)!
@@ -108,14 +94,11 @@ public class HistoryModel: ObservableObject {
                 var date: Date {
                     return datePg.date(in: utcTimeZone)
                 }
-                var letter1date: Date? {
-                    if let date = letter1datePg {
+                var letterDate: Date? {
+                    if let date = letterDatePg {
                         return date.date(in: utcTimeZone)
                     }
                     return nil
-                }
-                var letter2date: Date? {
-                    return letter2datePg?.date(in: utcTimeZone)
                 }
                 
                 histories.append(
@@ -125,15 +108,8 @@ public class HistoryModel: ObservableObject {
                         date: date,
                         history: history,
                         note: note ?? "",
-                        letter1: letter1,
-                        letter1date: letter1date,
-                        letter1note: letter1note,
-                        letter1unit: letter1unit,
-                        letter2: letter2,
-                        letter2date: letter2date,
-                        letter2note: letter2note,
-                        letter2unit: letter2unit,
-                        inOut: inOut
+                        letter: letter,
+                        letterDate: letterDate
                     )
                 )
             }

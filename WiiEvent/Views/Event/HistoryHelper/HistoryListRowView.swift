@@ -50,22 +50,22 @@ struct HistoryListRowView: View {
             
             
             VStack {
-                HStack {
-                    HStack {
-                        Text(history.letter1 ?? "")
-                        if let date = history.letter1date {
-                            Text(date, format: .dateTime)
-                        }
-                    }
-                    Spacer()
-                    HStack {
-                        Text(history.letter2 ?? "")
-                        if let date = history.letter2date {
-                            Text(date, format: .dateTime)
-                        }
-                    }
-                }
-                .padding()
+//                HStack {
+//                    HStack {
+//                        Text(history.letter1 ?? "")
+//                        if let date = history.letter1date {
+//                            Text(date, format: .dateTime)
+//                        }
+//                    }
+//                    Spacer()
+//                    HStack {
+//                        Text(history.letter2 ?? "")
+//                        if let date = history.letter2date {
+//                            Text(date, format: .dateTime)
+//                        }
+//                    }
+//                }
+//                .padding()
                 
                 HStack {
                     Text(history.history)
