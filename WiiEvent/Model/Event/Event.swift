@@ -55,11 +55,11 @@ public struct Event: Hashable, Codable, Identifiable {
     }
     public var status: Status {
         switch self.statusID ?? 5 {  /// 'неопределено' defined in PostgreSQL tercase database as value 5
-        case 1: return .planning
-        case 2: return .pending
-        case 3: return .completed
-        case 4: return .terminated
-        default: return .undefined
+            case 1: return .planning
+            case 2: return .pending
+            case 3: return .completed
+            case 4: return .terminated
+            default: return .undefined
         }
     }
     
@@ -71,50 +71,58 @@ public struct Event: Hashable, Codable, Identifiable {
             Image(systemName: "nosign")
         }
     }
-    
-//    public enum DealStatus: String, CaseIterable {
-//        case completed = "выполнен"
-//        case pending = "выполняется"
-//        case planning = "планируется"
-//        case terminated = "расторгнут"
-//    }
-//    public var dealStatus: DealStatus {
-//        switch self.dealStatusID ?? 1 {
-//        case 0: return .completed
-//        case 2: return .pending
-//        case 1: return .planning
-//        case 4: return .terminated
-//        default: return .planning
-//        }
-//    }
-//    public var dealStatus: DealStatus? {
-//        guard let dealStatusID else { return nil }
-//        return DealStatus.allCases.first(where: { $0.rawValue == dealStatusID })
-//    }
+}
 
-//    var planImage: Image? {
-//        if let plan {
-//            return Image(systemName: plan)
-//        } else {
-//            return Image(systemName: "paperplan")
-//        }
+public extension Event {
+//    enum DealTypeAbbr: String, CaseIterable {
+////        case 
 //    }
     
-//    struct Coordinates: Hashable, Codable {
-//        var latitude: Double
-//        var longitude: Double
-//    }
-//    private var coordinates: Coordinates = Coordinates(latitude: 0.55, longitude: 0.35)
-//    public var locationCoordinate: CLLocationCoordinate2D {
-//        CLLocationCoordinate2D(
-//            latitude: coordinates.latitude, 
-//            longitude: coordinates.longitude
-//        )
-//    }
+    var dealStatus: Deal.Status? {
+        if let dealStatusID {
+            switch dealStatusID {
+                case 0: return .completed
+                case 2: return .pending
+                case 1: return .planning
+                case 4: return .terminated
+                default: return .planning
+            }
+        }
+        return .planning
+    }
+    var dealStatusText: String {
+        switch dealStatus {
+            case .completed:  return "Выполнен"
+            case .pending:    return "Выполняется"
+            case .planning:   return "Планируется"
+            case .terminated: return "Расторгнут"
+            default: return "Планируется"
+        }
+    }
+    var dealStatusColor: Color {
+        switch dealStatus {
+            case .completed:  return .orange
+            case .pending:    return .green
+            case .planning:   return .blue
+            case .terminated: return .red
+            default: return .blue
+        }
+    }
+    
+    func dealStatusTransparant(event: Event) -> some View {
+        Text(dealStatusText)
+            .font(.system(.caption, design: .monospaced))
+            .foregroundStyle(dealStatusColor)
+            .padding(3)
+            .overlay {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(dealStatusColor, lineWidth: 1)
+            }
+    }
 
     // MARK: - Initializations
     
-    public init(
+    init(
         id: Int,                              ///  0
         event: String,                        ///  1
         city: String? = nil,                  ///  2

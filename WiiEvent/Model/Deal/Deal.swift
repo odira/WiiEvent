@@ -66,17 +66,30 @@ public extension Deal {
     //            }
     //        }
     //    }
-        
-        public var status: DealStatus {
-            return .pending
-        }
     
-    // Status
-    enum DealStatus {
-        case  completed  // выполнен
-        case    pending  // выполняется
-        case   planning  // планируется
-        case terminated  // расторгнут
+    enum Status: String, CaseIterable {
+        case completed = "выполнен"
+        case pending = "выполняется"
+        case planning = "планируется"
+        case terminated = "расторгнут"
+    }
+    
+    //    public var dealStatus: DealStatus {
+    //        switch self.dealStatusID ?? 1 {
+    //        case 0: return .completed
+    //        case 2: return .pending
+    //        case 1: return .planning
+    //        case 4: return .terminated
+    //        default: return .planning
+    //        }
+    //    }
+    //    public var dealStatus: DealStatus? {
+    //        guard let dealStatusID else { return nil }
+    //        return DealStatus.allCases.first(where: { $0.rawValue == dealStatusID })
+    //    }
+        
+    var status: Status {
+        return .pending
     }
     
     var statusText: String {
@@ -107,6 +120,8 @@ public extension Deal {
                     .stroke(deal.statusColor, lineWidth: 1)
             }
     }
+    
+
 }
 
 // MARK: - Deal example

@@ -15,7 +15,7 @@ struct EventRowView: View {
             HStack(spacing: 10) {
                 cityView()
                 eventView()
-                dealView()
+                eventDealView()
                 contragentView()
             }
             .padding()
@@ -65,7 +65,7 @@ struct EventRowView: View {
     }
     
     // Deal
-    fileprivate func dealView() -> some View {
+    fileprivate func eventDealView() -> some View {
         HStack(alignment: .top) {
 //            VStack(alignment: .leading) {
 //                if let deal = dealModel.findDeals(byEventID: event.id)?.first {
@@ -95,11 +95,19 @@ struct EventRowView: View {
 //            .frame(maxWidth: .infinity)
             
             VStack(alignment: .leading) {
+                event.dealStatusTransparant(event: event)
                 if let deal = event.deal {
                     Text(deal)
                 }
+                if let price = event.dealPrice {
+                    Text(price, format: .number)
+                }
+                if let startDate = event.dealStartDate {
+                    Text(DateFormatter.planningMonth.string(from: startDate))
+                        .font(.footnote)
+                }
             }
-//            Text(event.deal)
+            .frame(maxWidth: .infinity)
             
             Spacer()
         }
