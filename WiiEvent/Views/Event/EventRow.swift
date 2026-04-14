@@ -67,60 +67,43 @@ struct EventRowView: View {
     // Deal
     fileprivate func eventDealView() -> some View {
         HStack(alignment: .top) {
-//            VStack(alignment: .leading) {
-//                if let deal = dealModel.findDeals(byEventID: event.id)?.first {
-//                    HStack {
-//                        DealStatusTransparant(for: deal)
-//                        Spacer()
-//                    }
-//                                        
-//                    /// Deal is planning
-//                    if deal.statusID != 0 {
-//                        Text(DateFormatter.planningMonth.string(from: deal.startDate))
-//                            .font(.footnote)
-//                     /// Deal is concluded
-//                    } else {
-//                        VStack(alignment: .leading) {
-//                            Text("\(deal.typeAbbr) № \(deal.deal ?? "") \nот \(DateFormatter.longDateFormatter.string(from: deal.startDate))")
-//                            Text("\((event.limitTotal ?? 0.0), format: .number) руб.")
-//                        }
-//                        
-//                        Spacer()
-//                    }
-//                    
-//                } else {
-//                    EmptyView()
-//                }
-//            }
-//            .frame(maxWidth: .infinity)
-            
             VStack(alignment: .leading) {
-                event.dealStatusTransparant(event: event)
-                if let deal = event.deal {
-                    Text(deal)
+                /// Transparants Bar
+                HStack {
+                    event.dealStatusTransparant(event: event)
+                    Spacer()
                 }
-                if let price = event.dealPrice {
-                    Text(price, format: .number)
-                }
-                if let startDate = event.dealStartDate {
-                    Text(DateFormatter.planningMonth.string(from: startDate))
-                        .font(.footnote)
+                
+                /// dealStatusID == 1 == Планируется
+                if event.dealStatusID == 1 {
+                    if let date = event.dealStartDate {
+                        Text(DateFormatter.planningMonth.string(from: date))
+                    }
+                } else {
+                    HStack {
+                        if let deal = event.deal {
+                            Text("\(event.dealTypeAbbrText) №")
+                            Text(deal).bold()
+                        }
+
+                        Spacer()
+                    }
+                    
+                    if let startDate = event.dealStartDate {
+                        Text("от \(DateFormatter.longDateFormatter.string(from: startDate))")
+                    }
+                    
+                    if let price = event.dealPrice {
+                        Text("\((price), format: .number) руб.")
+                    }
+                    
+                    Spacer()
                 }
             }
-            .frame(maxWidth: .infinity)
             
             Spacer()
         }
     }
-//    fileprivate func dealView() -> some View {
-//        HStack(alignment: .top) {
-//            VStack(alignment: .leading) {
-//                Text("№ \(event.deal ?? "NOT")")
-//                Spacer()
-//            }
-//            Spacer()
-//        }
-//    }
     
     // contragent
     fileprivate func contragentView() -> some View {

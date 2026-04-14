@@ -74,38 +74,57 @@ public struct Event: Hashable, Codable, Identifiable {
 }
 
 public extension Event {
-//    enum DealTypeAbbr: String, CaseIterable {
-////        case 
-//    }
+    enum DealTypeAbbr: String, CaseIterable {
+        case deal = "Договор"
+        case contract = "Контракт"
+        case additional = "ДС"
+    }
+    var dealTypeAbbr: DealTypeAbbr? {
+        guard let dealTypeID else { return nil }
+        
+        switch dealTypeID {
+        case 1: return .deal
+        case 2: return .contract
+        case 3: return .additional
+        default: return nil
+        }
+    }
+    var dealTypeAbbrText: String {
+        switch dealTypeAbbr {
+        case .deal:       return "Договор"
+        case .contract:   return "Контракт"
+        case .additional: return "ДС"
+        default: return ""
+        }
+    }
     
     var dealStatus: Deal.Status? {
-        if let dealStatusID {
-            switch dealStatusID {
-                case 0: return .completed
-                case 2: return .pending
-                case 1: return .planning
-                case 4: return .terminated
-                default: return .planning
-            }
+        guard let dealStatusID else { return nil }
+        
+        switch dealStatusID {
+        case 0: return .completed
+        case 1: return .planning
+        case 2: return .pending
+        case 4: return .terminated
+        default: return nil
         }
-        return .planning
     }
     var dealStatusText: String {
         switch dealStatus {
-            case .completed:  return "Выполнен"
-            case .pending:    return "Выполняется"
-            case .planning:   return "Планируется"
-            case .terminated: return "Расторгнут"
-            default: return "Планируется"
+        case .completed:  return "Выполнен"
+        case .pending:    return "Выполняется"
+        case .planning:   return "Планируется"
+        case .terminated: return "Расторгнут"
+        default: return "Планируется"
         }
     }
     var dealStatusColor: Color {
         switch dealStatus {
-            case .completed:  return .orange
-            case .pending:    return .green
-            case .planning:   return .blue
-            case .terminated: return .red
-            default: return .blue
+        case .completed:  return .orange
+        case .pending:    return .green
+        case .planning:   return .blue
+        case .terminated: return .red
+        default: return .blue
         }
     }
     
