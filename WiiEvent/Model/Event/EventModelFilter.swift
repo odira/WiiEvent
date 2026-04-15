@@ -11,7 +11,7 @@ public class EventModelFilter: ObservableObject {
     @Published public var planId: Int? = nil
     @Published public var city: String = ""
     @Published public var eventIds: [Int]? = nil
-    @Published public var dealNumber: String = ""
+    @Published public var deal: String = ""
     @Published public var isChanged: Bool = false
     @Published public var isValid: Bool = true
     @Published public var isOption: Bool = false
@@ -28,7 +28,7 @@ public class EventModelFilter: ObservableObject {
         self.planId = nil
         self.city = ""
         self.eventIds = nil
-        self.dealNumber = ""
+        self.deal = ""
         self.isChanged = false
         self.isValid = true
     }
@@ -55,25 +55,17 @@ public class EventModelFilter: ObservableObject {
         // city
         if !city.isEmpty {
             filteredEvents = filteredEvents.filter {
-                $0.city!.lowercased().contains(city.lowercased())
+                ($0.city ?? "").lowercased().contains(city.lowercased())
             }
         }
         
-        // dealNumber
-        if !dealNumber.isEmpty {
-//            if let eventIds = dealModel.findEventIdsByDealNumber(dealNumber) {
-//                self.eventIds = eventIds
-//            }
+        // deal
+        if !deal.isEmpty {
             filteredEvents = filteredEvents.filter {
-                if $0.deal != nil {
-                    return $0.deal!.lowercased().contains(dealNumber.lowercased())
-                } else {
-                    return false
-                }
+                ($0.deal ?? "").lowercased().contains(deal.lowercased())
             }
         }
         
-
         filteredEvents = filteredEvents.filter {
             if self.isValid {
                 $0.isValid == true

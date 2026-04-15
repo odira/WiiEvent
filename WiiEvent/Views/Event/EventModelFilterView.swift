@@ -28,7 +28,7 @@ struct EventModelFilterView: View {
             cityBlock().padding()
             planIdBlock().padding()
             dealStatusBlock().padding()
-            dealIdBlock().padding()
+            dealBlock().padding()
             eventIsValidBlock().padding()
             showIsOptionBlock().padding()
         
@@ -80,12 +80,13 @@ extension EventModelFilterView {
             HStack {
                 TextField("Search", text: $eventModelFilter.city)
                     .focused($searchFieldFocusState)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textFieldStyle(.roundedBorder)
                 Button("Clear") {
                     eventModelFilter.city = ""
                     searchFieldFocusState = true
                 }
                 .keyboardShortcut("c", modifiers: [.command])
+                .buttonStyle(.borderedProminent)
             }
         }
     }
@@ -123,21 +124,16 @@ extension EventModelFilterView {
     }
     
     // dealId
-    private func dealIdBlock() -> some View {
+    private func dealBlock() -> some View {
         VStack(alignment: .leading) {
-            Label("Номер Договора", systemImage: "magnifyingglass")
+            Label("Номер Договора/Контракта", systemImage: "magnifyingglass")
             HStack {
-                TextField("Договор", text: $eventModelFilter.dealNumber)
+                TextField("Введите номер договора/контракта", text: $eventModelFilter.deal)
                     .textFieldStyle(.roundedBorder)
                 Button("Clear") {
-                    eventModelFilter.dealNumber = ""
+                    eventModelFilter.deal = ""
                 }
-                
-//                if !dealFilter.isEmpty {
-//                    if let eventIds = dealModel.findEventIdsByDeal(dealFilter) {
-//                        eventModelFilter.eventIds = eventIds
-//                    }
-//                }
+                .buttonStyle(.borderedProminent)
             }
         }
     }

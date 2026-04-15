@@ -2,8 +2,6 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-// MARK: - Event struct definition
-
 public struct Event: Hashable, Codable, Identifiable {
     public var id: Int                  ///  0
     public var event: String            ///  1
@@ -46,14 +44,14 @@ public struct Event: Hashable, Codable, Identifiable {
     public var dealStartDate: Date?     /// 38
     public var dealEndDate: Date?       /// 39
     
-    public enum Status: String, CaseIterable {
+    enum Status: String, CaseIterable {
         case planning = "планируется"   /// 1
         case pending = "выполняется"    /// 2
         case completed = "завершено"    /// 3
         case terminated = "прекращено"  /// 4
         case undefined = "неопределено" /// 5
     }
-    public var status: Status {
+    var status: Status {
         switch self.statusID ?? 5 {  /// 'неопределено' defined in PostgreSQL tercase database as value 5
             case 1: return .planning
             case 2: return .pending
@@ -138,9 +136,11 @@ public extension Event {
                     .stroke(dealStatusColor, lineWidth: 1)
             }
     }
+}
 
-    // MARK: - Initializations
-    
+// MARK: - Initializations
+ 
+public extension Event {
     init(
         id: Int,                              ///  0
         event: String,                        ///  1
