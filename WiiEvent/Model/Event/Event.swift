@@ -106,15 +106,17 @@ public extension Event {
         case 4: return .terminated
         default: return nil
         }
+//        return Deal.Status.ID { where: \.id == dealStatusID }
     }
     var dealStatusText: String {
-        switch dealStatus {
-        case .completed:  return "Выполнен"
-        case .pending:    return "Выполняется"
-        case .planning:   return "Планируется"
-        case .terminated: return "Расторгнут"
-        default: return "Планируется"
-        }
+//        switch dealStatus {
+//        case .completed:  return "Выполнен"
+//        case .pending:    return "Выполняется"
+//        case .planning:   return "Планируется"
+//        case .terminated: return "Расторгнут"
+//        default: return "Планируется"
+//        }
+        return dealStatus?.rawValue ?? "Планируется"
     }
     var dealStatusColor: Color {
         switch dealStatus {

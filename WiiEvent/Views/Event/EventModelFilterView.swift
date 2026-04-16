@@ -113,11 +113,9 @@ extension EventModelFilterView {
             Text("Статус договора")
             HStack {
                 Picker("", selection: $eventModelFilter.dealStatus) {
-                    Text("Все")
-                    Text("Выполнен").tag(Deal.Status.completed)
-                    Text("Выполняется").tag(Deal.Status.pending)
-                    Text("Планируется").tag(Deal.Status.planning)
-                    Text("Расторгнут").tag(Deal.Status.terminated)
+                    ForEach(Deal.Status.allCases) { status in
+                        Text(status.rawValue.capitalized).tag(status)
+                    }
                 }
                 .pickerStyle(.segmented)
                 Spacer()

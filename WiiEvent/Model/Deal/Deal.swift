@@ -67,11 +67,20 @@ public extension Deal {
     //        }
     //    }
     
-    enum Status: String, CaseIterable {
+    enum Status: String, CaseIterable, Identifiable {
         case completed = "выполнен"
         case pending = "выполняется"
         case planning = "планируется"
         case terminated = "расторгнут"
+        
+        public var id: Int {
+            switch self {
+            case .completed: return 0
+            case .pending: return 2
+            case .planning: return 1
+            case .terminated: return 4
+            }
+        }
     }
     
     //    public var dealStatus: DealStatus {
