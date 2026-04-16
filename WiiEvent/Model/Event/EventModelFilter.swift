@@ -12,6 +12,7 @@ public class EventModelFilter: ObservableObject {
     @Published public var city: String = ""
     @Published public var eventIds: [Int]? = nil
     @Published public var deal: String = ""
+    @Published public var dealStatus: Deal.Status? = nil
     @Published public var isChanged: Bool = false
     @Published public var isValid: Bool = true
     @Published public var isOption: Bool = false
@@ -29,6 +30,7 @@ public class EventModelFilter: ObservableObject {
         self.city = ""
         self.eventIds = nil
         self.deal = ""
+        self.dealStatus = nil
         self.isChanged = false
         self.isValid = true
     }
@@ -63,6 +65,12 @@ public class EventModelFilter: ObservableObject {
         if !deal.isEmpty {
             filteredEvents = filteredEvents.filter {
                 ($0.deal ?? "").lowercased().contains(deal.lowercased())
+            }
+        }
+        
+        if let dealStatus {
+            filteredEvents = filteredEvents.filter {
+                $0.dealStatus == dealStatus
             }
         }
         

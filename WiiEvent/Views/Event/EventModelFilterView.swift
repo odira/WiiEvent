@@ -18,8 +18,8 @@ struct EventModelFilterView: View {
     @EnvironmentObject private var eventModelFilter: EventModelFilter
     
 //    @State private var planIdFilter: Int? = nil
-    @State private var dealStatusFilter: Int? = nil
-    @State private var dealFilter: String = ""
+//    @State private var dealStatusFilter: Deal.Status? = nil
+//    @State private var dealFilter: String = ""
     
     @FocusState private var searchFieldFocusState: Bool
     
@@ -112,10 +112,12 @@ extension EventModelFilterView {
         VStack(alignment: .leading ) {
             Text("Статус договора")
             HStack {
-                Picker("", selection: $dealStatusFilter) {
-                    Text("Все").tag(0)
-                    Text("Активен").tag(1)
-                    Text("Закрыт").tag(2)
+                Picker("", selection: $eventModelFilter.dealStatus) {
+                    Text("Все")
+                    Text("Выполнен").tag(Deal.Status.completed)
+                    Text("Выполняется").tag(Deal.Status.pending)
+                    Text("Планируется").tag(Deal.Status.planning)
+                    Text("Расторгнут").tag(Deal.Status.terminated)
                 }
                 .pickerStyle(.segmented)
                 Spacer()
@@ -123,7 +125,7 @@ extension EventModelFilterView {
         }
     }
     
-    // dealId
+    // deal
     private func dealBlock() -> some View {
         VStack(alignment: .leading) {
             Label("Номер Договора/Контракта", systemImage: "magnifyingglass")
