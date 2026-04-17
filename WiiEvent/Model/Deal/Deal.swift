@@ -72,13 +72,15 @@ public extension Deal {
         case pending = "выполняется"
         case planning = "планируется"
         case terminated = "расторгнут"
+        case canceled = "отменен"
         
         public var id: Int {
             switch self {
             case .completed: return 0
-            case .pending: return 2
             case .planning: return 1
+            case .pending: return 2
             case .terminated: return 4
+            case .canceled: return 5
             }
         }
     }
@@ -103,19 +105,21 @@ public extension Deal {
     
     var statusText: String {
         switch status {
-            case .completed:  return "Выполнен"
-            case .pending:    return "Выполняется"
-            case .planning:   return "Планируется"
-            case .terminated: return "Расторгнут"
+        case .completed:  return "Выполнен"
+        case .pending:    return "Выполняется"
+        case .planning:   return "Планируется"
+        case .terminated: return "Расторгнут"
+        case .canceled:   return "Отменен"
         }
     }
     
     var statusColor: Color {
         switch status {
-            case .completed:  return .orange
-            case .pending:    return .green
-            case .planning:   return .blue
-            case .terminated: return .red
+        case .completed:  return .orange
+        case .pending:    return .green
+        case .planning:   return .blue
+        case .terminated: return .red
+        case .canceled: return .brown
         }
     }
     

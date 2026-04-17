@@ -104,6 +104,7 @@ public extension Event {
         case 1: return .planning
         case 2: return .pending
         case 4: return .terminated
+        case 5: return .canceled
         default: return nil
         }
 //        return Deal.Status.ID { where: \.id == dealStatusID }
@@ -124,6 +125,7 @@ public extension Event {
         case .pending:    return .green
         case .planning:   return .blue
         case .terminated: return .red
+        case .canceled:   return .brown
         default: return .blue
         }
     }
