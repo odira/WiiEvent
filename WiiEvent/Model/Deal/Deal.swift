@@ -51,53 +51,23 @@ public struct Deal: Hashable, Codable, Identifiable {
 // MARK: - Deal extension for Status
 
 public extension Deal {
-    
-    //    public var status: DealStatus {
-    //        if isTerminated {
-    //            return .terminated
-    //        } else {
-    //            switch (isPlanning, isCompleted) {
-    //                case (true, false):
-    //                    return .planning
-    //                case (false, true):
-    //                    return .completed
-    //                default:
-    //                    return .pending
-    //            }
-    //        }
-    //    }
-    
     enum Status: String, CaseIterable, Identifiable {
-        case completed = "выполнен"
-        case pending = "выполняется"
-        case planning = "планируется"
+        case completed  = "выполнен"
+        case pending    = "выполняется"
+        case planning   = "планируется"
         case terminated = "расторгнут"
-        case canceled = "отменен"
+        case canceled   = "отменен"
         
         public var id: Int {
             switch self {
-            case .completed: return 0
-            case .planning: return 1
-            case .pending: return 2
+            case .completed:  return 0
+            case .planning:   return 1
+            case .pending:    return 2
             case .terminated: return 4
-            case .canceled: return 5
+            case .canceled:   return 5
             }
         }
     }
-    
-    //    public var dealStatus: DealStatus {
-    //        switch self.dealStatusID ?? 1 {
-    //        case 0: return .completed
-    //        case 2: return .pending
-    //        case 1: return .planning
-    //        case 4: return .terminated
-    //        default: return .planning
-    //        }
-    //    }
-    //    public var dealStatus: DealStatus? {
-    //        guard let dealStatusID else { return nil }
-    //        return DealStatus.allCases.first(where: { $0.rawValue == dealStatusID })
-    //    }
         
     var status: Status {
         return .pending
@@ -119,7 +89,7 @@ public extension Deal {
         case .pending:    return .green
         case .planning:   return .blue
         case .terminated: return .red
-        case .canceled: return .brown
+        case .canceled:   return .brown
         }
     }
     
@@ -133,8 +103,6 @@ public extension Deal {
                     .stroke(deal.statusColor, lineWidth: 1)
             }
     }
-    
-
 }
 
 // MARK: - Deal example

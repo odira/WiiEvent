@@ -3,56 +3,57 @@ import SwiftUI
 import CoreLocation
 
 public struct Event: Hashable, Codable, Identifiable {
-    public var id: Int                  ///  0
-    public var event: String            ///  1
-    public var city: String?            ///  2
-    public var unit: String?            ///  3
-    public var equipment: String?       ///  4
-    public var phase: String?           ///  5
-    public var years: String?           ///  6
-    public var endDate: String?         ///  7
-    public var contragent: String?      ///  8
-    public var subcontractor: String?   ///  9
-    public var senior: String?          /// 10
-    public var description: String?     /// 11
-    public var isCompleted: Bool        /// 12
-    public var isOption: Bool           /// 13
-    public var justification: String?   /// 14
-    public var limitTotal: Decimal?     /// 15
-    public var note: String?            /// 16
-    public var planId: Int              /// 17
-    public var isValid: Bool            /// 18
-    public var limit2020: Decimal?      /// 19
-    public var limit2021: Decimal?      /// 20
-    public var limit2022: Decimal?      /// 21
-    public var limit2023: Decimal?      /// 22
-    public var limit2024: Decimal?      /// 23
-    public var limit2025: Decimal?      /// 24
-    public var limit2026: Decimal?      /// 25
-    public var limit2027: Decimal?      /// 26
-    public var limit2028: Decimal?      /// 27
-    public var limit2029: Decimal?      /// 28
-    public var limit2030: Decimal?      /// 29
-    public var subgroup: String?        /// 30
-    public var subgroupId: Int?         /// 31
-    public var statusID: Int?           /// 32
-    public var dealID: Int?             /// 33
-    public var dealTypeID: Int?         /// 34
-    public var dealStatusID: Int?       /// 35
-    public var deal: String?            /// 36
-    public var dealPrice: Decimal?      /// 37
-    public var dealStartDate: Date?     /// 38
-    public var dealEndDate: Date?       /// 39
+    public var id: Int                    //  0
+    public var event: String              //  1
+    public var city: String?              //  2
+    public var unit: String?              //  3
+    public var equipment: String?         //  4
+    public var phase: String?             //  5
+    public var years: String?             //  6
+    public var endDate: String?           //  7
+    public var contragent: String?        //  8
+    public var subcontractor: String?     //  9
+    public var senior: String?            // 10
+    public var description: String?       // 11
+    public var isCompleted: Bool          // 12
+    public var isOption: Bool             // 13
+    public var justification: String?     // 14
+    public var limitTotal: Decimal?       // 15
+    public var note: String?              // 16
+    public var planId: Int                // 17
+    public var isValid: Bool              // 18
+    public var limit2020: Decimal?        // 19
+    public var limit2021: Decimal?        // 20
+    public var limit2022: Decimal?        // 21
+    public var limit2023: Decimal?        // 22
+    public var limit2024: Decimal?        // 23
+    public var limit2025: Decimal?        // 24
+    public var limit2026: Decimal?        // 25
+    public var limit2027: Decimal?        // 26
+    public var limit2028: Decimal?        // 27
+    public var limit2029: Decimal?        // 28
+    public var limit2030: Decimal?        // 29
+    public var subgroup: String?          // 30
+    public var subgroupId: Int?           // 31
+    public var statusID: Int?             // 32
+    ///
+    public var dealID: Int?               // 33
+    public var dealTypeID: Int?           // 34
+    public var dealStatusID: Int          // 35
+    public var deal: String?              // 36
+    public var dealPrice: Decimal?        // 37
+    public var dealStartDate: Date?       // 38
+    public var dealEndDate: Date?         // 39
     
     enum Status: String, CaseIterable {
-        case planning = "планируется"   /// 1
-        case pending = "выполняется"    /// 2
-        case completed = "завершено"    /// 3
-        case terminated = "прекращено"  /// 4
-        case undefined = "неопределено" /// 5
+        case planning = "планируется"     // 1
+        case pending = "выполняется"      // 2
+        case completed = "завершено"      // 3
+        case terminated = "прекращено"    // 4
+        case undefined = "неопределено"   // 5
     }
     var status: Status {
-        switch self.statusID ?? 5 {  /// 'неопределено' defined in PostgreSQL tercase database as value 5
+        switch self.statusID ?? 5 {  // 'неопределено' defined in PostgreSQL tercase database as value 5
             case 1: return .planning
             case 2: return .pending
             case 3: return .completed
@@ -96,28 +97,19 @@ public extension Event {
         }
     }
     
-    var dealStatus: Deal.Status? {
-        guard let dealStatusID else { return nil }
-        
+    var dealStatus: Deal.Status {
         switch dealStatusID {
         case 0: return .completed
         case 1: return .planning
         case 2: return .pending
         case 4: return .terminated
         case 5: return .canceled
-        default: return nil
+        default: return .planning
         }
-//        return Deal.Status.ID { where: \.id == dealStatusID }
+//        return Deal.Status.ID { where: status == dealStatusID }
     }
     var dealStatusText: String {
-//        switch dealStatus {
-//        case .completed:  return "Выполнен"
-//        case .pending:    return "Выполняется"
-//        case .planning:   return "Планируется"
-//        case .terminated: return "Расторгнут"
-//        default: return "Планируется"
-//        }
-        return dealStatus?.rawValue ?? "Планируется"
+        return dealStatus.rawValue
     }
     var dealStatusColor: Color {
         switch dealStatus {
@@ -126,7 +118,6 @@ public extension Event {
         case .planning:   return .blue
         case .terminated: return .red
         case .canceled:   return .brown
-        default: return .blue
         }
     }
     
@@ -179,9 +170,10 @@ public extension Event {
         subgroup: String? = nil,              /// 30
         subgroupId: Int? = nil,               /// 31
         statusID: Int? = nil,                 /// 32
+        ///
         dealID: Int? = nil,                   /// 33
         dealTypeID: Int? = nil,               /// 34
-        dealStatusID: Int? = nil,             /// 35
+        dealStatusID: Int = 1,                /// 35
         deal: String? = nil,                  /// 36
         dealPrice: Decimal? = nil,            /// 37
         dealStartDate: Date? = nil,           /// 38
@@ -220,6 +212,7 @@ public extension Event {
         self.subgroup = subgroup              /// 30
         self.subgroupId = subgroupId          /// 31
         self.statusID = statusID              /// 32
+        ///
         self.dealID = dealID                  /// 33
         self.dealTypeID = dealTypeID          /// 34
         self.dealStatusID = dealStatusID      /// 35
