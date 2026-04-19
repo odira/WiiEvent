@@ -15,8 +15,8 @@ struct HistoryEditView: View {
     
     var body: some View {
         VStack {
-            HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note)
-                .padding()
+//            HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note)
+//                .padding()
             
         }
         

@@ -52,13 +52,27 @@ struct HistoryListRowView: View {
             VStack {
                 HStack {
                     Text(history.letter ?? "")
-                    if let date = history.letterDate {
-                        Text(dateFormatter.string(from: history.date))
+                        .padding()
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .fill(.clear)
+                                .stroke(Color.blue, lineWidth: 1)
+                        }
+                    if history.letterDate != nil {
+                        Text(dateFormatter.string(from: history.letterDate!))
+                            .padding()
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .fill(.clear)
+                                    .stroke(Color.blue, lineWidth: 1)
+                            }
                     }
                     Spacer()
                     
                 }
-                .padding()
+                .frame(maxWidth: .infinity)
+                .padding(.trailing, 10)
+                .padding(.top, 10)
                 
                 HStack {
                     Text(history.history)
@@ -72,13 +86,13 @@ struct HistoryListRowView: View {
                         }
                     
                     VStack {
-                        Button("Edit") {
-                            openWindow(id: "history-edit", value: history)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.orange)
-                        .clipShape(Capsule())
+//                        Button("Edit") {
+//                            openWindow(id: "history-edit", value: history)
+//                        }
+//                        .padding()
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.orange)
+//                        .clipShape(Capsule())
                         
                         Button("Delete") {
                             Task { await historyModel.sqlDELETE(historyId: history.id) }
@@ -93,7 +107,6 @@ struct HistoryListRowView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.trailing, 10)
-                .padding(.top, 10)
                 .padding(.bottom, 10)
             }
         }
