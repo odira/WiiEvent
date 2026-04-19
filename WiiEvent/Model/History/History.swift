@@ -18,7 +18,7 @@ public struct History: Hashable, Codable, Identifiable {
         eventId: Int,                   //  1
         date: Date,                     //  2
         history: String,                //  3
-        note: String? = "",             //  4
+        note: String? = nil,            //  4
         letter: String? = nil,          //  5
         letterDate: Date? = nil         //  6
     ) {

@@ -17,6 +17,8 @@ struct HistoryAddView: View {
     @State private var date: Date = Date.now
     @State private var history: String = ""
     @State private var note: String = ""
+    @State private var letter: String = ""
+    @State private var letterDate: Date = Date.now
     
 //    init(for event: Event) {
 //        self.eventId = event.id
@@ -27,7 +29,7 @@ struct HistoryAddView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HistoryFieldsEditor(date: $date, history: $history, note: $note)
+                HistoryFieldsEditor(date: $date, history: $history, note: $note, letter: $letter, letterDate: $letterDate)
                     .padding()
             }
             .toolbar {
@@ -39,7 +41,7 @@ struct HistoryAddView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         Task {
-                            await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note)
+                            await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note, letter: self.letter, letterDate: self.letterDate)
                             dismiss()
                         }
                     }

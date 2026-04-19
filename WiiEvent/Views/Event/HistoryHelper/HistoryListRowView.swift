@@ -50,22 +50,15 @@ struct HistoryListRowView: View {
             
             
             VStack {
-//                HStack {
-//                    HStack {
-//                        Text(history.letter1 ?? "")
-//                        if let date = history.letter1date {
-//                            Text(date, format: .dateTime)
-//                        }
-//                    }
-//                    Spacer()
-//                    HStack {
-//                        Text(history.letter2 ?? "")
-//                        if let date = history.letter2date {
-//                            Text(date, format: .dateTime)
-//                        }
-//                    }
-//                }
-//                .padding()
+                HStack {
+                    Text(history.letter ?? "")
+                    if let date = history.letterDate {
+                        Text(dateFormatter.string(from: history.date))
+                    }
+                    Spacer()
+                    
+                }
+                .padding()
                 
                 HStack {
                     Text(history.history)
@@ -82,6 +75,7 @@ struct HistoryListRowView: View {
                         Button("Edit") {
                             openWindow(id: "history-edit", value: history)
                         }
+                        .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.orange)
                         .clipShape(Capsule())
@@ -89,6 +83,7 @@ struct HistoryListRowView: View {
                         Button("Delete") {
                             Task { await historyModel.sqlDELETE(historyId: history.id) }
                         }
+                        .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.red)
                         .clipShape(Capsule())

@@ -5,27 +5,8 @@ import Combine
 // MARK: - HistoryModel definition
 
 public class HistoryModel: ObservableObject {
-   
     @Published public var histories = [History]()
     @Published public var isFetching: Bool = true
-    
-//    var optionalOnes: [Event] {
-//        events.filter { $0.isOptional }
-//    }
-//
-//    public var categories: [String: [Event]] {
-//        Dictionary(
-//            grouping: events,
-//            by: { $0.category.rawValue }
-//        )
-//    }
-//
-//    public func getCategories() -> [String: [Event]] {
-//        return Dictionary(
-//            grouping: events,
-//            by: { $0.category.rawValue }
-//        )
-//    }
    
     public init(histories: [History]) {
         self.histories = []
@@ -179,8 +160,10 @@ extension HistoryModel {
         eventId: Int,
         date: Date,
         history: String,
-        note: String
-    ) 
+        note: String,
+        letter: String?,
+        letterDate: Date?
+    )
     async {
         
         let sqlQueryINSERT = """
@@ -189,13 +172,17 @@ extension HistoryModel {
                     event_id,
                     date,
                     history,
-                    note
+                    note,
+                    letter,
+                    letter_date
                 )
             VALUES (
                     $1,   -- event_id
                     $2,   -- date
                     $3,   -- history
-                    $4    -- note
+                    $4,   -- note
+                    $5,   -- letter
+                    $6    -- letter_date
             )
         """
         
@@ -216,12 +203,19 @@ extension HistoryModel {
                 return date.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
             }
             
+            var letterDatePg: PostgresDate? = nil
+            if let letterDate {
+                letterDatePg = letterDate.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
+            }
+            
             let _ = try statement.execute(
                 parameterValues: [
                     eventId,
                     datePg,
                     history,
-                    note
+                    note,
+                    letter,
+                    letterDatePg
                 ]
             )
         }
@@ -299,7 +293,9 @@ extension HistoryModel {
             SET
                 date = $2,       -- date
                 history = $3,    -- history
-                note = $4        -- note
+                note = $4,       -- note
+                letter = $5,     -- letter
+                letter_date = $6 -- letterDate
             WHERE
                 id = $1          -- id
         """
