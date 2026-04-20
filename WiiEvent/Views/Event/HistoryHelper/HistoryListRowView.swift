@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryListRowView: View {
-    @Environment(\.openWindow) private var openWindow
+//    @Environment(\.openWindow) private var openWindow
     @EnvironmentObject var historyModel: HistoryModel
 
     let history: History
@@ -86,16 +86,20 @@ struct HistoryListRowView: View {
                         }
                     
                     VStack {
-//                        Button("Edit") {
-//                            openWindow(id: "history-edit", value: history)
-//                        }
-//                        .padding()
-//                        .frame(maxWidth: .infinity)
-//                        .background(Color.orange)
-//                        .clipShape(Capsule())
+                        Button("Edit") {
+//                            Task {
+//                                await historyModel.sqlUPDATE(history: history)
+//                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .clipShape(Capsule())
                         
                         Button("Delete") {
-                            Task { await historyModel.sqlDELETE(historyId: history.id) }
+                            Task {
+                                await historyModel.sqlDELETE(historyId: history.id)
+                            }
                         }
                         .padding()
                         .frame(maxWidth: .infinity)

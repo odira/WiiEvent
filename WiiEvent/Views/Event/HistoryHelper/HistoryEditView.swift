@@ -18,6 +18,8 @@ struct HistoryEditView: View {
 //            HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note)
 //                .padding()
             
+            Text("EDIT")
+            
         }
         
         #if os(macOS)
