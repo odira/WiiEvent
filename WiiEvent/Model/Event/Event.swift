@@ -104,7 +104,7 @@ public extension Event {
         case 2: return .pending
         case 4: return .terminated
         case 5: return .canceled
-        default: return .planning
+            default: return .planning
         }
 //        return Deal.Status.ID { where: status == dealStatusID }
     }
