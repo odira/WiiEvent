@@ -58,6 +58,10 @@ public extension Deal {
         case terminated = "расторгнут"
         case canceled   = "отменен"
         
+        static public var allCases: [Deal.Status] {
+            return [.planning, .pending, .completed, .terminated, .canceled]
+        }
+        
         public var id: Int {
             switch self {
             case .completed:  return 0

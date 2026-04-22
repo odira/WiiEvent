@@ -97,6 +97,7 @@ public extension Event {
         }
     }
     
+    
     var dealStatus: Deal.Status {
         switch dealStatusID {
         case 0: return .completed

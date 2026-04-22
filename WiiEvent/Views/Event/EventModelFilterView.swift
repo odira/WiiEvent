@@ -113,7 +113,7 @@ extension EventModelFilterView {
             Text("Статус договора")
             HStack {
                 Picker("", selection: $eventModelFilter.dealStatus) {
-                    Text("Все").tag(Deal.Status.allCases)
+                    Text("Все").tag(nil as Deal.Status?)
                     ForEach(Deal.Status.allCases) { status in
                         Text(status.rawValue.capitalized).tag(status)
                     }
