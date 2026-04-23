@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - EventModelFilter View definition
+// MARK: - EventModelFilterView definition
 
 struct EventModelFilterView: View {
     @EnvironmentObject private var eventModel: EventModel
