@@ -10,47 +10,53 @@ import SwiftUI
 // MARK: - EventModelFilter View definition
 
 struct EventModelFilterView: View {
-    @Environment(\.dismiss) private var dismiss
-    
     @EnvironmentObject private var eventModel: EventModel
     @EnvironmentObject private var planModel: PlanModel
     @EnvironmentObject private var dealModel: DealModel
     @EnvironmentObject private var eventModelFilter: EventModelFilter
     
-//    @State private var planIdFilter: Int? = nil
-//    @State private var dealStatusFilter: Deal.Status? = nil
-//    @State private var dealFilter: String = ""
-    
-    @FocusState private var searchFieldFocusState: Bool
+//    @FocusState private var searchFieldFocusState: Bool
     
     var body: some View {
-        ScrollView {
-            cityBlock().padding()
-            planIdBlock().padding()
-            dealStatusBlock().padding()
-            dealBlock().padding()
-            eventIsValidBlock().padding()
-            showIsOptionBlock().padding()
-        
-            HStack {
-                Spacer()
-                Button("Search") {
-                    update()
-                    print("SEARCH")
-                }
-                Button("Done") {
-                    update()
-                    dismiss()
-                }
-                Button("Close") {
-                    dismiss()
+        NavigationStack {
+            VStack {
+                Form {
+                    Section(header: Text("Город")) {
+                        cityBlock()
+                    }
+                    
+                    Section(header: Text("Выберите план")) {
+                        planIdBlock()
+                    }
+                    
+                    Section(header: Text("Статус договора")) {
+                        dealStatusBlock()
+                    }
+                    
+                    Section(header: Label("Номер Договора/Контракта", systemImage: "magnifyingglass")) {
+                        dealBlock()
+                    }
+                    
+                    Section {
+                        eventIsValidBlock()
+                    }
+                    
+                    Section {
+                        showIsOptionBlock()
+                    }
                 }
             }
-            .buttonStyle(.borderedProminent)
-            .padding()
-        }
-        .onAppear {
-            searchFieldFocusState = true
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button("Search") {
+                        update()
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+//            .onAppear {
+//                searchFieldFocusState = true
+//            }
         }
     }
     
@@ -76,14 +82,13 @@ extension EventModelFilterView {
     // city
     private func cityBlock() -> some View {
         VStack(alignment: .leading) {
-            Text("Город")
             HStack {
                 TextField("Search", text: $eventModelFilter.city)
-                    .focused($searchFieldFocusState)
+//                    .focused($searchFieldFocusState)
                     .textFieldStyle(.roundedBorder)
                 Button("Clear") {
                     eventModelFilter.city = ""
-                    searchFieldFocusState = true
+//                    searchFieldFocusState = true
                 }
                 .keyboardShortcut("c", modifiers: [.command])
                 .buttonStyle(.borderedProminent)
@@ -94,15 +99,12 @@ extension EventModelFilterView {
     // planId
     private func planIdBlock() -> some View {
         VStack(alignment: .leading) {
-            Text("Выберите план")
             HStack {
-                Picker("", selection: $eventModelFilter.planId) {
+                Picker("Централизованный план", selection: $eventModelFilter.planId) {
                     ForEach(planModel.plans) { plan in
                         Text(plan.plan).tag(plan.id)
                     }
                 }
-                .pickerStyle(.segmented)
-                Spacer()
             }
         }
     }
@@ -110,16 +112,13 @@ extension EventModelFilterView {
     // dealStatus
     private func dealStatusBlock() -> some View {
         VStack(alignment: .leading ) {
-            Text("Статус договора")
             HStack {
-                Picker("", selection: $eventModelFilter.dealStatus) {
+                Picker("Статус договора", selection: $eventModelFilter.dealStatus) {
                     Text("Все").tag(nil as Deal.Status?)
                     ForEach(Deal.Status.allCases) { status in
-                        Text(status.rawValue.capitalized).tag(status)
+                        Text(status.rawValue.capitalized).tag(Deal.Status?.some(status))
                     }
                 }
-                .pickerStyle(.segmented)
-                Spacer()
             }
         }
     }
@@ -127,7 +126,6 @@ extension EventModelFilterView {
     // deal
     private func dealBlock() -> some View {
         VStack(alignment: .leading) {
-            Label("Номер Договора/Контракта", systemImage: "magnifyingglass")
             HStack {
                 TextField("Введите номер договора/контракта", text: $eventModelFilter.deal)
                     .textFieldStyle(.roundedBorder)
@@ -144,8 +142,6 @@ extension EventModelFilterView {
             Toggle(isOn: $eventModelFilter.isValid) {
                 Text("Показывать только валидные")
             }
-//            .toggleStyle(.)
-            Spacer()
         }
     }
     
@@ -154,8 +150,6 @@ extension EventModelFilterView {
             Toggle(isOn: $eventModelFilter.isOption) {
                 Text("Показывать опцион")
             }
-//            .toggleStyle(.checkbox)
-            Spacer()
         }
     }
 }

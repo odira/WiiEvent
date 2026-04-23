@@ -55,7 +55,7 @@
 		D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B36D2B4DC9960073768D /* CategoryHome.swift */; };
 		D1FCA2772B1CE54700E2DB42 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
 		D1FCA27F2B1CF43B00E2DB42 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA27E2B1CF43B00E2DB42 /* ModelData.swift */; };
-		D1FCA2842B1CF62900E2DB42 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2832B1CF62900E2DB42 /* EventRow.swift */; };
+		D1FCA2842B1CF62900E2DB42 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2832B1CF62900E2DB42 /* EventRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,7 +193,7 @@
 		D1E9B36D2B4DC9960073768D /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
 		D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		D1FCA27E2B1CF43B00E2DB42 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
-		D1FCA2832B1CF62900E2DB42 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		D1FCA2832B1CF62900E2DB42 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 		D1FCA2852B1CFA0900E2DB42 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -641,7 +641,7 @@
 				D10215E32CF90C140075631B /* DescriptionView.swift */,
 				D11CAA612CA5D49D00403E82 /* JustificationView.swift */,
 				D1D047C02E203E5A002025C2 /* EventModelFilterView.swift */,
-				D1FCA2832B1CF62900E2DB42 /* EventRow.swift */,
+				D1FCA2832B1CF62900E2DB42 /* EventRowView.swift */,
 				D1A7306F2B383B49003A3A49 /* EventDetailsView.swift */,
 			);
 			path = Event;
@@ -780,7 +780,7 @@
 				D10EEF2F2C3D78A300E200F3 /* SubgroupHomeView.swift in Sources */,
 				D1387D6F2AFFB31600570446 /* ContentView.swift in Sources */,
 				D1CA16802DFF08150016C99B /* HistoryListRowView.swift in Sources */,
-				D1FCA2842B1CF62900E2DB42 /* EventRow.swift in Sources */,
+				D1FCA2842B1CF62900E2DB42 /* EventRowView.swift in Sources */,
 				D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */,
 				D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */,
 				D1D575B72B56FEFE0035478E /* ProfileEditor.swift in Sources */,
