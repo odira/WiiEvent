@@ -38,34 +38,40 @@ struct EventDetailsView: View {
                                     .padding()
                             }
                             
-                            HStack {
-                                Spacer()
-                                VStack(alignment: .center) {
-                                    Button("Описание") {
-                                        isPresentedDescriptionSheet.toggle()
-                                    }
-                                    .sheet(isPresented: $isPresentedDescriptionSheet) {
-                                        DescriptionView(for: event.description)
-                                            .presentationDetents([.large])
-                                            .presentationDragIndicator(.visible)
-                                    }
-                                    
-                                    Button("Обоснование") {
-                                        isPresentedJustificationSheet.toggle()
-                                    }
-                                    .sheet(isPresented: $isPresentedJustificationSheet) {
-                                        JustificationView(for: event.justification)
-                                            .presentationDetents([.large])
-                                            .presentationDragIndicator(.visible)
-                                    }
-                                    
-                                    Spacer()
-                                }
-                                .buttonStyle(.borderedProminent)
-                            }
+//                            HStack {
+//                                Spacer()
+//                                VStack(alignment: .center) {
+//                                    Button("Описание") {
+//                                        isPresentedDescriptionSheet.toggle()
+//                                    }
+//                                    .sheet(isPresented: $isPresentedDescriptionSheet) {
+//                                        DescriptionView(for: event.description)
+//                                            .presentationDetents([.large])
+//                                            .presentationDragIndicator(.visible)
+//                                    }
+//                                    
+//                                    Button("Обоснование") {
+//                                        isPresentedJustificationSheet.toggle()
+//                                    }
+//                                    .sheet(isPresented: $isPresentedJustificationSheet) {
+//                                        JustificationView(for: event.justification)
+//                                            .presentationDetents([.large])
+//                                            .presentationDragIndicator(.visible)
+//                                    }
+//                                    
+//                                    Spacer()
+//                                }
+//                                .buttonStyle(.borderedProminent)
+//                            }
                         }
                         
                         Section("Справочная информация") {
+                            NavigationLink(destination: DescriptionView(for: event.description)) {
+                                Text("Описание")
+                            }
+                            NavigationLink(destination: JustificationView(for: event.justification)) {
+                                Text("Обоснование")
+                            }
                             NavigationLink(destination: InfoListView(for: event)) {
                                 Text("Справка")
                             }
