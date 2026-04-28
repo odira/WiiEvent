@@ -20,12 +20,6 @@ struct HistoryAddView: View {
     @State private var letter: String = ""
     @State private var letterDate: Date = Date.now
     
-//    init(for event: Event) {
-//        self.eventId = event.id
-//    }
-    
-//    @State private var showDatePicker = false
-    
     var body: some View {
         NavigationStack {
             VStack {

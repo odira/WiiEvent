@@ -86,15 +86,19 @@ struct HistoryListRowView: View {
                         }
                     
                     VStack {
-                        Button("Edit") {
-//                            Task {
-//                                await historyModel.sqlUPDATE(history: history)
-//                            }
+//                        Button("Edit") {
+////                            Task {
+////                                await historyModel.sqlUPDATE(history: history)
+////                            }
+//                        }
+//                        .padding()
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.orange)
+//                        .clipShape(Capsule())
+                        NavigationLink(destination: HistoryEditView(history: history)) {
+                            Text("Edit")
                         }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.orange)
-                        .clipShape(Capsule())
+                        .buttonStyle(.borderedProminent)
                         
                         Button("Delete") {
                             Task {

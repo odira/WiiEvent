@@ -41,41 +41,39 @@ struct HistoryListView: View {
                     VStack {
                         List(histories) { history in
                             HistoryListRowView(history: history)
-                                .id(history.id)
-                                .listRowSeparator(.hidden)
-                                .listRowInsets(.init())
-                                .swipeActions(allowsFullSwipe: false) {
-                                    Button(role: .destructive, action: {
-                                        Task {
-                                            await historyModel.sqlDELETE(historyId: history.id)
-                                            await historyModel.fetch()
-                                        }
-                                    }, label: {
-                                        Label("Delete", systemImage: "trash")
-                                    })
-                                    
-                                    Button(action: {
-                                        selectedHistory = history
-                                        isPresentingEditSheet.toggle()
-                                    }, label: {
-                                        Label("Edit", systemImage: "square.and.pencil")
-                                    })
-                                    .tint(.orange)
-                                }
+//                                .id(history.id)
+//                                .listRowSeparator(.hidden)
+//                                .listRowInsets(.init())
+//                                .swipeActions(allowsFullSwipe: false) {
+//                                    Button(role: .destructive, action: {
+//                                        Task {
+//                                            await historyModel.sqlDELETE(historyId: history.id)
+//                                            await historyModel.fetch()
+//                                        }
+//                                    }, label: {
+//                                        Label("Delete", systemImage: "trash")
+//                                    })
+//                                    
+////                                    Button(action: {
+////                                        selectedHistory = history
+////                                        isPresentingEditSheet.toggle()
+////                                    }, label: {
+////                                        Label("Edit", systemImage: "square.and.pencil")
+////                                    })
+////                                    .tint(.orange)
+//                                    
+//                                    NavigationLink(destination: HistoryEditView(history: history)) {
+//                                        Text("Edit")
+//                                    }
+//                                }
                         }
                         .navigationBarTitle("Исполнение", displayMode: .inline)
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
-                                Button("Add") {
-                                    isPresentingAddSheet.toggle()
-                                    Task {
-                                        await historyModel.fetch()
-                                    }
+                                NavigationLink(destination: HistoryAddView(eventId: eventId)) {
+                                    Text("Add")
                                 }
-                                .sheet(isPresented: $isPresentingAddSheet) {
-                                    HistoryAddView(eventId: eventId)
-                                        .environmentObject(historyModel)
-                                }
+                                .buttonStyle(.borderedProminent)
                             }
                         }
                     }
