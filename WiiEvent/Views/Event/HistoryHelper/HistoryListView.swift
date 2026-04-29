@@ -11,8 +11,8 @@ struct HistoryListView: View {
     
     @State private var isPresentingAddSheet: Bool = false
     @State private var isPresentingEditSheet: Bool = false
-
     @State private var isFetching = true
+    
     private var histories: [History] {
         if let histories = historyModel.findHistories(byEventId: eventId) {
             return histories
@@ -41,31 +41,27 @@ struct HistoryListView: View {
                     VStack {
                         List(histories) { history in
                             HistoryListRowView(history: history)
-//                                .id(history.id)
-//                                .listRowSeparator(.hidden)
-//                                .listRowInsets(.init())
-//                                .swipeActions(allowsFullSwipe: false) {
-//                                    Button(role: .destructive, action: {
-//                                        Task {
-//                                            await historyModel.sqlDELETE(historyId: history.id)
-//                                            await historyModel.fetch()
-//                                        }
-//                                    }, label: {
-//                                        Label("Delete", systemImage: "trash")
-//                                    })
-//                                    
-////                                    Button(action: {
-////                                        selectedHistory = history
-////                                        isPresentingEditSheet.toggle()
-////                                    }, label: {
-////                                        Label("Edit", systemImage: "square.and.pencil")
-////                                    })
-////                                    .tint(.orange)
-//                                    
-//                                    NavigationLink(destination: HistoryEditView(history: history)) {
-//                                        Text("Edit")
-//                                    }
-//                                }
+                                .id(history.id)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(.init())
+                                .swipeActions(allowsFullSwipe: false) {
+                                    Button(role: .destructive, action: {
+                                        Task {
+                                            await historyModel.sqlDELETE(historyId: history.id)
+                                            await historyModel.fetch()
+                                        }
+                                    }, label: {
+                                        Label("Delete", systemImage: "trash")
+                                    })
+                                    
+                                    NavigationLink {
+                                        HistoryEditView(history: history)
+                                    } label: {
+                                        Text("Edit")
+                                    }
+                                    .tint(.orange)
+
+                                }
                         }
                         .navigationBarTitle("Исполнение", displayMode: .inline)
                         .toolbar {
