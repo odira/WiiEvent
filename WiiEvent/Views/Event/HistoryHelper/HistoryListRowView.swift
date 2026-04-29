@@ -85,33 +85,33 @@ struct HistoryListRowView: View {
                                 .stroke(Color.blue, lineWidth: 1)
                         }
                     
-                    VStack {
-//                        Button("Edit") {
+//                    VStack {
+////                        Button("Edit") {
+//////                            Task {
+//////                                await historyModel.sqlUPDATE(history: history)
+//////                            }
+////                        }
+////                        .padding()
+////                        .frame(maxWidth: .infinity)
+////                        .background(Color.orange)
+////                        .clipShape(Capsule())
+////                        NavigationLink(destination: HistoryEditView(history: history)) {
+////                            Text("Edit")
+////                        }
+////                        .buttonStyle(.borderedProminent)
+//                        
+////                        Button("Delete") {
 ////                            Task {
-////                                await historyModel.sqlUPDATE(history: history)
+////                                await historyModel.sqlDELETE(historyId: history.id)
 ////                            }
-//                        }
-//                        .padding()
-//                        .frame(maxWidth: .infinity)
-//                        .background(Color.orange)
-//                        .clipShape(Capsule())
-//                        NavigationLink(destination: HistoryEditView(history: history)) {
-//                            Text("Edit")
-//                        }
-//                        .buttonStyle(.borderedProminent)
-                        
-//                        Button("Delete") {
-//                            Task {
-//                                await historyModel.sqlDELETE(historyId: history.id)
-//                            }
-//                        }
-//                        .padding()
-//                        .frame(maxWidth: .infinity)
-//                        .background(Color.red)
-//                        .clipShape(Capsule())
-                    }
-                    .padding(0)
-                    .fixedSize(horizontal: true, vertical: false)
+////                        }
+////                        .padding()
+////                        .frame(maxWidth: .infinity)
+////                        .background(Color.red)
+////                        .clipShape(Capsule())
+//                    }
+//                    .padding(0)
+//                    .fixedSize(horizontal: true, vertical: false)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.trailing, 10)

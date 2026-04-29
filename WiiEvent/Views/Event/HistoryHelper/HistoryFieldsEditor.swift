@@ -25,12 +25,24 @@ struct HistoryFieldsEditor: View {
     var body: some View {
         ScrollView {
             VStack {
-                DatePicker("Select a Date", selection: $letterDate, displayedComponents: [.date])
+                DatePicker(
+                    "Select a Date",
+                    selection: Binding(
+                        get: { self.letterDate ?? Date() },
+                        set: { self.letterDate = $0 }
+                    ),
+                    displayedComponents: [.date]
+                )
                     .datePickerStyle(.compact)
                     .contentShape(Rectangle())
                     .font(.callout)
                 
-                TextEditor(text: $letter)
+                TextEditor(
+                    text: Binding(
+                        get: { self.letter ?? "" },
+                        set: { self.letter = $0 }
+                    )
+                )
                     .lineLimit(1)
                     .font(.callout)
                     .overlay {
@@ -40,7 +52,11 @@ struct HistoryFieldsEditor: View {
                     .frame(height: 100)
             }
             
-            DatePicker("Select a Date", selection: $date, displayedComponents: [.date])
+            DatePicker(
+                "Select a Date",
+                selection: $date,
+                displayedComponents: [.date]
+            )
                 .datePickerStyle(.compact)
                 .contentShape(Rectangle())
             
@@ -52,7 +68,12 @@ struct HistoryFieldsEditor: View {
                 .frame(height: 200)
             
             
-            TextEditor(text: $note)
+            TextEditor(
+                text: Binding(
+                    get: { self.note ?? "" },
+                    set: { self.note = $0 }
+                )
+            )
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.black, lineWidth: 1)
