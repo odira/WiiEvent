@@ -18,7 +18,6 @@ struct HistoryEditView: View {
         NavigationStack {
             VStack {
                 HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note, letter: $history.letter, letterDate: $history.letterDate)
-                    .padding()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
