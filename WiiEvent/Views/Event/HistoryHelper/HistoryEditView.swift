@@ -17,7 +17,13 @@ struct HistoryEditView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note, letter: $history.letter, letterDate: $history.letterDate)
+                HistoryFieldsEditor(
+                    date: $history.date,
+                    history: $history.history,
+                    note: $history.note,
+                    letter: $history.letter,
+                    letterDate: $history.letterDate
+                )
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
