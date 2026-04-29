@@ -24,7 +24,15 @@ struct HistoryEditView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         Task {
-                            await historyModel.sqlUPDATE(id: history.id, date: history.date, history: history.history, note: history.note ?? "", letter: history.letter ?? "", letterDate: history.letterDate ?? Date())
+//                            await historyModel.sqlUPDATE(
+//                                id: history.id,
+//                                date: history.date,
+//                                history: history.history,
+//                                note: history.note ?? "",
+//                                letter: history.letter ?? "",
+//                                letterDate: history.letterDate ?? Date())
+                            
+                            await historyModel.sqlUPDATE(history: history)
                             
                             dismiss()
                         }
@@ -38,7 +46,4 @@ struct HistoryEditView: View {
 #Preview {
     HistoryEditView(history: History.example)
         .environmentObject(HistoryModel())
-        #if os(macOS)
-        .frame(width: 600, height: 800)
-        #endif
 }

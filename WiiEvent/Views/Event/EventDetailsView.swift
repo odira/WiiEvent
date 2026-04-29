@@ -7,13 +7,11 @@ struct EventDetailsView: View {
     @EnvironmentObject var eventModel: EventModel
     @EnvironmentObject var historyModel: HistoryModel
 
-    @State private var isPresentedDescriptionSheet: Bool = false
-    @State private var isPresentedJustificationSheet: Bool = false
-    @State private var isPresentedHistorySheet: Bool = false
-    @State private var isPresentedInfoSheet: Bool = false
-    @State private var isPresentedMenu: Bool = false
-    
-//    @State private var path: [String] = []
+//    @State private var isPresentedDescriptionSheet: Bool = false
+//    @State private var isPresentedJustificationSheet: Bool = false
+//    @State private var isPresentedHistorySheet: Bool = false
+//    @State private var isPresentedInfoSheet: Bool = false
+//    @State private var isPresentedMenu: Bool = false
     
     let id: Int
 
@@ -37,32 +35,6 @@ struct EventDetailsView: View {
                                     .multilineTextAlignment(.center)
                                     .padding()
                             }
-                            
-//                            HStack {
-//                                Spacer()
-//                                VStack(alignment: .center) {
-//                                    Button("Описание") {
-//                                        isPresentedDescriptionSheet.toggle()
-//                                    }
-//                                    .sheet(isPresented: $isPresentedDescriptionSheet) {
-//                                        DescriptionView(for: event.description)
-//                                            .presentationDetents([.large])
-//                                            .presentationDragIndicator(.visible)
-//                                    }
-//                                    
-//                                    Button("Обоснование") {
-//                                        isPresentedJustificationSheet.toggle()
-//                                    }
-//                                    .sheet(isPresented: $isPresentedJustificationSheet) {
-//                                        JustificationView(for: event.justification)
-//                                            .presentationDetents([.large])
-//                                            .presentationDragIndicator(.visible)
-//                                    }
-//                                    
-//                                    Spacer()
-//                                }
-//                                .buttonStyle(.borderedProminent)
-//                            }
                         }
                         
                         Section("Справочная информация") {
@@ -116,18 +88,6 @@ struct EventDetailsView: View {
                     
                 }
                 .font(.callout)
-                
-                #if os(macOS)
-                HStack {
-                    Spacer()
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-                .padding()
-                #endif
-                
             }
         }
     }
