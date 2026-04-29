@@ -84,13 +84,13 @@ public class HistoryModel: ObservableObject {
                 
                 histories.append(
                     History(
-                        id: id,
-                        eventId: eventId,
-                        date: date,
-                        history: history,
-                        note: note ?? "",
-                        letter: letter,
-                        letterDate: letterDate
+                        id: id,                    // 0
+                        eventId: eventId,          // 1
+                        date: date,                // 2
+                        history: history,          // 3
+                        note: note,                // 4
+                        letter: letter,            // 5
+                        letterDate: letterDate     // 6
                     )
                 )
             }
@@ -157,24 +157,24 @@ extension HistoryModel {
     // MARK: - SQL INSERT
     
     public func sqlINSERT(
-        eventId: Int,
-        date: Date,
-        history: String,
-        note: String,
-        letter: String?,
-        letterDate: Date?
+        eventId: Int,       // $1
+        date: Date,         // $2
+        history: String,    // $3
+        note: String,       // $4
+        letter: String?,    // $5
+        letterDate: Date?   // $6
     )
     async {
         
         let sqlQueryINSERT = """
             INSERT INTO
                 event.vw_history(
-                    event_id,
-                    date,
-                    history,
-                    note,
-                    letter,
-                    letter_date
+                    event_id,    -- $1
+                    date,        -- $2
+                    history,     -- $3
+                    note,        -- $4
+                    letter,      -- $5
+                    letter_date  -- $6
                 )
             VALUES (
                     $1,   -- event_id
@@ -210,12 +210,12 @@ extension HistoryModel {
             
             let _ = try statement.execute(
                 parameterValues: [
-                    eventId,
-                    datePg,
-                    history,
-                    note,
-                    letter,
-                    letterDatePg
+                    eventId,       // 1
+                    datePg,        // 2
+                    history,       // 3
+                    note,          // 4
+                    letter,        // 5
+                    letterDatePg   // 6
                 ]
             )
         }
@@ -231,21 +231,25 @@ extension HistoryModel {
     
     // Variant 1
     public func sqlUPDATE(
-        id: Int,
-        date: Date,
-        history: String,
-        note: String
+        id: Int,            // $1
+        date: Date,         // $2
+        history: String,    // $3
+        note: String,       // $4
+        letter: String,     // $5
+        letterDate: Date    // $6
     ) async {
         
         let sqlQueryUPDATE = """
             UPDATE
-                event.vw_history
+                event.history
             SET
-                date = $2,       -- date
-                history = $3,    -- history
-                note = $4        -- note
+                date = $2,        -- date
+                history = $3,     -- history
+                note = $4,        -- note
+                letter = $5,      -- letter
+                letter_date = $6  -- letterDate
             WHERE
-                id = $1          -- id
+                id = $1           -- id
         """
         
         do {
@@ -261,17 +265,21 @@ extension HistoryModel {
             let statement = try connection.prepareStatement(text: sqlQueryUPDATE)
             defer { statement.close() }
             
-            
             var datePg: PostgresDate {
                 return date.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
+            }
+            var letterDatePg: PostgresDate {
+                return letterDate.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
             }
             
             let _ = try statement.execute(
                 parameterValues: [
-                    id,
-                    datePg,
-                    history,
-                    note
+                    id,           // 1
+                    datePg,       // 2
+                    history,      // 3
+                    note,         // 4
+                    letter,       // 5
+                    letterDatePg  // 6
                 ]
             )
         }
@@ -287,51 +295,60 @@ extension HistoryModel {
         history: History
     ) async {
         
-        let sqlQueryUPDATE = """
-            UPDATE
-                event.vw_history
-            SET
-                date = $2,       -- date
-                history = $3,    -- history
-                note = $4,       -- note
-                letter = $5,     -- letter
-                letter_date = $6 -- letterDate
-            WHERE
-                id = $1          -- id
-        """
+        await sqlUPDATE(
+            id: history.id,
+            date: history.date,
+            history: history.history,
+            note: history.note ?? "",
+            letter: history.letter ?? "",
+            letterDate: history.letterDate ?? Date()
+        )
         
-        do {
-            var configuration = PostgresClientKit.ConnectionConfiguration()
-            configuration.host = "217.107.219.91"
-            configuration.database = "tercas"
-            configuration.user = "postgres"
-            configuration.credential = .trust // .scramSHA256(password: "monrepo")
-            
-            let connection = try PostgresClientKit.Connection(configuration: configuration)
-            defer { connection.close() }
-            
-            let statement = try connection.prepareStatement(text: sqlQueryUPDATE)
-            defer { statement.close() }
-            
-            
-            var datePg: PostgresDate {
-                return history.date.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
-            }
-            
-            let _ = try statement.execute(
-                parameterValues: [
-                    history.id,
-                    datePg,
-                    history.history,
-                    history.note
-                ]
-            )
-        }
-        catch {
-            print(error)
-        }
-        
-        await self.reload()
+//        let sqlQueryUPDATE = """
+//            UPDATE
+//                event.vw_history
+//            SET
+//                date = $2,       -- date
+//                history = $3,    -- history
+//                note = $4,       -- note
+//                letter = $5,     -- letter
+//                letter_date = $6 -- letterDate
+//            WHERE
+//                id = $1          -- id
+//        """
+//        
+//        do {
+//            var configuration = PostgresClientKit.ConnectionConfiguration()
+//            configuration.host = "217.107.219.91"
+//            configuration.database = "tercas"
+//            configuration.user = "postgres"
+//            configuration.credential = .trust // .scramSHA256(password: "monrepo")
+//            
+//            let connection = try PostgresClientKit.Connection(configuration: configuration)
+//            defer { connection.close() }
+//            
+//            let statement = try connection.prepareStatement(text: sqlQueryUPDATE)
+//            defer { statement.close() }
+//            
+//            
+//            var datePg: PostgresDate {
+//                return history.date.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
+//            }
+//            
+//            let _ = try statement.execute(
+//                parameterValues: [
+//                    history.id,
+//                    datePg,
+//                    history.history,
+//                    history.note
+//                ]
+//            )
+//        }
+//        catch {
+//            print(error)
+//        }
+//        
+//        await self.reload()
     }
     
     // MARK: - SQL DELETE
