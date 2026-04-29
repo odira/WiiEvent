@@ -10,9 +10,17 @@ import SwiftUI
 struct HistoryFieldsEditor: View {
     @Binding var date: Date
     @Binding var history: String
-    @Binding var note: String
-    @Binding var letter: String
-    @Binding var letterDate: Date
+    @Binding var note: String?
+    @Binding var letter: String?
+    @Binding var letterDate: Date?
+    
+//    init(date: Date, history: String, note: String, letter: String, letterDate: Date) {
+//        self.date = date
+//        self.history = history
+//        self.note = note
+//        self.letter = letter
+//        self.letterDate = letterDate
+//    }
     
     var body: some View {
         ScrollView {

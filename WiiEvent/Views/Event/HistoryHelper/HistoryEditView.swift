@@ -8,18 +8,14 @@
 import SwiftUI
 
 struct HistoryEditView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var historyModel: HistoryModel
 
     @State var history: History
     
     var body: some View {
         VStack {
-//            HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note)
-//                .padding()
-            
-            Text("EDIT")
-            
+            HistoryFieldsEditor(date: $history.date, history: $history.history, note: $history.note, letter: $history.letter, letterDate: $history.letterDate)
         }
         
         #if os(macOS)
