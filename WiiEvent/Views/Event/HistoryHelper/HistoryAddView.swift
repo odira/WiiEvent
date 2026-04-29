@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryAddView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
 
     @EnvironmentObject var historyModel: HistoryModel
     
@@ -24,22 +24,20 @@ struct HistoryAddView: View {
         NavigationStack {
             VStack {
                 HistoryFieldsEditor(date: $date, history: $history, note: $note, letter: $letter, letterDate: $letterDate)
-                    .padding()
             }
             .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button(role: .destructive, action: { dismiss() }) {
-//                        Text("Close")
-//                    }
-//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        Task {
-                            await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note ?? "", letter: self.letter, letterDate: self.letterDate)
-                            
-                            dismiss()
-                        }
-                    }
+                    Button(
+                        role: .confirm,
+                        action: {
+                            Task {
+                                await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note ?? "", letter: self.letter, letterDate: self.letterDate)
+                                
+//                                dismiss()
+                            }
+                        }, label: {
+                            Text("Add")
+                        })
                 }
             }
         }
@@ -50,5 +48,4 @@ struct HistoryAddView: View {
 #Preview {
     HistoryAddView(eventId: Event.example.id)
         .environmentObject(HistoryModel.example)
-        .frame(width: 600, height: 800)
 }
