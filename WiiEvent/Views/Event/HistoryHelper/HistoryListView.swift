@@ -68,6 +68,7 @@ struct HistoryListView: View {
                             ToolbarItem(placement: .confirmationAction) {
                                 NavigationLink(destination: HistoryAddView(eventId: eventId)) {
                                     Text("Add")
+                                        .padding()
                                 }
                                 .buttonStyle(.borderedProminent)
                             }
