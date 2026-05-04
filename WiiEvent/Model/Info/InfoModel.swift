@@ -105,6 +105,8 @@ extension InfoModel {
    
     public static let infosExmpls: [Info] = [
         Info.example,
+        Info.example,
+        Info.example,
         Info.example
    ]
    

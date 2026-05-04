@@ -84,23 +84,22 @@ struct InfoListView: View {
                                     .scrollIndicators(.hidden)
                                     .scrollTargetBehavior(.paging)
                                     .defaultScrollAnchor(.trailing)
-                                }
-                            }
-                            .toolbar {
-                                ToolbarItem(placement: .confirmationAction) {
-                                    Button("Add") {
-                                        isPresentingAddSheet.toggle()
-                                        Task {
-                                           await infoModel.fetch()
+                                    .toolbar {
+                                        ToolbarItem(placement: .confirmationAction) {
+                                            Button("Add") {
+                                                isPresentingAddSheet.toggle()
+                                                Task {
+                                                    await infoModel.fetch()
+                                                }
+                                            }
+                                            .sheet(isPresented: $isPresentingAddSheet) {
+                                                InfoAddView(eventId: eventID)
+                                                    .environmentObject(infoModel)
+                                            }
                                         }
                                     }
-                                    .sheet(isPresented: $isPresentingAddSheet) {
-                                        InfoAddView(eventId: eventID)
-                                            .environmentObject(infoModel)
-                                    }
                                 }
                             }
-                            
                         } else {
                             Text("**Справочная информация отсутствует**")
                                 .lineSpacing(8)
@@ -110,18 +109,21 @@ struct InfoListView: View {
                                 .textEditorStyle(.plain)
                                 .background(.background)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .toolbar {
+                                    ToolbarItem(placement: .confirmationAction) {
+                                        Button("Add") {
+                                            isPresentingAddSheet.toggle()
+                                            Task {
+                                                await infoModel.fetch()
+                                            }
+                                        }
+                                        .sheet(isPresented: $isPresentingAddSheet) {
+                                            InfoAddView(eventId: eventID)
+                                                .environmentObject(infoModel)
+                                        }
+                                    }
+                                }
                         }
-                        //
-                        HStack {
-//                            Button("Add") {
-//                                openWindow(id: "info-add", value: eventID)
-//                            }
-//                            Spacer()
-//                            Button("Close") {
-//                                dismiss()
-//                            }
-                        }
-                        .buttonStyle(.glassProminent)
                     }
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
