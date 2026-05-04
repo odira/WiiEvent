@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryAddView: View {
-//    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
 
     @EnvironmentObject var historyModel: HistoryModel
     
@@ -32,11 +32,10 @@ struct HistoryAddView: View {
                         action: {
                             Task {
                                 await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note ?? "", letter: self.letter, letterDate: self.letterDate)
-                                
-//                                dismiss()
                             }
+                            dismiss()
                         }, label: {
-                            Text("Add")
+                            Text("Save")
                         })
                 }
             }
