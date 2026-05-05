@@ -12,7 +12,7 @@ struct InfoAddView: View {
     
     @EnvironmentObject var infoModel: InfoModel
     
-    let eventId: Int
+    let eventID: Int
     
     @State private var date: Date = Date.now
     @State private var info: String = ""
@@ -25,15 +25,11 @@ struct InfoAddView: View {
                     .padding()
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(role: .destructive, action: { dismiss() }) {
-                        Text("Close")
-                    }
-                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         Task {
-                            await infoModel.sqlINSERT(eventId: self.eventId, date: self.date, info: self.info, note: self.note)
+                            await infoModel.sqlINSERT(eventId: self.eventID, date: self.date, info: self.info, note: self.note)
+                            
                             dismiss()
                         }
                     }
@@ -45,7 +41,7 @@ struct InfoAddView: View {
 
 
 #Preview {
-    InfoAddView(eventId: Event.example.id)
+    InfoAddView(eventID: Event.example.id)
         .environmentObject(InfoModel.example)
         .frame(width: 600, height: 800)
 }

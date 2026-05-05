@@ -19,36 +19,38 @@ struct InfoDetailsView: View {
     }
     
     var body: some View {
-        VStack {
-            
-            HStack {
-                Text(info.date, style: .date)
-                    .font(.title2)
-                    .foregroundStyle(.blue)
-            }
-            .buttonStyle(.glassProminent)
-            
-            Text(LocalizedStringKey(info.info))
-                .frame(minHeight: 180)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .fixedSize(horizontal: false, vertical: false)
-                .textEditorStyle(.plain)
-                .background(.background)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            HStack {
-                Button("Edit") {
-                    openWindow(id: "info-edit", value: info)
+        NavigationStack {
+            VStack {
+                
+                HStack {
+                    Text(info.date, style: .date)
+                        .font(.title2)
+                        .foregroundStyle(.blue)
                 }
-                Button("Delete") {
-                    Task { await infoModel.sqlDELETE(id: info.id) }
-                }
+                .buttonStyle(.glassProminent)
+                
+                Text(LocalizedStringKey(info.info))
+                    .frame(minHeight: 180)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .fixedSize(horizontal: false, vertical: false)
+                    .textEditorStyle(.plain)
+                    .background(.background)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+//
+//                HStack {
+//                    Button("Edit") {
+//                        openWindow(id: "info-edit", value: info)
+//                    }
+//                    Button("Delete") {
+//                        Task { await infoModel.sqlDELETE(id: info.id) }
+//                    }
+//                }
+//                .buttonStyle(.glassProminent)
             }
-            .buttonStyle(.glassProminent)
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.yellow.opacity(0.1))
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.yellow.opacity(0.1))
     }
 }
 

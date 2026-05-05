@@ -71,12 +71,42 @@ struct InfoListView: View {
                                         })
                                     }
                                     
-                                    ScrollView(.horizontal, showsIndicators: false) {
+                                    ScrollView(.horizontal, showsIndicators: true) {
                                         LazyHStack(spacing: 0) {
                                             ForEach(Array(zip(infos!.indices, infos!)), id: \.0) { index, info in
-                                                InfoDetailsView(for: info)
-                                                    .containerRelativeFrame(.horizontal)
-                                                    .id(index)
+                                                ZStack {
+                                                    InfoDetailsView(for: info)
+                                                        .containerRelativeFrame(.horizontal)
+                                                        .id(index)
+                                                    //                                                    .listRowSeparator(.hidden)
+                                                    //                                                    .listRowInsets(.init())
+                                                    //                                                    .swipeActions(allowsFullSwipe: false) {
+                                                    //                                                        Button(role: .destructive, action: {
+                                                    //                                                            Task {
+                                                    //                                                                await infoModel.sqlDELETE(id: info.id)
+                                                    //                                                                await infoModel.fetch()
+                                                    //                                                            }
+                                                    //                                                        }, label: {
+                                                    //                                                            Label("Delete", systemImage: "trash")
+                                                    //                                                        })
+                                                    //
+                                                    //                                                        NavigationLink {
+                                                    //                                                            //                                            HistoryEditView(history: history)
+                                                    //                                                        } label: {
+                                                    //                                                            Text("Edit")
+                                                    //                                                        }
+                                                    //                                                        .tint(.orange)
+                                                    //                                                    }
+                                                    HStack {
+                                                        Button("Delete") {
+                                                            Task {
+                                                                await infoModel.sqlDELETE(id: info.id)
+                                                                await infoModel.fetch()
+                                                            }
+                                                        }
+//                                                        NavigationLink(InfoFieldsEditor()
+                                                    }
+                                                }
                                             }
                                         }
                                         .scrollTargetLayout()
@@ -86,16 +116,11 @@ struct InfoListView: View {
                                     .defaultScrollAnchor(.trailing)
                                     .toolbar {
                                         ToolbarItem(placement: .confirmationAction) {
-                                            Button("Add") {
-                                                isPresentingAddSheet.toggle()
-                                                Task {
-                                                    await infoModel.fetch()
-                                                }
+                                            NavigationLink(destination: InfoAddView(eventID: eventID)) {
+                                                Text("Add")
+                                                    .padding()
                                             }
-                                            .sheet(isPresented: $isPresentingAddSheet) {
-                                                InfoAddView(eventId: eventID)
-                                                    .environmentObject(infoModel)
-                                            }
+                                            .buttonStyle(.borderedProminent)
                                         }
                                     }
                                 }
@@ -111,29 +136,24 @@ struct InfoListView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                                 .toolbar {
                                     ToolbarItem(placement: .confirmationAction) {
-                                        Button("Add") {
-                                            isPresentingAddSheet.toggle()
-                                            Task {
-                                                await infoModel.fetch()
-                                            }
+                                        NavigationLink(destination: InfoAddView(eventID: eventID)) {
+                                            Text("Add")
+                                                .padding()
                                         }
-                                        .sheet(isPresented: $isPresentingAddSheet) {
-                                            InfoAddView(eventId: eventID)
-                                                .environmentObject(infoModel)
-                                        }
+                                        .buttonStyle(.borderedProminent)
                                     }
                                 }
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(.yellow.opacity(0.1))
                         }
+                        
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.yellow.opacity(0.1))
                 }
-                
             }
-        }
-        .task {
-            await infoModel.fetch()
+            .task {
+                await infoModel.fetch()
+            }
         }
     }
     
