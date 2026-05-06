@@ -15,35 +15,32 @@ struct InfoEditView: View {
     @State var info: Info
     
     var body: some View {
-        VStack {
-            InfoFieldsEditor(date: $info.date, info: $info.info, note: $info.note)
-                .padding()
+        NavigationStack {
             
-        }
-        
-        #if os(macOS)
-        HStack {
-            Button("Save") {
-                Task {
-                    await infoModel.sqlUPDATE(info: info)
-                    dismiss()
+            VStack {
+                InfoFieldsEditor(date: $info.date, info: $info.info, note: $info.note)
+            }
+            .navigationTitle("Редактирование справочной информации")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem {
+                    Button("Save") {
+                        Task {
+                            await infoModel.sqlUPDATE(info: info)
+                            
+                            dismiss()
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.orange)
                 }
             }
-            Spacer()
-            Button("Close") {
-                dismiss()
-            }
+            
         }
-        .buttonStyle(.borderedProminent)
-        .padding()
-        #endif
     }
 }
 
 #Preview {
     InfoEditView(info: Info.example)
         .environmentObject(InfoModel())
-        #if os(macOS)
-        .frame(width: 600, height: 800)
-        #endif
 }

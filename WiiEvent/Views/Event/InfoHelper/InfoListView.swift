@@ -74,39 +74,36 @@ struct InfoListView: View {
                                     ScrollView(.horizontal, showsIndicators: true) {
                                         LazyHStack(spacing: 0) {
                                             ForEach(Array(zip(infos!.indices, infos!)), id: \.0) { index, info in
-                                                ZStack {
-                                                    InfoDetailsView(for: info)
-                                                        .containerRelativeFrame(.horizontal)
-                                                        .id(index)
-                                                    //                                                    .listRowSeparator(.hidden)
-                                                    //                                                    .listRowInsets(.init())
-                                                    //                                                    .swipeActions(allowsFullSwipe: false) {
-                                                    //                                                        Button(role: .destructive, action: {
-                                                    //                                                            Task {
-                                                    //                                                                await infoModel.sqlDELETE(id: info.id)
-                                                    //                                                                await infoModel.fetch()
-                                                    //                                                            }
-                                                    //                                                        }, label: {
-                                                    //                                                            Label("Delete", systemImage: "trash")
-                                                    //                                                        })
-                                                    //
-                                                    //                                                        NavigationLink {
-                                                    //                                                            //                                            HistoryEditView(history: history)
-                                                    //                                                        } label: {
-                                                    //                                                            Text("Edit")
-                                                    //                                                        }
-                                                    //                                                        .tint(.orange)
-                                                    //                                                    }
-                                                    HStack {
-                                                        Button("Delete") {
-                                                            Task {
-                                                                await infoModel.sqlDELETE(id: info.id)
-                                                                await infoModel.fetch()
+                                                
+                                                InfoDetailsView(for: info)
+                                                    .containerRelativeFrame(.horizontal)
+                                                    .id(index)
+                                                    .listRowSeparator(.hidden)
+                                                    .listRowInsets(.init())
+                                                    .toolbar {
+                                                        ToolbarItem {
+                                                            NavigationLink(destination: InfoEditView(info: info)) {
+                                                                Text("Edit")
+                                                                    .padding()
                                                             }
+                                                            .buttonStyle(.borderedProminent)
+                                                            .tint(.orange)
                                                         }
-//                                                        NavigationLink(InfoFieldsEditor()
+                                                        
+                                                        ToolbarItem {
+                                                            Button(role: .destructive, action: {
+                                                                Task {
+                                                                    await infoModel.sqlDELETE(id: info.id)
+                                                                    await infoModel.fetch()
+                                                                }
+                                                            }, label: {
+                                                                Text("Delete")
+                                                            })
+                                                            .buttonStyle(.borderedProminent)
+                                                            .tint(.red)
+                                                        }
                                                     }
-                                                }
+                                            
                                             }
                                         }
                                         .scrollTargetLayout()

@@ -51,6 +51,7 @@
 		D1DDB95B2C46EADA00549F69 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */; };
 		D1DF9F602D070C1C004E2E96 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F5F2D070C19004E2E96 /* Deal.swift */; };
 		D1DF9F632D0739B8004E2E96 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DF9F622D0739B2004E2E96 /* DealModel.swift */; };
+		D1E436522FABCF7100C5FAF7 /* InfoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E436512FABCF6A00C5FAF7 /* InfoEditView.swift */; };
 		D1E9B36A2B4C5AB40073768D /* DealTransparant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B3692B4C5AB40073768D /* DealTransparant.swift */; };
 		D1E9B36E2B4DC9960073768D /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9B36D2B4DC9960073768D /* CategoryHome.swift */; };
 		D1FCA2772B1CE54700E2DB42 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */; };
@@ -92,7 +93,6 @@
 		D11CAA612CA5D49D00403E82 /* JustificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustificationView.swift; sourceTree = "<group>"; };
 		D11CAA642CA5E32700403E82 /* EventLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLimitView.swift; sourceTree = "<group>"; };
 		D1386FDF2F730BB200C01B56 /* InfoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAddView.swift; sourceTree = "<group>"; };
-		D1386FE02F730BB200C01B56 /* InfoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoEditView.swift; sourceTree = "<group>"; };
 		D1386FE12F730BB200C01B56 /* InfoFieldsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFieldsEditor.swift; sourceTree = "<group>"; };
 		D1387D692AFFB31600570446 /* WiiEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiiEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1387D6C2AFFB31600570446 /* WiiEventApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiiEventApp.swift; sourceTree = "<group>"; };
@@ -189,6 +189,7 @@
 		D1DDB95A2C46EADA00549F69 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		D1DF9F5F2D070C19004E2E96 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		D1DF9F622D0739B2004E2E96 /* DealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
+		D1E436512FABCF6A00C5FAF7 /* InfoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoEditView.swift; sourceTree = "<group>"; };
 		D1E9B3692B4C5AB40073768D /* DealTransparant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTransparant.swift; sourceTree = "<group>"; };
 		D1E9B36D2B4DC9960073768D /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
 		D1FCA2762B1CE54700E2DB42 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
@@ -555,8 +556,8 @@
 		D1945A1B2E5E2BA700843956 /* InfoHelper */ = {
 			isa = PBXGroup;
 			children = (
+				D1E436512FABCF6A00C5FAF7 /* InfoEditView.swift */,
 				D178A53F2E609AF4003CF98C /* InfoListView.swift */,
-				D1386FE02F730BB200C01B56 /* InfoEditView.swift */,
 				D1386FE12F730BB200C01B56 /* InfoFieldsEditor.swift */,
 				D1386FDF2F730BB200C01B56 /* InfoAddView.swift */,
 				D16B461D2ECF7DE500F18E4A /* InfoDetailsView.swift */,
@@ -791,6 +792,7 @@
 				D1E9B36A2B4C5AB40073768D /* DealTransparant.swift in Sources */,
 				D1D6F1672B59A4FD007758E1 /* PlanCard.swift in Sources */,
 				D11CAA622CA5D49D00403E82 /* JustificationView.swift in Sources */,
+				D1E436522FABCF7100C5FAF7 /* InfoEditView.swift in Sources */,
 				D10EEF4C2C3F1F2900E200F3 /* SubgroupItemView.swift in Sources */,
 				D1D047C12E203E5A002025C2 /* EventModelFilterView.swift in Sources */,
 				D1D6F1652B585EE8007758E1 /* PageViewController.swift in Sources */,
