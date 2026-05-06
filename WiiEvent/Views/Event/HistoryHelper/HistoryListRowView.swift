@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HistoryListRowView: View {
-//    @Environment(\.openWindow) private var openWindow
     @EnvironmentObject var historyModel: HistoryModel
 
     let history: History
@@ -49,30 +48,21 @@ struct HistoryListRowView: View {
             }
             
             
-            VStack {
-                HStack {
-                    Text(history.letter ?? "")
-                        .padding()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .fill(.clear)
-                                .stroke(Color.blue, lineWidth: 1)
-                        }
-                    if history.letterDate != nil {
+            VStack(alignment: .leading) {
+                if let letter = history.letter {
+                    HStack {
+                        Text(letter)
                         Text(dateFormatter.string(from: history.letterDate!))
-                            .padding()
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .fill(.clear)
-                                    .stroke(Color.blue, lineWidth: 1)
-                            }
                     }
-                    Spacer()
-                    
+                    .font(.footnote)
+                    .padding(5)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 5, style: .continuous)
+                            .fill(.clear)
+                            .stroke(Color.blue, lineWidth: 1)
+                    }
+                    .padding(.trailing, 10)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.trailing, 10)
-                .padding(.top, 10)
                 
                 HStack {
                     Text(history.history)

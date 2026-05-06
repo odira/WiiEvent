@@ -9,14 +9,12 @@ import SwiftUI
 
 struct InfoEditView: View {
     @Environment(\.dismiss) var dismiss
-    
     @EnvironmentObject var infoModel: InfoModel
 
     @State var info: Info
     
     var body: some View {
         NavigationStack {
-            
             VStack {
                 InfoFieldsEditor(date: $info.date, info: $info.info, note: $info.note)
             }
@@ -32,15 +30,12 @@ struct InfoEditView: View {
                         }
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(.orange)
                 }
             }
-            
         }
     }
 }
 
 #Preview {
     InfoEditView(info: Info.example)
-        .environmentObject(InfoModel())
 }

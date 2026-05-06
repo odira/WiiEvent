@@ -60,7 +60,6 @@ struct HistoryListView: View {
                                         Text("Edit")
                                     }
                                     .tint(.orange)
-
                                 }
                         }
                         .navigationBarTitle("Исполнение по мероприятию", displayMode: .inline)
