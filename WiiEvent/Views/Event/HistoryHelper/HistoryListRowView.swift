@@ -19,8 +19,8 @@ struct HistoryListRowView: View {
     }()
     
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
-            VStack {
+        VStack(alignment: .leading) {
+            HStack {
                 HStack {
                     Text(dateFormatter.string(from: history.date))
                         .foregroundStyle(.blue)
@@ -32,55 +32,44 @@ struct HistoryListRowView: View {
                                 .fill(.clear)
                                 .stroke(Color.blue, lineWidth: 1)
                         }
-                    
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 1)
-                            .foregroundStyle(.blue)
-                        
-                        RoundedRectangle(cornerRadius: 5)
-                            .frame(width: 10, height: 10)
-                            .foregroundStyle(.orange)
-                            .padding()
-                    }
                 }
-                .padding(.leading, 10)
             }
+        
+        if let letter = history.letter {
+            HStack {
+                Text(letter)
+                Text(dateFormatter.string(from: history.letterDate!))
+            }
+            .font(.footnote)
+            .padding(5)
+            .overlay {
+                RoundedRectangle(cornerRadius: 5, style: .continuous)
+                    .fill(.clear)
+                    .stroke(Color.blue, lineWidth: 1)
+            }
+            .padding(.trailing, 10)
+        }
             
-            
-            VStack(alignment: .leading) {
-                if let letter = history.letter {
-                    HStack {
-                        Text(letter)
-                        Text(dateFormatter.string(from: history.letterDate!))
-                    }
-                    .font(.footnote)
-                    .padding(5)
+            HStack {
+                Text(history.history)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .padding()
                     .overlay {
-                        RoundedRectangle(cornerRadius: 5, style: .continuous)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .fill(.clear)
                             .stroke(Color.blue, lineWidth: 1)
                     }
-                    .padding(.trailing, 10)
-                }
-                
-                HStack {
-                    Text(history.history)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                        .padding()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .fill(.clear)
-                                .stroke(Color.blue, lineWidth: 1)
-                        }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.trailing, 10)
-                .padding(.bottom, 10)
             }
+            .frame(maxWidth: .infinity)
+            .padding(.trailing, 10)
+            .padding(.bottom, 10)
         }
-        .font(.system(.callout, design: .monospaced))
+        .overlay {
+            RoundedRectangle(cornerRadius: 3)
+                .stroke(Color.blue, lineWidth: 1)
+        }
+        .padding()
     }
 }
 
