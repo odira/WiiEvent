@@ -20,7 +20,7 @@ struct HistoryListRowView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+//            HStack {
                 HStack {
                     Text(dateFormatter.string(from: history.date))
                         .foregroundStyle(.blue)
@@ -33,7 +33,7 @@ struct HistoryListRowView: View {
                                 .stroke(Color.blue, lineWidth: 1)
                         }
                 }
-            }
+//            }
         
         if let letter = history.letter {
             HStack {
