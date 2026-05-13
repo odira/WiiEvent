@@ -43,7 +43,8 @@ struct HistoryListView: View {
                             HistoryListRowView(history: history)
                                 .id(history.id)
                                 .listRowSeparator(.hidden)
-                                .listRowInsets(.init())
+//                                .listRowInsets(.init())
+                                .listStyle(.plain)
                                 .swipeActions(allowsFullSwipe: false) {
                                     Button(role: .destructive, action: {
                                         Task {
