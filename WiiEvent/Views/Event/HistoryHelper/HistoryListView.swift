@@ -38,42 +38,43 @@ struct HistoryListView: View {
                     ProgressView("Fetching...")
                 } else {
                     
-                    VStack {
-                        List(histories) { history in
-                            HistoryListRowView(history: history)
-                                .id(history.id)
-                                .listRowSeparator(.hidden)
-//                                .listRowInsets(.init())
-                                .listStyle(.plain)
-                                .swipeActions(allowsFullSwipe: false) {
-                                    Button(role: .destructive, action: {
-                                        Task {
-                                            await historyModel.sqlDELETE(historyId: history.id)
-                                            await historyModel.fetch()
+                        VStack {
+                            List(histories) { history in
+                                HistoryListRowView(history: history)
+                                    .id(history.id)
+                                    .listRowSeparator(.hidden)
+                                //                                .listRowInsets(.init())
+                                    .listStyle(.plain)
+                                    .swipeActions(allowsFullSwipe: false) {
+                                        Button(role: .destructive, action: {
+                                            Task {
+                                                await historyModel.sqlDELETE(historyId: history.id)
+                                                await historyModel.fetch()
+                                            }
+                                        }, label: {
+                                            Label("Delete", systemImage: "trash")
+                                        })
+                                        
+                                        NavigationLink {
+                                            HistoryEditView(history: history)
+                                        } label: {
+                                            Text("Edit")
                                         }
-                                    }, label: {
-                                        Label("Delete", systemImage: "trash")
-                                    })
-                                    
-                                    NavigationLink {
-                                        HistoryEditView(history: history)
-                                    } label: {
-                                        Text("Edit")
+                                        .tint(.orange)
                                     }
-                                    .tint(.orange)
-                                }
-                        }
-                        .navigationBarTitle("Исполнение по мероприятию", displayMode: .inline)
-                        .toolbar {
-                            ToolbarItem(placement: .confirmationAction) {
-                                NavigationLink(destination: HistoryAddView(eventId: eventId)) {
-                                    Text("Add")
-                                        .padding()
-                                }
-                                .buttonStyle(.borderedProminent)
                             }
-                        }
+                            .navigationBarTitle("Исполнение по мероприятию", displayMode: .inline)
+                            .toolbar {
+                                ToolbarItem(placement: .confirmationAction) {
+                                    NavigationLink(destination: HistoryAddView(eventId: eventId)) {
+                                        Text("Add")
+                                            .padding()
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                }
+                            }
                     }
+                    
                 }
             }
             .task {
