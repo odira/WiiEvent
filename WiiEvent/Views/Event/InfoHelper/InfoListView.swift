@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InfoListView: View {
-    @Environment(\.openWindow) var openWindow
+//    @Environment(\.openWindow) var openWindow
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var infoModel: InfoModel
@@ -174,8 +174,8 @@ struct InfoListView: View {
 #Preview {
     InfoListView(for: Event.example)
         .environmentObject(InfoModel.example)
-    
-        #if os(macOS)
-        .frame(width: 600, height: 800)
-        #endif
+//    
+//        #if os(macOS)
+//        .frame(width: 600, height: 800)
+//        #endif
 }
