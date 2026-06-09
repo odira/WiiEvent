@@ -11,46 +11,52 @@ public struct Event: Hashable, Codable, Identifiable {
     public var phase: String?             //  5
     public var years: String?             //  6
     public var endDate: String?           //  7
-    public var contragent: String?        //  8
-    public var subcontractor: String?     //  9
-    public var senior: String?            // 10
-    public var description: String?       // 11
-    public var isCompleted: Bool          // 12
-    public var isOption: Bool             // 13
-    public var justification: String?     // 14
-    public var limitTotal: Decimal?       // 15
-    public var note: String?              // 16
-    public var planId: Int                // 17
-    public var isValid: Bool              // 18
-    public var limit2020: Decimal?        // 19
-    public var limit2021: Decimal?        // 20
-    public var limit2022: Decimal?        // 21
-    public var limit2023: Decimal?        // 22
-    public var limit2024: Decimal?        // 23
-    public var limit2025: Decimal?        // 24
-    public var limit2026: Decimal?        // 25
-    public var limit2027: Decimal?        // 26
-    public var limit2028: Decimal?        // 27
-    public var limit2029: Decimal?        // 28
-    public var limit2030: Decimal?        // 29
-    public var subgroup: String?          // 30
-    public var subgroupId: Int?           // 31
-    public var statusID: Int?             // 32
     ///
-    public var dealID: Int?               // 33
-    public var dealTypeID: Int?           // 34
-    public var dealStatusID: Int          // 35
-    public var deal: String?              // 36
-    public var dealPrice: Decimal?        // 37
-    public var dealStartDate: Date?       // 38
-    public var dealEndDate: Date?         // 39
+    public var manufacturerID: Int?       //  8
+    public var contragent: String?        //  9
+    public var subcontractor: String?     // 10
+    ///
+    public var senior: String?            // 11
+    public var description: String?       // 12
+    public var isCompleted: Bool          // 13
+    public var isOption: Bool             // 14
+    public var justification: String?     // 15
+    public var limitTotal: Decimal?       // 16
+    public var note: String?              // 17
+    public var planId: Int                // 18
+    public var isValid: Bool              // 19
+    public var limit2020: Decimal?        // 20
+    public var limit2021: Decimal?        // 21
+    public var limit2022: Decimal?        // 22
+    public var limit2023: Decimal?        // 23
+    public var limit2024: Decimal?        // 24
+    public var limit2025: Decimal?        // 25
+    public var limit2026: Decimal?        // 26
+    public var limit2027: Decimal?        // 27
+    public var limit2028: Decimal?        // 28
+    public var limit2029: Decimal?        // 29
+    public var limit2030: Decimal?        // 30
+    public var subgroup: String?          // 31
+    public var subgroupId: Int?           // 32
+    ///
+    public var statusID: Int?             // 33
+    ///public var status: String?            // 34
+    ///
+    public var dealID: Int?               // 34
+    public var dealTypeID: Int?           // 35
+    public var dealStatusID: Int          // 36
+    public var deal: String?              // 37
+    public var dealPrice: Decimal?        // 38
+    public var dealStartDate: Date?       // 39
+    public var dealEndDate: Date?         // 40
+    
     
     enum Status: String, CaseIterable {
-        case planning = "планируется"     // 1
-        case pending = "выполняется"      // 2
-        case completed = "завершено"      // 3
+        case planning   = "планируется"   // 1
+        case pending    = "выполняется"   // 2
+        case completed  = "завершено"     // 3
         case terminated = "прекращено"    // 4
-        case undefined = "неопределено"   // 5
+        case undefined  = "неопределено"  // 5
     }
     var status: Status {
         switch self.statusID ?? 5 {  // 'неопределено' defined in PostgreSQL tercase database as value 5
@@ -146,39 +152,40 @@ public extension Event {
         phase: String? = nil,                 ///  5
         years: String? = nil,                 ///  6
         endDate: String? = nil,               ///  7
-        contragent: String? = nil,            ///  8
-        subcontractor: String? = nil,         ///  9
-        senior: String? = nil,                /// 10
-        description: String? = nil,           /// 11
-        isCompleted: Bool,                    /// 12
-        isOption: Bool,                       /// 13
-        justification: String? = nil,         /// 14
-        limitTotal: Decimal? = nil,           /// 15
-        note: String? = nil,                  /// 16
-        planId: Int,                          /// 17
-        isValid: Bool,                        /// 18
-        limit2020: Decimal? = nil,            /// 19
-        limit2021: Decimal? = nil,            /// 20
-        limit2022: Decimal? = nil,            /// 21
-        limit2023: Decimal? = nil,            /// 22
-        limit2024: Decimal? = nil,            /// 23
-        limit2025: Decimal? = nil,            /// 24
-        limit2026: Decimal? = nil,            /// 25
-        limit2027: Decimal? = nil,            /// 26
-        limit2028: Decimal? = nil,            /// 27
-        limit2029: Decimal? = nil,            /// 28
-        limit2030: Decimal? = nil,            /// 29
-        subgroup: String? = nil,              /// 30
-        subgroupId: Int? = nil,               /// 31
-        statusID: Int? = nil,                 /// 32
+        manufacturerID: Int? = nil,           ///  8
+        contragent: String? = nil,            ///  9
+        subcontractor: String? = nil,         /// 10
+        senior: String? = nil,                /// 11
+        description: String? = nil,           /// 12
+        isCompleted: Bool,                    /// 13
+        isOption: Bool,                       /// 14
+        justification: String? = nil,         /// 15
+        limitTotal: Decimal? = nil,           /// 16
+        note: String? = nil,                  /// 17
+        planId: Int,                          /// 18
+        isValid: Bool,                        /// 19
+        limit2020: Decimal? = nil,            /// 20
+        limit2021: Decimal? = nil,            /// 21
+        limit2022: Decimal? = nil,            /// 22
+        limit2023: Decimal? = nil,            /// 23
+        limit2024: Decimal? = nil,            /// 24
+        limit2025: Decimal? = nil,            /// 25
+        limit2026: Decimal? = nil,            /// 26
+        limit2027: Decimal? = nil,            /// 27
+        limit2028: Decimal? = nil,            /// 28
+        limit2029: Decimal? = nil,            /// 29
+        limit2030: Decimal? = nil,            /// 30
+        subgroup: String? = nil,              /// 31
+        subgroupId: Int? = nil,               /// 32
+        statusID: Int? = nil,                 /// 33
         ///
-        dealID: Int? = nil,                   /// 33
-        dealTypeID: Int? = nil,               /// 34
-        dealStatusID: Int = 1,                /// 35
-        deal: String? = nil,                  /// 36
-        dealPrice: Decimal? = nil,            /// 37
-        dealStartDate: Date? = nil,           /// 38
-        dealEndDate: Date? = nil              /// 39
+        dealID: Int? = nil,                   /// 34
+        dealTypeID: Int? = nil,               /// 35
+        dealStatusID: Int = 1,                /// 36
+        deal: String? = nil,                  /// 37
+        dealPrice: Decimal? = nil,            /// 38
+        dealStartDate: Date? = nil,           /// 39
+        dealEndDate: Date? = nil              /// 40
     ) {
         self.id = id                          ///  0
         self.event = event                    ///  1
@@ -188,39 +195,40 @@ public extension Event {
         self.phase = phase                    ///  5
         self.years = years                    ///  6
         self.endDate = endDate                ///  7
-        self.contragent = contragent          ///  8
-        self.subcontractor = subcontractor    ///  9
-        self.senior = senior                  /// 10
-        self.description = description        /// 11
-        self.isCompleted = isCompleted        /// 12
-        self.isOption = isOption              /// 13
-        self.justification = justification    /// 14
-        self.limitTotal = limitTotal          /// 15
-        self.note = note                      /// 16
-        self.planId = planId                  /// 17
-        self.isValid = isValid                /// 18
-        self.limit2020 = limit2020            /// 19
-        self.limit2021 = limit2021            /// 20
-        self.limit2022 = limit2022            /// 21
-        self.limit2023 = limit2023            /// 22
-        self.limit2024 = limit2024            /// 23
-        self.limit2025 = limit2025            /// 24
-        self.limit2026 = limit2026            /// 25
-        self.limit2027 = limit2027            /// 26
-        self.limit2028 = limit2028            /// 27
-        self.limit2029 = limit2029            /// 28
-        self.limit2030 = limit2030            /// 29
-        self.subgroup = subgroup              /// 30
-        self.subgroupId = subgroupId          /// 31
-        self.statusID = statusID              /// 32
+        self.manufacturerID = manufacturerID  ///  8
+        self.contragent = contragent          ///  9
+        self.subcontractor = subcontractor    /// 10
+        self.senior = senior                  /// 11
+        self.description = description        /// 12
+        self.isCompleted = isCompleted        /// 13
+        self.isOption = isOption              /// 14
+        self.justification = justification    /// 15
+        self.limitTotal = limitTotal          /// 16
+        self.note = note                      /// 17
+        self.planId = planId                  /// 18
+        self.isValid = isValid                /// 19
+        self.limit2020 = limit2020            /// 20
+        self.limit2021 = limit2021            /// 21
+        self.limit2022 = limit2022            /// 22
+        self.limit2023 = limit2023            /// 23
+        self.limit2024 = limit2024            /// 24
+        self.limit2025 = limit2025            /// 25
+        self.limit2026 = limit2026            /// 26
+        self.limit2027 = limit2027            /// 27
+        self.limit2028 = limit2028            /// 28
+        self.limit2029 = limit2029            /// 29
+        self.limit2030 = limit2030            /// 30
+        self.subgroup = subgroup              /// 31
+        self.subgroupId = subgroupId          /// 32
+        self.statusID = statusID              /// 33
         ///
-        self.dealID = dealID                  /// 33
-        self.dealTypeID = dealTypeID          /// 34
-        self.dealStatusID = dealStatusID      /// 35
-        self.deal = deal                      /// 36
-        self.dealPrice = dealPrice            /// 37
-        self.dealStartDate = dealStartDate    /// 38
-        self.dealEndDate = dealEndDate        /// 39
+        self.dealID = dealID                  /// 34
+        self.dealTypeID = dealTypeID          /// 35
+        self.dealStatusID = dealStatusID      /// 36
+        self.deal = deal                      /// 37
+        self.dealPrice = dealPrice            /// 38
+        self.dealStartDate = dealStartDate    /// 39
+        self.dealEndDate = dealEndDate        /// 40
     }
 }
 
@@ -238,38 +246,39 @@ public extension Event {
               phase: "Пусконаладка",                  ///  5
               years: "2023-2030",                     ///  6
               endDate: "2023-01-01",                  ///  7
-              contragent: "Алмаз-Антей",              ///  8
-              subcontractor: "Алмаз-Антей",           ///  9
-              senior: "Пугачев",                      /// 10
-              description: "Тестовая комбинация",     /// 11
-              isCompleted: true,                      /// 12
-              isOption: true,                         /// 13
-              justification: "По щучьему велению",    /// 14
-              limitTotal: 1000.00,                    /// 15
-              note: "NOTE TEST",                      /// 16
-              planId: 1,                              /// 17
-              isValid: true,                          /// 18
-              limit2020: 2020,                        /// 19
-              limit2021: 2021,                        /// 20
-              limit2022: 2022,                        /// 21
-              limit2023: 2023,                        /// 22
-              limit2024: 2024,                        /// 23
-              limit2025: 2025,                        /// 24
-              limit2026: 2026,                        /// 25
-              limit2027: 2027,                        /// 26
-              limit2028: 2028,                        /// 27
-              limit2029: 2029,                        /// 28
-              limit2030: 2030,                        /// 29
-              subgroup: "SUB",                        /// 30
-              subgroupId: 0,                          /// 31
-              statusID: 0,                            /// 32
-              dealID: 100,                            /// 33
-              dealTypeID: 1,                          /// 34
-              dealStatusID: 1,                        /// 35
-              deal: "Москва-Резерв",                  /// 36
-              dealPrice: 1000.00,                     /// 37
-              dealStartDate: Date(timeIntervalSince1970: 1000),   /// 38
-              dealEndDate: Date(timeIntervalSince1970: 2000)      /// 39
+              manufacturerID: 6,                      ///  8
+              contragent: "Алмаз-Антей",              ///  9
+              subcontractor: "Алмаз-Антей",           /// 10
+              senior: "Пугачев",                      /// 11
+              description: "Тестовая комбинация",     /// 12
+              isCompleted: true,                      /// 13
+              isOption: true,                         /// 14
+              justification: "По щучьему велению",    /// 15
+              limitTotal: 1000.00,                    /// 16
+              note: "NOTE TEST",                      /// 17
+              planId: 1,                              /// 18
+              isValid: true,                          /// 19
+              limit2020: 2020,                        /// 20
+              limit2021: 2021,                        /// 21
+              limit2022: 2022,                        /// 22
+              limit2023: 2023,                        /// 23
+              limit2024: 2024,                        /// 24
+              limit2025: 2025,                        /// 25
+              limit2026: 2026,                        /// 26
+              limit2027: 2027,                        /// 27
+              limit2028: 2028,                        /// 28
+              limit2029: 2029,                        /// 29
+              limit2030: 2030,                        /// 30
+              subgroup: "SUB",                        /// 31
+              subgroupId: 0,                          /// 32
+              statusID: 0,                            /// 33
+              dealID: 100,                            /// 34
+              dealTypeID: 1,                          /// 35
+              dealStatusID: 1,                        /// 36
+              deal: "Москва-Резерв",                  /// 37
+              dealPrice: 1000.00,                     /// 38
+              dealStartDate: Date(timeIntervalSince1970: 1000),   /// 39
+              dealEndDate: Date(timeIntervalSince1970: 2000)      /// 40
         )
     ]
     
