@@ -142,95 +142,95 @@ public extension Event {
 
 // MARK: - Initializations
  
-public extension Event {
-    init(
-        id: Int,                              ///  0
-        event: String,                        ///  1
-        city: String? = nil,                  ///  2
-        unit: String? = nil,                  ///  3
-        equipment: String? = nil,             ///  4
-        phase: String? = nil,                 ///  5
-        years: String? = nil,                 ///  6
-        endDate: String? = nil,               ///  7
-        manufacturerID: Int? = nil,           ///  8
-        contragent: String? = nil,            ///  9
-        subcontractor: String? = nil,         /// 10
-        senior: String? = nil,                /// 11
-        description: String? = nil,           /// 12
-        isCompleted: Bool,                    /// 13
-        isOption: Bool,                       /// 14
-        justification: String? = nil,         /// 15
-        limitTotal: Decimal? = nil,           /// 16
-        note: String? = nil,                  /// 17
-        planId: Int,                          /// 18
-        isValid: Bool,                        /// 19
-        limit2020: Decimal? = nil,            /// 20
-        limit2021: Decimal? = nil,            /// 21
-        limit2022: Decimal? = nil,            /// 22
-        limit2023: Decimal? = nil,            /// 23
-        limit2024: Decimal? = nil,            /// 24
-        limit2025: Decimal? = nil,            /// 25
-        limit2026: Decimal? = nil,            /// 26
-        limit2027: Decimal? = nil,            /// 27
-        limit2028: Decimal? = nil,            /// 28
-        limit2029: Decimal? = nil,            /// 29
-        limit2030: Decimal? = nil,            /// 30
-        subgroup: String? = nil,              /// 31
-        subgroupId: Int? = nil,               /// 32
-        statusID: Int? = nil,                 /// 33
-        ///
-        dealID: Int? = nil,                   /// 34
-        dealTypeID: Int? = nil,               /// 35
-        dealStatusID: Int = 1,                /// 36
-        deal: String? = nil,                  /// 37
-        dealPrice: Decimal? = nil,            /// 38
-        dealStartDate: Date? = nil,           /// 39
-        dealEndDate: Date? = nil              /// 40
-    ) {
-        self.id = id                          ///  0
-        self.event = event                    ///  1
-        self.city = city                      ///  2
-        self.unit = unit                      ///  3
-        self.equipment = equipment            ///  4
-        self.phase = phase                    ///  5
-        self.years = years                    ///  6
-        self.endDate = endDate                ///  7
-        self.manufacturerID = manufacturerID  ///  8
-        self.contragent = contragent          ///  9
-        self.subcontractor = subcontractor    /// 10
-        self.senior = senior                  /// 11
-        self.description = description        /// 12
-        self.isCompleted = isCompleted        /// 13
-        self.isOption = isOption              /// 14
-        self.justification = justification    /// 15
-        self.limitTotal = limitTotal          /// 16
-        self.note = note                      /// 17
-        self.planId = planId                  /// 18
-        self.isValid = isValid                /// 19
-        self.limit2020 = limit2020            /// 20
-        self.limit2021 = limit2021            /// 21
-        self.limit2022 = limit2022            /// 22
-        self.limit2023 = limit2023            /// 23
-        self.limit2024 = limit2024            /// 24
-        self.limit2025 = limit2025            /// 25
-        self.limit2026 = limit2026            /// 26
-        self.limit2027 = limit2027            /// 27
-        self.limit2028 = limit2028            /// 28
-        self.limit2029 = limit2029            /// 29
-        self.limit2030 = limit2030            /// 30
-        self.subgroup = subgroup              /// 31
-        self.subgroupId = subgroupId          /// 32
-        self.statusID = statusID              /// 33
-        ///
-        self.dealID = dealID                  /// 34
-        self.dealTypeID = dealTypeID          /// 35
-        self.dealStatusID = dealStatusID      /// 36
-        self.deal = deal                      /// 37
-        self.dealPrice = dealPrice            /// 38
-        self.dealStartDate = dealStartDate    /// 39
-        self.dealEndDate = dealEndDate        /// 40
-    }
-}
+//public extension Event {
+//    init(
+//        id: Int,                              ///  0
+//        event: String,                        ///  1
+//        city: String? = nil,                  ///  2
+//        unit: String? = nil,                  ///  3
+//        equipment: String? = nil,             ///  4
+//        phase: String? = nil,                 ///  5
+//        years: String? = nil,                 ///  6
+//        endDate: String? = nil,               ///  7
+//        manufacturerID: Int? = nil,           ///  8
+//        contragent: String? = nil,            ///  9
+//        subcontractor: String? = nil,         /// 10
+//        senior: String? = nil,                /// 11
+//        description: String? = nil,           /// 12
+//        isCompleted: Bool,                    /// 13
+//        isOption: Bool,                       /// 14
+//        justification: String? = nil,         /// 15
+//        limitTotal: Decimal? = nil,           /// 16
+//        note: String? = nil,                  /// 17
+//        planId: Int,                          /// 18
+//        isValid: Bool,                        /// 19
+//        limit2020: Decimal? = nil,            /// 20
+//        limit2021: Decimal? = nil,            /// 21
+//        limit2022: Decimal? = nil,            /// 22
+//        limit2023: Decimal? = nil,            /// 23
+//        limit2024: Decimal? = nil,            /// 24
+//        limit2025: Decimal? = nil,            /// 25
+//        limit2026: Decimal? = nil,            /// 26
+//        limit2027: Decimal? = nil,            /// 27
+//        limit2028: Decimal? = nil,            /// 28
+//        limit2029: Decimal? = nil,            /// 29
+//        limit2030: Decimal? = nil,            /// 30
+//        subgroup: String? = nil,              /// 31
+//        subgroupId: Int? = nil,               /// 32
+//        statusID: Int? = nil,                 /// 33
+//        ///
+//        dealID: Int? = nil,                   /// 34
+//        dealTypeID: Int? = nil,               /// 35
+//        dealStatusID: Int = 1,                /// 36
+//        deal: String? = nil,                  /// 37
+//        dealPrice: Decimal? = nil,            /// 38
+//        dealStartDate: Date? = nil,           /// 39
+//        dealEndDate: Date? = nil              /// 40
+//    ) {
+//        self.id = id                          ///  0
+//        self.event = event                    ///  1
+//        self.city = city                      ///  2
+//        self.unit = unit                      ///  3
+//        self.equipment = equipment            ///  4
+//        self.phase = phase                    ///  5
+//        self.years = years                    ///  6
+//        self.endDate = endDate                ///  7
+//        self.manufacturerID = manufacturerID  ///  8
+//        self.contragent = contragent          ///  9
+//        self.subcontractor = subcontractor    /// 10
+//        self.senior = senior                  /// 11
+//        self.description = description        /// 12
+//        self.isCompleted = isCompleted        /// 13
+//        self.isOption = isOption              /// 14
+//        self.justification = justification    /// 15
+//        self.limitTotal = limitTotal          /// 16
+//        self.note = note                      /// 17
+//        self.planId = planId                  /// 18
+//        self.isValid = isValid                /// 19
+//        self.limit2020 = limit2020            /// 20
+//        self.limit2021 = limit2021            /// 21
+//        self.limit2022 = limit2022            /// 22
+//        self.limit2023 = limit2023            /// 23
+//        self.limit2024 = limit2024            /// 24
+//        self.limit2025 = limit2025            /// 25
+//        self.limit2026 = limit2026            /// 26
+//        self.limit2027 = limit2027            /// 27
+//        self.limit2028 = limit2028            /// 28
+//        self.limit2029 = limit2029            /// 29
+//        self.limit2030 = limit2030            /// 30
+//        self.subgroup = subgroup              /// 31
+//        self.subgroupId = subgroupId          /// 32
+//        self.statusID = statusID              /// 33
+//        ///
+//        self.dealID = dealID                  /// 34
+//        self.dealTypeID = dealTypeID          /// 35
+//        self.dealStatusID = dealStatusID      /// 36
+//        self.deal = deal                      /// 37
+//        self.dealPrice = dealPrice            /// 38
+//        self.dealStartDate = dealStartDate    /// 39
+//        self.dealEndDate = dealEndDate        /// 40
+//    }
+//}
 
 // MARK: - Event example
 
