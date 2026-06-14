@@ -59,7 +59,7 @@ struct EventDetailsView: View {
                         
                         Section("Исполнение договора") {
                             LabeledContent("Год реализации", value: event.years ?? "")
-                            LabeledContent("Ответственный исполнитель", value: event.senior ?? "")
+                            LabeledContent("Ответственный исполнитель", value: event.dealSenior ?? "")
                         }
                         
                         Section("Стоимость мероприятия") {
@@ -80,8 +80,8 @@ struct EventDetailsView: View {
                         }
                         
                         Section("Подрядчик") {
-                            LabeledContent("Контрагент", value: event.contragent ?? "")
-                            LabeledContent("Субподрядчик", value: event.subcontractor ?? "")
+                            LabeledContent("Контрагент", value: event.dealContractor ?? "")
+                            LabeledContent("Субподрядчик", value: event.dealSubcontractor ?? "")
                         }
                     } // Form
                     .formStyle(.grouped)

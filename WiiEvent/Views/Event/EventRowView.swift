@@ -109,10 +109,10 @@ struct EventRowView: View {
     fileprivate func contragentView() -> some View {
         HStack {
             VStack(alignment: .leading) {
-                if let contragent = event.contragent {
+                if let contragent = event.dealContractor     {
                     Text(contragent)
                 }
-                if let subcontractor = event.subcontractor {
+                if let subcontractor = event.dealSubcontractor {
                     Text(subcontractor)
                 }
                 EmptyView()
