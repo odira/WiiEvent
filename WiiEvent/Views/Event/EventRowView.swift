@@ -15,8 +15,9 @@ struct EventRowView: View {
             HStack(spacing: 10) {
                 cityView()
                 eventView()
-                eventDealView()
-                contragentView()
+                dealView()
+//                dealContractorView()
+//                dealSeniorView()
             }
             .padding()
         }
@@ -65,16 +66,17 @@ struct EventRowView: View {
     }
     
     // Deal
-    fileprivate func eventDealView() -> some View {
+    fileprivate func dealView() -> some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                /// Transparants Bar
+                
+                // Transparants Bar
                 HStack {
                     event.dealStatusTransparant(event: event)
                     Spacer()
                 }
                 
-                /// dealStatusID == 1 == Планируется
+                // dealStatusID == 1 == Планируется
                 if event.dealStatusID == 1 {
                     if let date = event.dealStartDate {
                         Text(DateFormatter.planningMonth.string(from: date))
@@ -92,9 +94,20 @@ struct EventRowView: View {
                     if let startDate = event.dealStartDate {
                         Text("от \(DateFormatter.longDateFormatter.string(from: startDate))")
                     }
-                    
                     if let price = event.dealPrice {
                         Text("\((price), format: .number) руб.")
+                    }
+                    if let contragent = event.dealContractor {
+                        Text(contragent)
+                    }
+                    if let subcontractor = event.dealSubcontractor {
+                        Text(subcontractor)
+                    }
+                    
+                    if let senior = event.dealSenior {
+                        Text("\(senior)")
+                    } else {
+                        EmptyView()
                     }
                     
                     Spacer()
@@ -105,11 +118,11 @@ struct EventRowView: View {
         }
     }
     
-    // contragent
-    fileprivate func contragentView() -> some View {
+    // Deal Contractor
+    fileprivate func dealContractorView() -> some View {
         HStack {
             VStack(alignment: .leading) {
-                if let contragent = event.dealContractor     {
+                if let contragent = event.dealContractor {
                     Text(contragent)
                 }
                 if let subcontractor = event.dealSubcontractor {
@@ -119,6 +132,17 @@ struct EventRowView: View {
             }
             
             Spacer()
+        }
+    }
+    
+    // Deal Senior
+    fileprivate func dealSeniorView() -> some View {
+        HStack {
+            if let senior = event.dealSenior {
+                Text("\(senior)")
+            } else {
+                EmptyView()
+            }
         }
     }
     
