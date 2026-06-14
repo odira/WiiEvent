@@ -118,33 +118,33 @@ struct EventRowView: View {
         }
     }
     
-    // Deal Contractor
-    fileprivate func dealContractorView() -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                if let contragent = event.dealContractor {
-                    Text(contragent)
-                }
-                if let subcontractor = event.dealSubcontractor {
-                    Text(subcontractor)
-                }
-                EmptyView()
-            }
-            
-            Spacer()
-        }
-    }
+//    // Deal Contractor
+//    fileprivate func dealContractorView() -> some View {
+//        HStack {
+//            VStack(alignment: .leading) {
+//                if let contragent = event.dealContractor {
+//                    Text(contragent)
+//                }
+//                if let subcontractor = event.dealSubcontractor {
+//                    Text(subcontractor)
+//                }
+//                EmptyView()
+//            }
+//            
+//            Spacer()
+//        }
+//    }
     
-    // Deal Senior
-    fileprivate func dealSeniorView() -> some View {
-        HStack {
-            if let senior = event.dealSenior {
-                Text("\(senior)")
-            } else {
-                EmptyView()
-            }
-        }
-    }
+//    // Deal Senior
+//    fileprivate func dealSeniorView() -> some View {
+//        HStack {
+//            if let senior = event.dealSenior {
+//                Text("\(senior)")
+//            } else {
+//                EmptyView()
+//            }
+//        }
+//    }
     
 //    fileprivate func seniorView() -> some View {
 //        HStack {
