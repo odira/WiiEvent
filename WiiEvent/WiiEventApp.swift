@@ -21,19 +21,19 @@ struct WiiEventApp: App {
                 } else {
                      ContentView()
                         .environmentObject(eventModel)
-//                        .environmentObject(historyModel)
-//                        .environmentObject(dealModel)
+                        .environmentObject(historyModel)
+                        .environmentObject(dealModel)
                         .environmentObject(planModel)
-//                        .environmentObject(infoModel)
+                        .environmentObject(infoModel)
                         .environmentObject(eventModelFilter)
                 }
             }
             .task {
                 await eventModel.fetch()
-//                await historyModel.fetch()
-//                await dealModel.fetch()
+                await historyModel.fetch()
+                await dealModel.fetch()
                 await planModel.fetch()
-//                await infoModel.fetch()
+                await infoModel.fetch()
             }
         }  
     }
