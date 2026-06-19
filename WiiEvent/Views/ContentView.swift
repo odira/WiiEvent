@@ -13,17 +13,13 @@ struct ContentView: View {
                 Tab("Категория", systemImage: "star") {
                     Text("Not developed")
                 }
-                Tab("Группа", systemImage: "rectangle.3.group.fill") {
+                Tab("Группа", systemImage: "rectangle.3.group.fill", role: .prominent) {
                     Text("Not developed")
                 }
-                Tab {
+                Tab("Search", systemImage: "magnifyingglass", role: .prominent) {
                     EventModelFilterView()
-                } label: {
-                    Label("Find", systemImage: "magnifyingglass")
-                        .labelStyle(.iconOnly)
                 }
             }
-//            .navigationBarTitle("TEST")
         }
     }
 }
