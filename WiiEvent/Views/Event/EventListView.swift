@@ -28,9 +28,9 @@ struct EventListView: View {
         .refreshable {
             eventModelFilter.filteredEvents = eventModel.events
         }
-        .onAppear {
-            eventModelFilter.filteredEvents = eventModelFilter.filterEvents(eventModel.events)
-        }
+//        .onAppear {
+//            eventModelFilter.filteredEvents = eventModelFilter.filterEvents(eventModel.events)
+//        }
     }
 }
 

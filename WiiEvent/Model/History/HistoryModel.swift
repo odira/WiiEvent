@@ -39,15 +39,15 @@ public class HistoryModel: ObservableObject {
 
             let sqlText = """
             SELECT
-                id,             --  0
-                event_id,       --  1
-                date,           --  2
-                history,        --  3
-                note,           --  4
-                letter,         --  5
-                letter_date     --  6
+                id,                    --  0
+                event_id,              --  1
+                date,                  --  2
+                history,               --  3
+                note,                  --  4
+                letter_num_receiver,   --  5
+                letter_date_receiver   --  6
             FROM 
-                event.vw_history 
+                history.vw_history 
             ORDER BY 
                 date
             """
@@ -61,13 +61,13 @@ public class HistoryModel: ObservableObject {
             for row in cursor {
                 let columns = try row.get().columns
                 
-                let id = try columns[0].int()                //  0
-                let eventId = try columns[1].int()           //  1
-                let datePg = try columns[2].date()           //  2
-                let history = try columns[3].string()        //  3
-                let note = try? columns[4].string()          //  4
-                let letter = try? columns[5].string()        //  5
-                let letterDatePg = try? columns[6].date()    //  6
+                let id = try columns[0].int()                      //  0
+                let eventID = try columns[1].int()                 //  1
+                let datePg = try columns[2].date()                 //  2
+                let history = try columns[3].string()              //  3
+                let note = try? columns[4].string()                //  4
+                let letterNumReceiver = try? columns[5].string()   //  5
+                let letterDateReceiverPg = try? columns[6].date()  //  6
 
                 // The UTC/GMT time zone.
                 let utcTimeZone = TimeZone(secondsFromGMT: 0)!
@@ -75,8 +75,8 @@ public class HistoryModel: ObservableObject {
                 var date: Date {
                     return datePg.date(in: utcTimeZone)
                 }
-                var letterDate: Date? {
-                    if let date = letterDatePg {
+                var letterDateReceiver: Date? {
+                    if let date = letterDateReceiverPg {
                         return date.date(in: utcTimeZone)
                     }
                     return nil
@@ -84,13 +84,13 @@ public class HistoryModel: ObservableObject {
                 
                 histories.append(
                     History(
-                        id: id,                    // 0
-                        eventId: eventId,          // 1
-                        date: date,                // 2
-                        history: history,          // 3
-                        note: note,                // 4
-                        letter: letter,            // 5
-                        letterDate: letterDate     // 6
+                        id: id,                                  // 0
+                        eventID: eventID,                        // 1
+                        date: date,                              // 2
+                        history: history,                        // 3
+                        note: note,                              // 4
+                        letterNumReceiver: letterNumReceiver,    // 5
+                        letterDateReceiver: letterDateReceiver   // 6
                     )
                 )
             }
@@ -133,15 +133,15 @@ public extension HistoryModel {
         return result.first
     }
     
-    func findFirstHistory(byEventId eventId: Int) -> History? {
-        if let result = histories.first(where: { $0.eventId == eventId }) {
+    func findFirstHistory(byEventId eventID: Int) -> History? {
+        if let result = histories.first(where: { $0.eventID == eventID }) {
             return result
         }
         return nil
     }
     
-    func findHistories(byEventId eventId: Int) -> [History]? {
-        let result = histories.filter { $0.eventId == eventId }
+    func findHistories(byEventId eventID: Int) -> [History]? {
+        let result = histories.filter { $0.eventID == eventID }
         if result.isEmpty {
             return nil
         }
@@ -157,32 +157,32 @@ extension HistoryModel {
     // MARK: - SQL INSERT
     
     public func sqlINSERT(
-        eventId: Int,       // $1
-        date: Date,         // $2
-        history: String,    // $3
-        note: String,       // $4
-        letter: String?,    // $5
-        letterDate: Date?   // $6
+        eventID: Int,               // $1
+        date: Date,                 // $2
+        history: String,            // $3
+        note: String,               // $4
+        letterNumReceiver: String?, // $5
+        letterDateReceiver: Date?   // $6
     )
     async {
         
         let sqlQueryINSERT = """
             INSERT INTO
                 event.vw_history(
-                    event_id,    -- $1
-                    date,        -- $2
-                    history,     -- $3
-                    note,        -- $4
-                    letter,      -- $5
-                    letter_date  -- $6
+                    event_id,             -- $1
+                    date,                 -- $2
+                    history,              -- $3
+                    note,                 -- $4
+                    letter_num_receiver,  -- $5
+                    letter_date_receiver  -- $6
                 )
             VALUES (
                     $1,   -- event_id
                     $2,   -- date
                     $3,   -- history
                     $4,   -- note
-                    $5,   -- letter
-                    $6    -- letter_date
+                    $5,   -- letter_num_receiver
+                    $6    -- letter_date_receiver
             )
         """
         
@@ -203,19 +203,19 @@ extension HistoryModel {
                 return date.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
             }
             
-            var letterDatePg: PostgresDate? = nil
-            if let letterDate {
-                letterDatePg = letterDate.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
+            var letterDateReceiverPg: PostgresDate? = nil
+            if let letterDateReceiver {
+                letterDateReceiverPg = letterDateReceiver.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
             }
             
             let _ = try statement.execute(
                 parameterValues: [
-                    eventId,       // 1
-                    datePg,        // 2
-                    history,       // 3
-                    note,          // 4
-                    letter,        // 5
-                    letterDatePg   // 6
+                    eventID,              // 1
+                    datePg,               // 2
+                    history,              // 3
+                    note,                 // 4
+                    letterNumReceiver,    // 5
+                    letterDateReceiverPg  // 6
                 ]
             )
         }
@@ -231,25 +231,25 @@ extension HistoryModel {
     
     // Variant 1
     public func sqlUPDATE(
-        id: Int,            // $1
-        date: Date,         // $2
-        history: String,    // $3
-        note: String,       // $4
-        letter: String,     // $5
-        letterDate: Date    // $6
+        id: Int,                    // $1
+        date: Date,                 // $2
+        history: String,            // $3
+        note: String,               // $4
+        letterNumReceiver: String,  // $5
+        letterDateReceiver: Date    // $6
     ) async {
         
         let sqlQueryUPDATE = """
             UPDATE
                 event.history
             SET
-                date = $2,        -- date
-                history = $3,     -- history
-                note = $4,        -- note
-                letter = $5,      -- letter
-                letter_date = $6  -- letterDate
+                date = $2,                  -- date
+                history = $3,               -- history
+                note = $4,                  -- note
+                letter_num_receiver = $5,   -- letterNumReceiver
+                letter_date_receiver = $6   -- letterDateReceiver
             WHERE
-                id = $1           -- id
+                id = $1                     -- id
         """
         
         do {
@@ -268,18 +268,18 @@ extension HistoryModel {
             var datePg: PostgresDate {
                 return date.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
             }
-            var letterDatePg: PostgresDate {
-                return letterDate.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
+            var letterDateReceiverPg: PostgresDate {
+                return letterDateReceiver.postgresDate(in: TimeZone(secondsFromGMT: 0)!)
             }
             
             let _ = try statement.execute(
                 parameterValues: [
-                    id,           // 1
-                    datePg,       // 2
-                    history,      // 3
-                    note,         // 4
-                    letter,       // 5
-                    letterDatePg  // 6
+                    id,                   // 1
+                    datePg,               // 2
+                    history,              // 3
+                    note,                 // 4
+                    letterNumReceiver,    // 5
+                    letterDateReceiverPg  // 6
                 ]
             )
         }
@@ -300,8 +300,8 @@ extension HistoryModel {
             date: history.date,
             history: history.history,
             note: history.note ?? "",
-            letter: history.letter ?? "",
-            letterDate: history.letterDate ?? Date()
+            letterNumReceiver: history.letterNumReceiver ?? "",
+            letterDateReceiver: history.letterDateReceiver ?? Date()
         )
         
 //        let sqlQueryUPDATE = """

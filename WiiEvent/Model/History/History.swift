@@ -1,34 +1,31 @@
 import SwiftUI
 import CoreLocation
 
-// MARK: - History definition
-
 public struct History: Hashable, Codable, Identifiable {
-    
-    public var id: Int                  //  0
-    public var eventId: Int             //  1
-    public var date: Date               //  2
-    public var history: String          //  3
-    public var note: String?            //  4
-    public var letter: String?          //  5
-    public var letterDate: Date?        //  6
+    public var id: Int                     //  0
+    public var eventID: Int                //  1
+    public var date: Date                  //  2
+    public var history: String             //  3
+    public var note: String?               //  4
+    public var letterNumReceiver: String?  //  5
+    public var letterDateReceiver: Date?   //  6
     
     public init(
-        id: Int,                        //  0
-        eventId: Int,                   //  1
-        date: Date,                     //  2
-        history: String,                //  3
-        note: String? = nil,            //  4
-        letter: String? = nil,          //  5
-        letterDate: Date? = nil         //  6
+        id: Int,                           //  0
+        eventID: Int,                      //  1
+        date: Date,                        //  2
+        history: String,                   //  3
+        note: String? = nil,               //  4
+        letterNumReceiver: String? = nil,  //  5
+        letterDateReceiver: Date? = nil    //  6
     ) {
-        self.id = id                    //  0
-        self.eventId = eventId          //  1
-        self.date = date                //  2
-        self.history = history          //  3
-        self.note = note                //  4
-        self.letter = letter            //  5
-        self.letterDate = letterDate    //  6
+        self.id = id                                  //  0
+        self.eventID = eventID                        //  1
+        self.date = date                              //  2
+        self.history = history                        //  3
+        self.note = note                              //  4
+        self.letterNumReceiver = letterNumReceiver    //  5
+        self.letterDateReceiver = letterDateReceiver  //  6
     }
 }
 
@@ -41,13 +38,13 @@ public extension History {
     
     static let samples: [History] = [
         History(
-            id: 10,                                               //  0
-            eventId: 100,                                         //  1
-            date: Date(timeIntervalSince1970: 1_000_000),         //  2
-            history: "TEST HISTORY TEST HISTORY TEST",            //  3
-            note: "TEST HISTORY TEST HISTORY TEST",               //  4
-            letter: "Letter",                                     //  5
-            letterDate: Date(timeIntervalSince1970: 1_100_000)    //  6
+            id: 10,                                                     //  0
+            eventID: 100,                                               //  1
+            date: Date(timeIntervalSince1970: 1_000_000),               //  2
+            history: "TEST HISTORY TEST HISTORY TEST",                  //  3
+            note: "TEST HISTORY TEST HISTORY TEST",                     //  4
+            letterNumReceiver: "Letter",                                //  5
+            letterDateReceiver: Date(timeIntervalSince1970: 1_100_000)  //  6
         )
     ]
     

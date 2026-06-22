@@ -21,8 +21,8 @@ struct HistoryEditView: View {
                     date: $history.date,
                     history: $history.history,
                     note: $history.note,
-                    letter: $history.letter,
-                    letterDate: $history.letterDate
+                    letterNumReceiver: $history.letterNumReceiver,
+                    letterDateReceiver: $history.letterDateReceiver
                 )
             }
             .toolbar {

@@ -40,10 +40,10 @@ struct HistoryListRowView: View {
                         }
                 }
                 
-                if let letter = history.letter {
+                if let letterNumReceiver = history.letterNumReceiver {
                     HStack {
-                        Text(letter)
-                        Text(dateFormatter.string(from: history.letterDate!))
+                        Text(letterNumReceiver)
+                        Text(dateFormatter.string(from: history.letterDateReceiver!))
                     }
                     .font(.footnote)
                     .padding(5)

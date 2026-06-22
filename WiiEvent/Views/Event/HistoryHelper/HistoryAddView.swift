@@ -17,13 +17,13 @@ struct HistoryAddView: View {
     @State private var date: Date = Date.now
     @State private var history: String = ""
     @State private var note: String?
-    @State private var letter: String?
-    @State private var letterDate: Date? = Date.now
+    @State private var letterNumReceiver: String?
+    @State private var letterDateReceiver: Date? = Date.now
     
     var body: some View {
         NavigationStack {
             VStack {
-                HistoryFieldsEditor(date: $date, history: $history, note: $note, letter: $letter, letterDate: $letterDate)
+                HistoryFieldsEditor(date: $date, history: $history, note: $note, letterNumReceiver: $letterNumReceiver, letterDateReceiver: $letterDateReceiver)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -31,7 +31,7 @@ struct HistoryAddView: View {
                         role: .confirm,
                         action: {
                             Task {
-                                await historyModel.sqlINSERT(eventId: self.eventId, date: self.date, history: self.history, note: self.note ?? "", letter: self.letter, letterDate: self.letterDate)
+                                await historyModel.sqlINSERT(eventID: self.eventId, date: self.date, history: self.history, note: self.note ?? "", letterNumReceiver: self.letterNumReceiver, letterDateReceiver: self.letterDateReceiver)
                             }
                             dismiss()
                         }, label: {
